@@ -4,11 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/drawable/background_splash.xml" value="0.275" />
-        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/activity_main.xml" value="0.24728260869565216" />
+        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/activity_intro.xml" value="0.176" />
+        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/activity_main.xml" value="0.152" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/background_splash.xml" value="0.24728260869565216" />
+        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/intro_fragment.xml" value="0.1734375" />
+        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/life_fragment.xml" value="0.1734375" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/main_fragment.xml" value="0.24728260869565216" />
+        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/my_assets_fragment.xml" value="0.1734375" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/tab_layout_fragment.xml" value="0.24427083333333333" />
-        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/menu/bottom_navigation.xml" value="0.1328125" />
+        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/menu/bottom_navigation.xml" value="0.2" />
       </map>
     </option>
   </component>

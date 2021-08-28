@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="action_my_assets_bottom_navigation"
+        android:id="@+id/action_my_assets_bottom_navigation"
         android:title="@string/my_assets" />
     <item
         android:id="@+id/action_banking_bottom_navigation"
