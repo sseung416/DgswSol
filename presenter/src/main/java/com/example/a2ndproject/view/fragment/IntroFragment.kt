@@ -11,10 +11,6 @@ import com.example.a2ndproject.view.viewmodel.IntroViewModel
 
 class IntroFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = IntroFragment()
-    }
-
     private lateinit var viewModel: IntroViewModel
 
     override fun onCreateView(
@@ -24,10 +20,7 @@ class IntroFragment : Fragment() {
         return inflater.inflate(R.layout.intro_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(IntroViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
-
 }

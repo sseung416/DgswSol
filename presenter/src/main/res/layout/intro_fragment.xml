@@ -5,9 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".view.fragment.IntroFragment">
 
-    <TextView
+    <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>

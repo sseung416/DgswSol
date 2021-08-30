@@ -10,4 +10,5 @@
 
     <color name="light_grey">#FFC4C4C4</color>
     <color name="main_sky_blue">#FF2196F3</color>
+    <color name="grey">#FF757575</color>
 </resources>
