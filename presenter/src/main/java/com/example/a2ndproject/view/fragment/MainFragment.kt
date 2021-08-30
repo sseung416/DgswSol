@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.adapters.TableLayoutBindingAdapter
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.MainFragmentBinding
 import com.example.a2ndproject.view.viewmodel.MainViewModel
@@ -33,13 +34,16 @@ class MainFragment : Fragment() {
     }
 
     private fun initTabLayout() {
+        val fragment = TabLayoutFragment()
+
+        parentFragmentManager.beginTransaction().replace(R.id.frame_layout_tab_main, fragment).commit()
+
         binding.tabLayoutMain.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                parentFragmentManager.beginTransaction().replace(R.id.frame_layout_tab_main, TabLayoutFragment()).commit()
+                fragment.setTab(tab!!.position)
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                parentFragmentManager.beginTransaction().replace(R.id.frame_layout_tab_main, TabLayoutFragment()).commit()
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {

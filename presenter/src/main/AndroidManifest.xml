@@ -10,16 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.2ndProject">
         <activity
+            android:name=".view.activity.AddAccountActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.activity.IntroActivity"
-            android:theme="@style/SplashTheme"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:exported="true"
+            android:theme="@style/SplashTheme">
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-
         <activity
             android:name=".view.activity.MainActivity"
             android:exported="true">
