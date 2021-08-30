@@ -11,7 +11,9 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- No action bar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -33,5 +35,11 @@
     <style name="SmallTextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="MainColorBtn" parent="Widget.AppCompat.Button">
+        <item name="background">@color/main_sky_blue</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
     </style>
 </resources>
