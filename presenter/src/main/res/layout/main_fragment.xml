@@ -9,34 +9,51 @@
         android:layout_height="match_parent"
         android:padding="@dimen/layout_padding">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout_main"
-            android:layout_width="0dp"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="신한은행" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="다른은행" />
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout_main"
+                    app:tabSelectedTextColor="@color/black"
+                    app:tabTextColor="@color/white"
+                    app:tabBackground="@color/main_sky_blue"
+                    app:tabIndicator="@drawable/tab_select_background"
+                    app:tabIndicatorColor="@color/white"
+                    app:tabIndicatorGravity="stretch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        </com.google.android.material.tabs.TabLayout>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="신한은행" />
 
-        <FrameLayout
-            android:id="@+id/frame_layout_tab_main"
-            android:layout_width="0dp"
-            android:layout_height="250dp"
-            app:layout_constraintEnd_toEndOf="@+id/tab_layout_main"
-            app:layout_constraintStart_toStartOf="@+id/tab_layout_main"
-            app:layout_constraintTop_toBottomOf="@+id/tab_layout_main">
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="다른은행" />
 
-        </FrameLayout>
+                </com.google.android.material.tabs.TabLayout>
+
+                <FrameLayout
+                    android:id="@+id/frame_layout_tab_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </FrameLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

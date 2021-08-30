@@ -9,11 +9,8 @@ import android.view.ViewGroup
 import com.example.a2ndproject.R
 import com.example.a2ndproject.view.viewmodel.LifeViewModel
 
+// TODO 사용자 정보 변경 (SettingFragment)로 변경
 class LifeFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = LifeFragment()
-    }
 
     private lateinit var viewModel: LifeViewModel
 
@@ -24,10 +21,7 @@ class LifeFragment : Fragment() {
         return inflater.inflate(R.layout.life_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LifeViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
-
 }
