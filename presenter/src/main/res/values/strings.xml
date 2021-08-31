@@ -6,4 +6,8 @@
     <string name="banking">뱅킹</string>
     <string name="life">라이프</string>
     <string name="start">시작하기</string>
+    <string name="input_pin_number">핀번호를 입력해주세요.</string>
+    <string name="input_info">정보를 입력해주세요.</string>
+    <string name="check">확인</string>
+    <string name="delete">삭제</string>
 </resources>

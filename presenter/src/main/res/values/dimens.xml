@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="layout_padding">10dp</dimen>
+    <dimen name="layout_padding_big">30dp</dimen>
     <dimen name="main_card_elevation">5dp</dimen>
     <dimen name="main_card_radius">15dp</dimen>
+    <dimen name="pin_card_size">25dp</dimen>
+    <dimen name="pin_num_pad_table_row">80dp</dimen>
 </resources>
