@@ -10,4 +10,5 @@
     <string name="input_info">정보를 입력해주세요.</string>
     <string name="check">확인</string>
     <string name="delete">삭제</string>
+    <string name="register">가입하기</string>
 </resources>
