@@ -10,8 +10,10 @@
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/drawable/dot_indicator_background.xml" value="0.22604166666666667" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/drawable/pin_background.xml" value="0.1859375" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/drawable/tab_background.xml" value="0.17083333333333334" />
+        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/drawable/tab_select_background.xml" value="0.18645833333333334" />
+        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/drawable/tab_select_background_gradient.xml" value="0.18645833333333334" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/activity_add_account.xml" value="0.176" />
-        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/activity_intro.xml" value="0.176" />
+        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/activity_intro.xml" value="0.2" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/activity_main.xml" value="0.152" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/add_account1_fragment.xml" value="0.176" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/background_splash.xml" value="0.24728260869565216" />
@@ -22,7 +24,8 @@
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/item.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/life_fragment.xml" value="0.264" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/main_fragment.xml" value="0.3611859838274933" />
-        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/my_assets_fragment.xml" value="0.2" />
+        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/my_assets_card_fragment.xml" value="0.16666666666666666" />
+        <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/my_assets_fragment.xml" value="0.5127582017010935" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/my_assets_item_fragment.xml" value="0.264" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/new_this_account_fragment.xml" value="0.13958333333333334" />
         <entry key="..\:/Github/2021_2nd_Project/presenter/src/main/res/layout/pin_number_fragment.xml" value="0.264" />
