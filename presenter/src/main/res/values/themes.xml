@@ -52,6 +52,14 @@
         <item name="android:layout_margin">10dp</item>
     </style>
 
+    <style name="CardView.Card" parent="CardView">
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">3dp</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="contentPadding">20dp</item>
+    </style>
+
     <style name="Widget.AppCompat.Button.PinButton" parent="Widget.AppCompat.Button">
         <item name="background">@android:color/transparent</item>
         <item name="android:textColor">@color/black</item>

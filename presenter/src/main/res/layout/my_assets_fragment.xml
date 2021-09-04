@@ -1,13 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".view.fragment.MyAssetsFragment">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="@dimen/layout_padding"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="MyAssets" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout_my_assets"
+                    app:tabBackground="@drawable/tab_select_background_gradient"
+                    app:tabIndicator="@null"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="자산" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="목표" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragmentContainerView1_my_assets"
+                    android:name="com.example.a2ndproject.view.fragment.MyAssetsCardFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragmentContainerView2_my_assets"
+                    android:name="com.example.a2ndproject.view.fragment.MyAssetsCardFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

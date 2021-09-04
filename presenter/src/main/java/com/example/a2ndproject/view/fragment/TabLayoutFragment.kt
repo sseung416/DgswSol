@@ -27,13 +27,18 @@ class TabLayoutFragment : Fragment() {
         return binding.root
     }
 
+    // 프래그먼트를 하나로 돌려쓰기 때문에, position 값으로 뷰 내용을 변경해줌
+    // [position] 0: 신한은행, 1: 오픈뱅킹
     fun setTab(position: Int) {
+
+        // 신한은행으로 가입하는지, 오픈뱅킹 서비스로 가입하는 지 구별하기 위해 선언
+        // [type] 0: 신한은행, 1: 오픈뱅킹
         var bundle = Bundle()
 
         when (position) {
             0 -> {
                 binding.tvTitleTab.text = "간편한 입출금통장"
-                binding.tvContentTab.text = "통장과 체크카드를 한번에!" // TODO 체크카드 API 없으면 지우기
+                binding.tvContentTab.text = "통장과 체크카드를 한번에!" // TODO 체크카드 API 없으면 삭제
                 binding.btnTab.text = "가입하기"
 
                 binding.btnTab.setOnClickListener {

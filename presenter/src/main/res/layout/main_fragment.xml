@@ -29,7 +29,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:tabBackground="@color/main_sky_blue"
-                    app:tabIndicator="@drawable/tab_select_background"
+                    app:tabIndicator="@drawable/tab_select_background_main"
                     app:tabIndicatorColor="@color/white"
                     app:tabIndicatorGravity="stretch"
                     app:tabSelectedTextColor="@color/black"

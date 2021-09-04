@@ -36,10 +36,14 @@ class MainFragment : Fragment() {
     private fun initTabLayout() {
         val fragment = TabLayoutFragment()
 
+        // TabLayout
         parentFragmentManager.beginTransaction().replace(R.id.frame_layout_tab_main, fragment).commit()
 
+        // 탭을 선택했을 때 이벤트 처리
         binding.tabLayoutMain.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
+                // 한 프래그먼트를 돌려쓰기 때문에 TabLayoutFragment에 선언된
+                // setTab(pos: Int) 메서드로 뷰를 변경함
                 fragment.setTab(tab!!.position)
             }
 
