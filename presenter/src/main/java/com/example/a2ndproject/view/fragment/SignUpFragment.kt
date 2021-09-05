@@ -1,3 +1,9 @@
+/**
+ * 회원가입 프래그먼트
+ *
+ * @author 최승연
+ * @date 2021-09-06
+ * */
 package com.example.a2ndproject.view.fragment
 
 import androidx.lifecycle.ViewModelProvider
