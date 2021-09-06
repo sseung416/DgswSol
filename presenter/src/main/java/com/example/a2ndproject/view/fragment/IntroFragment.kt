@@ -12,6 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.a2ndproject.R
 import com.example.a2ndproject.view.adapter.IntroViewPagerAdapter
@@ -19,6 +21,10 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class IntroFragment : Fragment() {
+
+    private val navController: NavController by lazy {
+        findNavController()
+    }
 
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
@@ -35,6 +41,10 @@ class IntroFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         init(view)
+
+        startBtn.setOnClickListener {
+            navigateToSignUp()
+        }
     }
 
     /**
@@ -61,4 +71,12 @@ class IntroFragment : Fragment() {
             }
         })
     }
+
+    /**
+     * SignUpFragment로 이동
+     * */
+    private fun navigateToSignUp() {
+        navController.navigate(R.id.action_introFragment_to_signUpFragment)
+    }
+
 }
