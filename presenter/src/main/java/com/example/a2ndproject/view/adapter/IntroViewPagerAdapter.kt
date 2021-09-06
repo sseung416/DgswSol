@@ -1,3 +1,9 @@
+/**
+ * IntroFragment의 ViewPager를 연결하기 위한 Adapter Class
+ *
+ * @author 최승연
+ * @date 2021-09-06
+ * */
 package com.example.a2ndproject.view.adapter
 
 import android.view.LayoutInflater
