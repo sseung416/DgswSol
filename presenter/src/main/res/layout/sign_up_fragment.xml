@@ -32,9 +32,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_sign_up"
-            android:name="com.example.a2ndproject.view.fragment.ViewPagerItemSignUpFragment"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_sign_up"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_confirm_sign_up"

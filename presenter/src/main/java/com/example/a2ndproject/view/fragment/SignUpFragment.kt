@@ -1,5 +1,6 @@
 /**
- * 회원가입 프래그먼트
+ * 회원가입을 위한 Sign Up Fragment Class
+ * 아이디, 비밀번호, 휴대폰 번호, 주민등록번호(7번째까지), 이름(실명), 별명, 프로필 사진 필요
  *
  * @author 최승연
  * @date 2021-09-06
@@ -14,8 +15,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.SignUpFragmentBinding
+import com.example.a2ndproject.view.adapter.SignUpViewPagerAdapter
 import com.example.a2ndproject.view.viewmodel.SignUpViewModel
 
 class SignUpFragment : Fragment() {
@@ -26,6 +29,8 @@ class SignUpFragment : Fragment() {
 
     private lateinit var binding: SignUpFragmentBinding
     private lateinit var viewModel: SignUpViewModel
+
+    private lateinit var fragment: ViewPagerItemSignUpFragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,17 +46,30 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnConfirmSignUp.setOnClickListener {
-            navigateToPinNumber()
-        }
+        initViewPager()
 
+        binding.btnConfirmSignUp.setOnClickListener {
+            /* 마지막 페이지면 핀번호 설정 페이지로 이동, 그렇지 않으면 레이아웃 변경 */
+            val position = binding.viewPagerSignUp.currentItem
+            if (position == 2) {
+                navigateToPinNumber()
+            } else {
+                fragment.setLayout(position)
+            }
+        }
     }
 
     private fun init() {
         viewModel = ViewModelProvider(requireActivity()).get(SignUpViewModel::class.java)
     }
 
+    private fun initViewPager() {
+        binding.viewPagerSignUp.adapter = SignUpViewPagerAdapter()
+        fragment = ViewPagerItemSignUpFragment()
+    }
+
     private fun navigateToPinNumber() {
+        /* 핀 번호를 설정 하는 지, 로그인 하는 지에 따라 type이 달라짐 */
         val bundle = Bundle()
         bundle.putInt("type", 0)
 
