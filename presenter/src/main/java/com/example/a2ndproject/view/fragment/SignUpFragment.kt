@@ -9,6 +9,7 @@ package com.example.a2ndproject.view.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,7 +31,7 @@ class SignUpFragment : Fragment() {
     private lateinit var binding: SignUpFragmentBinding
     private lateinit var viewModel: SignUpViewModel
 
-    private lateinit var fragment: ViewPagerItemSignUpFragment
+    private lateinit var adapter: SignUpViewPagerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,14 +49,9 @@ class SignUpFragment : Fragment() {
 
         initViewPager()
 
+        /* 확인 버튼 클릭 시 ViewPager의 다음 페이지로 넘어감 */
         binding.btnConfirmSignUp.setOnClickListener {
-            /* 마지막 페이지면 핀번호 설정 페이지로 이동, 그렇지 않으면 레이아웃 변경 */
-            val position = binding.viewPagerSignUp.currentItem
-            if (position == 2) {
-                navigateToPinNumber()
-            } else {
-                fragment.setLayout(position)
-            }
+            binding.viewPagerSignUp.currentItem = binding.viewPagerSignUp.currentItem + 1
         }
     }
 
@@ -64,8 +60,8 @@ class SignUpFragment : Fragment() {
     }
 
     private fun initViewPager() {
-        binding.viewPagerSignUp.adapter = SignUpViewPagerAdapter()
-        fragment = ViewPagerItemSignUpFragment()
+        adapter = SignUpViewPagerAdapter()
+        binding.viewPagerSignUp.adapter = adapter
     }
 
     private fun navigateToPinNumber() {

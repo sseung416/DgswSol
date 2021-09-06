@@ -5,15 +5,16 @@
     tools:context=".view.fragment.ViewPagerItemSignUpFragment">
 
     <LinearLayout
-        android:padding="@dimen/layout_padding_big"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/layout_padding_big">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout_1_view_pager_item_sign_up"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
@@ -73,7 +74,7 @@
             android:id="@+id/constraintLayout_2_view_pager_item_sign_up"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
+            android:visibility="visible"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
