@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
@@ -50,15 +51,27 @@ class SignUpFragment : Fragment() {
 
         /* 확인 버튼 클릭 시 ViewPager의 다음 페이지로 넘어감 */
         binding.btnConfirmSignUp.setOnClickListener {
-            when (binding.viewPagerSignUp.currentItem) {
-                /* 마지막 페이지에서 버튼의 text를 가입하기로 바꾸기 위함 */
-                1 -> binding.btnConfirmSignUp.text = "가입하기"
+            binding.viewPagerSignUp.apply {
+                when (currentItem) {
+                    /* 중복 체크가 되었는지 확인 */
+                    0 -> {
+                        val errorMsg = viewModel.isDoubleChecked()
 
-                /* 마지막 페이지에서 회원가입 완료 후 핀번호 설정 페이지로 넘어감 */
-                2 -> navigateToPinNumber()
+                        if (viewModel.isDoubleChecked() != null) {
+                            Toast.makeText(requireContext(), errorMsg, Toast.LENGTH_LONG).show()
+                            return@setOnClickListener
+                        }
+                    }
 
-                /* 다음 페이지로 넘기기 위해 currentItem을 현재 currentItem에 1을 더함 */
-                else -> binding.viewPagerSignUp.currentItem = binding.viewPagerSignUp.currentItem + 1
+                    /* 마지막 페이지에서 버튼의 text를 가입하기로 바꾸기 위함 */
+                    1 -> binding.btnConfirmSignUp.text = "가입하기"
+
+                    /* 마지막 페이지에서 회원가입 완료 후 핀번호 설정 페이지로 넘어감 */
+                    2 -> navigateToPinNumber()
+                }
+
+                /* 다음 페이지로 이동을 위해 현재 페이지에서 1을 더함 */
+                currentItem += 1
             }
         }
     }
@@ -68,7 +81,8 @@ class SignUpFragment : Fragment() {
     }
 
     /**
-     * ViewPager를 초기화하는 메서드 - adapter, isUserInputEnabled 설정
+     * ViewPager를 초기화하는 메서드
+     * adapter, isUserInputEnabled, 어댑터 클릭 이벤트 설정
      * */
     private fun initViewPager() {
         adapter = SignUpViewPagerAdapter()
@@ -76,6 +90,28 @@ class SignUpFragment : Fragment() {
 
         /* ViewPager의 스와이프를 막음 */
         binding.viewPagerSignUp.isUserInputEnabled = false
+
+        /* 아이디 중복 검사 버튼 클릭시 실행 */
+        adapter.setOnClickSignUpIdListener {
+            adapter.binding.etIdViewPagerItemSignUp.apply {
+                /* 아이디 정규식 검사 */
+                error = viewModel.isValidId(text.toString())
+
+                /* 오류가 없다면 중복체크를 완료 */
+                if (error == null) viewModel.isDoubleCheckedId = true
+            }
+        }
+
+        /* 비밀번호 중복 검사 버튼 클릭시 실행 */
+        adapter.setOnClickSignUpPasswordListener {
+            adapter.binding.etPasswordViewPagerItemSignUp.apply {
+                /* 비밀번호 정규식 검사 */
+                error = viewModel.isValidPassword(text.toString())
+
+                /* 오류가 없다면 중복체크를 완료 */
+                if (error == null) viewModel.isDoubleCheckedPassword = true
+            }
+        }
     }
 
     /**

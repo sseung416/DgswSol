@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModel
 
 class SignUpViewModel : ViewModel() {
 
-    val isDoubleCheckedId = MutableLiveData<Boolean>()
-    val isDoubleCheckedPassword = MutableLiveData<Boolean>()
+    var isDoubleCheckedId = false
+    var isDoubleCheckedPassword = false
 
     /**
      * 아이디 정규식 검사 메서드
@@ -24,7 +24,7 @@ class SignUpViewModel : ViewModel() {
         /* 영어, 숫자를 포함한 3~12글자의 정규식 */
         val reg = "^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z[0-9]]{3,12}".toRegex()
 
-        if (id.isBlank()) return "아이디를 입력해주세요."
+        if (id.isEmpty()) return "아이디를 입력해주세요."
         else if (!id.matches(reg)) return "영문자 및 숫자를 포함한 3~12글자를 입력해주세요."
 
         return null
@@ -60,6 +60,15 @@ class SignUpViewModel : ViewModel() {
         if (nickName.isBlank()) return "닉네임을 입력해주세요."
         else if (!nickName.matches(reg)) return "2글자 이상의 닉네임을 입력해주세요."
 
+        return null
+    }
+
+    fun isDoubleChecked(): String? {
+        if (isDoubleCheckedId && !isDoubleCheckedPassword) {
+            return "비밀번호 중복 확인을 해주세요."
+        } else if (!isDoubleCheckedId && isDoubleCheckedPassword) {
+            return "아이디 중복 확인을 해주세요."
+        }
         return null
     }
 

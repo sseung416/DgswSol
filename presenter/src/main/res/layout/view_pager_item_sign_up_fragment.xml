@@ -14,7 +14,6 @@
             android:id="@+id/constraintLayout_1_view_pager_item_sign_up"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
@@ -23,12 +22,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
-                app:layout_constraintEnd_toStartOf="@+id/button5"
+                app:layout_constraintEnd_toStartOf="@+id/btn_id_double_check_view_pager_item_sign_up"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_id_sign_up_view_pager1"
+                    android:id="@+id/et_id_view_pager_item_sign_up"
                     style="@style/RegularTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -40,12 +39,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
-                app:layout_constraintEnd_toStartOf="@+id/button6"
+                app:layout_constraintEnd_toStartOf="@+id/btn_password_double_check_view_pager_item_sign_up"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_password_sign_up_view_pager1"
+                    android:id="@+id/et_password_view_pager_item_sign_up"
                     style="@style/RegularTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -53,7 +52,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button5"
+                android:id="@+id/btn_id_double_check_view_pager_item_sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/double_check"
@@ -61,7 +60,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textInputLayout4" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button6"
+                android:id="@+id/btn_password_double_check_view_pager_item_sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/double_check"
@@ -74,7 +73,7 @@
             android:id="@+id/constraintLayout_2_view_pager_item_sign_up"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible"
+            android:visibility="gone"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
@@ -88,11 +87,12 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_phone_number_sign_up_view_pager1"
+                    android:id="@+id/et_phone_number_view_pager_item_sign_up"
                     style="@style/RegularTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="휴대폰 번호" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -105,7 +105,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_resident_registration_number_sign_up_view_pager1"
+                    android:id="@+id/et_residetn_registration_view_pager_item_sign_up"
                     style="@style/RegularTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_name_sign_up_view_pager1"
+                    android:id="@+id/et_name_view_pager_item_sign_up"
                     style="@style/RegularTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/iv_profile_view_pager_item_sign_up"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:src="@tools:sample/avatars" />
@@ -165,7 +165,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_nick_name_sign_up_view_pager1"
+                    android:id="@+id/et_nick_name_view_pager_item_sign_up"
                     style="@style/RegularTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
