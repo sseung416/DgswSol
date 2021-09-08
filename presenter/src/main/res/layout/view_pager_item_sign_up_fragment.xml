@@ -18,7 +18,8 @@
             tools:layout_editor_absoluteY="30dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout4"
+                android:id="@+id/et_layout_id_view_pager_item_sign_up"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
@@ -29,23 +30,26 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_id_view_pager_item_sign_up"
                     style="@style/RegularTextView"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/id" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout3"
+                android:id="@+id/et_layout_password_view_pager_item_sign_up"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toStartOf="@+id/btn_password_double_check_view_pager_item_sign_up"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
+                app:layout_constraintTop_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_password_view_pager_item_sign_up"
                     style="@style/RegularTextView"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password" />
@@ -57,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/double_check"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textInputLayout4" />
+                app:layout_constraintTop_toTopOf="@+id/et_layout_id_view_pager_item_sign_up" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_password_double_check_view_pager_item_sign_up"
@@ -65,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/double_check"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textInputLayout3" />
+                app:layout_constraintTop_toTopOf="@+id/et_layout_password_view_pager_item_sign_up" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -78,7 +82,7 @@
             tools:layout_editor_absoluteY="30dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout6"
+                android:id="@+id/et_layout_phone_number_view_pager_item_sign_up"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
@@ -89,6 +93,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_phone_number_view_pager_item_sign_up"
                     style="@style/RegularTextView"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="휴대폰 번호" />
@@ -102,11 +107,12 @@
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+                app:layout_constraintTop_toBottomOf="@+id/et_layout_phone_number_view_pager_item_sign_up">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_residetn_registration_view_pager_item_sign_up"
                     style="@style/RegularTextView"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="주민등록번호" />
@@ -123,6 +129,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_name_view_pager_item_sign_up"
                     style="@style/RegularTextView"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="이름(실명)" />

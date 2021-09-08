@@ -63,13 +63,21 @@ class SignUpViewModel : ViewModel() {
         return null
     }
 
+    /**
+     * 중복 확인 버튼을 눌렀는가에 따라 에러 메시지를 반환하는 메서드
+     *
+     * @return String? : 에러 메시지를 반환(에러가 없을 시 null)
+     * */
     fun isDoubleChecked(): String? {
-        if (isDoubleCheckedId && !isDoubleCheckedPassword) {
-            return "비밀번호 중복 확인을 해주세요."
+        return if (isDoubleCheckedId && isDoubleCheckedPassword) {
+            null
+        } else if (isDoubleCheckedId && !isDoubleCheckedPassword) {
+            "비밀번호 중복 확인을 해주세요."
         } else if (!isDoubleCheckedId && isDoubleCheckedPassword) {
-            return "아이디 중복 확인을 해주세요."
+            "아이디 중복 확인을 해주세요."
+        } else {
+            "아이디와 비밀번호 중복 확인을 해주세요."
         }
-        return null
     }
 
 }
