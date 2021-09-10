@@ -1,6 +1,8 @@
-package com.example.domain.entity
+package com.example.domain.request
 
-data class User(
+data class SignUpRequest(
+    val id: String,
+    val password: String,
     val name: String,
     val phoneNumber: String,
     val residentRegistrationNumber: String,
