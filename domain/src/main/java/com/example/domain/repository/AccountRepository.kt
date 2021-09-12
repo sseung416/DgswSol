@@ -1,3 +1,9 @@
+/**
+ * 계정 관련 레포지토리...
+ *
+ * @author 최승연
+ * @date 2021-09-10
+ * */
 package com.example.domain.repository
 
 import com.example.domain.entity.Token

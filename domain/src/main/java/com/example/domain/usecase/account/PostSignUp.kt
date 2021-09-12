@@ -1,3 +1,9 @@
+/**
+ * 회원가입 시 사용되는 유스케이스
+ *
+ * @author 최승연
+ * @date 2021-09-10
+ * */
 package com.example.domain.usecase.account
 
 import com.example.domain.base.ParamsUseCase
