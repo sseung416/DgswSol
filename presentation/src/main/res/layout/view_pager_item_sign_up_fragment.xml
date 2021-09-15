@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.fragment.ViewPagerItemSignUpFragment">
 
     <LinearLayout
@@ -15,23 +15,22 @@
             android:id="@+id/constraintLayout_1_view_pager_item_sign_up"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_id_view_pager_item_sign_up"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/SignTextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true"
+                app:helperText="영어, 숫자를 포함한 3~12글자 이내"
                 app:layout_constraintEnd_toStartOf="@+id/btn_id_double_check_view_pager_item_sign_up"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_id_view_pager_item_sign_up"
-                    style="@style/RegularTextView"
+                    style="@style/SignTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/id"
@@ -40,17 +39,17 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_password_view_pager_item_sign_up"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/SignTextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true"
+                app:helperText="영어, 숫자, 특수기호를 포함한 8~12글자 이내"
                 app:layout_constraintEnd_toStartOf="@+id/btn_password_double_check_view_pager_item_sign_up"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_password_view_pager_item_sign_up"
-                    style="@style/RegularTextView"
+                    style="@style/SignTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
@@ -62,6 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/double_check"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/et_layout_id_view_pager_item_sign_up" />
 
@@ -70,6 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/double_check"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/et_layout_password_view_pager_item_sign_up" />
 
@@ -80,29 +81,30 @@
             android:id="@+id/constraintLayout_2_view_pager_item_sign_up"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_phone_number_view_pager_item_sign_up"
+                style="@style/SignTextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_phone_number_view_pager_item_sign_up"
-                    style="@style/RegularTextView"
+                    style="@style/SignTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="휴대폰 번호"
-                    android:maxLines="1" />
+                    android:hint="휴대폰 번호" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/SignTextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -114,11 +116,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_name_view_pager_item_sign_up"
-                    style="@style/RegularTextView"
+                    style="@style/SignTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="이름(실명)"
-                    android:maxLines="1" />
+                    android:hint="이름(실명)" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -126,6 +127,8 @@
                 style="@style/SmallTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="주민 등록 번호"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_layout_phone_number_view_pager_item_sign_up" />
@@ -211,14 +214,17 @@
             tools:layout_editor_absoluteY="30dp">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView3"
+                android:id="@+id/cv_profile_img_view_pager_item_sign_up"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_marginStart="1dp"
                 android:layout_marginEnd="1dp"
+                android:clickable="true"
+                app:cardCornerRadius="100dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck">
 
                 <ImageView
                     android:id="@+id/iv_profile_view_pager_item_sign_up"
@@ -228,23 +234,24 @@
             </androidx.cardview.widget.CardView>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/SignTextInputLayout"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true"
+                android:layout_height="82dp"
+                android:layout_marginTop="16dp"
+                app:helperText="2글자 이상"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView3">
+                app:layout_constraintTop_toBottomOf="@+id/cv_profile_img_view_pager_item_sign_up">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_nick_name_view_pager_item_sign_up"
-                    style="@style/RegularTextView"
+                    style="@style/SignTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/nickname" />
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
-
 
 
 </layout>
