@@ -27,6 +27,7 @@
             android:background="@drawable/btn_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:clickable="false"
             android:text="@string/check"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -7,8 +7,9 @@
 package com.example.a2ndproject.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.example.a2ndproject.ui.base.BaseViewModel
 
-class SignUpViewModel : ViewModel() {
+class SignUpViewModel : BaseViewModel() {
 
     var isDoubleCheckedId = false
     var isDoubleCheckedPassword = false
@@ -53,7 +54,7 @@ class SignUpViewModel : ViewModel() {
      * */
     fun isValidNickName(nickName: String): String? {
         /* 영어, 한글, 숫자의 2글자 이상의 조합의 정규식 */
-        // TODO 닉네임 한도 정하기
+        // ToDo (최대 닉네임 길이 정하기)
         val reg = "^[a-zA-Z가-힣[0-9]]{2,100}".toRegex()
 
         if (nickName.isBlank()) return "닉네임을 입력해주세요."
@@ -67,7 +68,7 @@ class SignUpViewModel : ViewModel() {
      *
      * @return String? : 에러 메시지를 반환(에러가 없을 시 null)
      * */
-    fun isDoubleChecked(): String? {
+    fun isDuplicateCheck(): String? {
         return if (isDoubleCheckedId && isDoubleCheckedPassword) {
             null
         } else if (isDoubleCheckedId && !isDoubleCheckedPassword) {

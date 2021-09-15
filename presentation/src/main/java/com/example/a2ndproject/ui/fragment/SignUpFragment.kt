@@ -7,39 +7,32 @@
  * */
 package com.example.a2ndproject.ui.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil.inflate
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.a2ndproject.R
+import com.example.a2ndproject.databinding.ActivityAddAccountBinding.inflate
 import com.example.a2ndproject.databinding.SignUpFragmentBinding
 import com.example.a2ndproject.ui.adapter.SignUpViewPagerAdapter
+import com.example.a2ndproject.ui.base.BaseFragment
 import com.example.a2ndproject.ui.viewmodel.SignUpViewModel
 
-class SignUpFragment : Fragment() {
+class SignUpFragment : BaseFragment<SignUpFragmentBinding, SignUpViewModel>() {
 
-    private val navController by lazy {
-        findNavController()
-    }
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): SignUpFragmentBinding = SignUpFragmentBinding.inflate(inflater, container, false)
 
-    private lateinit var binding: SignUpFragmentBinding
-    private lateinit var viewModel: SignUpViewModel
+    override fun getViewModelClass(): Class<SignUpViewModel> = SignUpViewModel::class.java
 
-    private lateinit var adapter: SignUpViewPagerAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.sign_up_fragment, container, false)
-        init()
-        return binding.root
-    }
+    private val adapter: SignUpViewPagerAdapter by lazy { SignUpViewPagerAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,36 +41,30 @@ class SignUpFragment : Fragment() {
 
         /* 확인 버튼 클릭 시 ViewPager의 다음 페이지로 넘어감 */
         binding.btnConfirmSignUp.setOnClickListener {
-            binding.viewPagerSignUp.apply {
-                when (currentItem) {
-                    /* 중복 체크가 되었는지 확인 */
-                    0 -> {
-                        val errorMsg = viewModel.isDoubleChecked()
+            when (binding.viewPagerSignUp.currentItem) {
+                /* 중복 체크가 되었는지 확인 */
+                0 -> {
+                    val errorMsg = viewModel.isDuplicateCheck()
 
-                        if (errorMsg != null) {
-                            Toast.makeText(requireContext(), errorMsg, Toast.LENGTH_LONG).show()
-                            return@setOnClickListener
-                        }
-                    }
-
-                    /* 마지막 페이지에서 버튼의 text를 가입하기로 바꾸기 위함 */
-                    1 -> binding.btnConfirmSignUp.text = "가입하기"
-
-                    /* 마지막 페이지에서 회원가입 완료 후 핀번호 설정 페이지로 넘어감 */
-                    2 -> {
-                        // TODO 회원가입 서버 통신 . . .
-                        navigateToPinNumber()
+                    if (errorMsg != null) {
+                        Toast.makeText(requireContext(), errorMsg, Toast.LENGTH_LONG).show()
+                        return@setOnClickListener
                     }
                 }
 
-                /* 다음 페이지로 이동을 위해 현재 페이지에서 1을 더함 */
-                currentItem += 1
-            }
-        }
-    }
+                /* 마지막 페이지에서 버튼의 text를 가입하기로 바꾸기 위함 */
+                1 -> binding.btnConfirmSignUp.text = "가입하기"
 
-    private fun init() {
-        viewModel = ViewModelProvider(requireActivity()).get(SignUpViewModel::class.java)
+                /* 마지막 페이지에서 회원가입 완료 후 핀번호 설정 페이지로 넘어감 */
+                2 -> {
+                    // TODO 회원가입 서버 통신 . . .
+                    navigateToPinNumber()
+                }
+            }
+
+            /* 다음 페이지로 이동을 위해 현재 페이지에서 1을 더함 */
+            binding.viewPagerSignUp.currentItem += 1
+        }
     }
 
     /**
@@ -85,7 +72,6 @@ class SignUpFragment : Fragment() {
      * adapter, isUserInputEnabled, 어댑터 클릭 이벤트 설정
      * */
     private fun initViewPager() {
-        adapter = SignUpViewPagerAdapter()
         binding.viewPagerSignUp.adapter = adapter
 
         /* ViewPager의 스와이프를 막음 */

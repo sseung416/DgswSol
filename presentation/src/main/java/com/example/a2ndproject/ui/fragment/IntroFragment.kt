@@ -72,9 +72,6 @@ class IntroFragment : Fragment() {
         })
     }
 
-    /**
-     * SignUpFragment로 이동
-     * */
     private fun navigateToSignUp() {
         navController.navigate(R.id.action_introFragment_to_signUpFragment)
     }

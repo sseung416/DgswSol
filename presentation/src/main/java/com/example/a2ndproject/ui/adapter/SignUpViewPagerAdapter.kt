@@ -85,5 +85,4 @@ class SignUpViewPagerAdapter : RecyclerView.Adapter<SignUpViewPagerAdapter.ViewH
 
     override fun getItemCount(): Int = 3
 
-
 }

@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.PinNumberFragmentBinding
@@ -27,7 +28,7 @@ import java.util.*
 class PinNumberFragment : Fragment() {
 
     private lateinit var binding: PinNumberFragmentBinding
-    private lateinit var viewModel: PinNumberViewModel
+    private val viewModel: PinNumberViewModel by viewModels()
 
     private lateinit var pinCardList: List<CardView>
 
@@ -36,9 +37,6 @@ class PinNumberFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.pin_number_fragment, container, false)
-
-        init()
-
         return binding.root
     }
 
@@ -46,10 +44,6 @@ class PinNumberFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         pinCardList = getCards(view)
-    }
-
-    private fun init() {
-        viewModel = ViewModelProvider(requireActivity()).get(PinNumberViewModel::class.java)
     }
 
     /**
