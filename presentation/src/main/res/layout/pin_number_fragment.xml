@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragment.PinNumberFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/BoldTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/input_pin_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_pin1_pin_number"
+                style="@style/CardView.Pin"
+                android:layout_width="@dimen/pin_card_size"
+                android:layout_height="@dimen/pin_card_size" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_pin2_pin_number"
+                style="@style/CardView.Pin"
+                android:layout_width="@dimen/pin_card_size"
+                android:layout_height="@dimen/pin_card_size" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_pin3_pin_number"
+                style="@style/CardView.Pin"
+                android:layout_width="@dimen/pin_card_size"
+                android:layout_height="@dimen/pin_card_size" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_pin4_pin_number"
+                style="@style/CardView.Pin"
+                android:layout_width="@dimen/pin_card_size"
+                android:layout_height="@dimen/pin_card_size" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_pin5_pin_number"
+                style="@style/CardView.Pin"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_pin6_pin_number"
+                style="@style/CardView.Pin"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_error_pin_number"
+            style="@style/RegularTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="올바르지 않은 비밀번호 입니다."
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerView2"
+            android:name="com.example.a2ndproject.ui.fragment.NumberPadFragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

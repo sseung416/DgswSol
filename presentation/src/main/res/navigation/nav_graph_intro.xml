@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_intro"
+    app:startDestination="@id/introFragment">
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.example.a2ndproject.ui.fragment.IntroFragment"
+        android:label="intro_fragment"
+        tools:layout="@layout/intro_fragment" >
+        <action
+            android:id="@+id/action_introFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.a2ndproject.ui.fragment.SignUpFragment"
+        android:label="sign_up_fragment"
+        tools:layout="@layout/sign_up_fragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_introFragment"
+            app:destination="@id/introFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_pinNuberFragment"
+            app:destination="@id/pinNuberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pinNuberFragment"
+        android:name="com.example.a2ndproject.ui.fragment.PinNumberFragment"
+        android:label="pin_number_fragment"
+        tools:layout="@layout/pin_number_fragment" >
+        <action
+            android:id="@+id/action_pinNuberFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+</navigation>

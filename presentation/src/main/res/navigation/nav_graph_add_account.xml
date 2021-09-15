@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_add_account"
+    app:startDestination="@id/addAccount1Fragment">
+
+    <fragment
+        android:id="@+id/addAccount1Fragment"
+        android:name="com.example.a2ndproject.ui.fragment.AddAccount1Fragment"
+        android:label="add_account1_fragment"
+        tools:layout="@layout/add_account1_fragment" >
+        <action
+            android:id="@+id/action_addAccount1Fragment_to_connectThisAccountFragment"
+            app:destination="@id/connectThisAccountFragment" />
+        <action
+            android:id="@+id/action_addAccount1Fragment_to_newThisAccountFragment"
+            app:destination="@id/newThisAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/connectThisAccountFragment"
+        android:name="com.example.a2ndproject.ui.fragment.ConnectThisAccountFragment"
+        android:label="connect_this_account_fragment"
+        tools:layout="@layout/connect_this_account_fragment" >
+        <action
+            android:id="@+id/action_connectThisAccountFragment_to_addAccount1Fragment"
+            app:destination="@id/addAccount1Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newThisAccountFragment"
+        android:name="com.example.a2ndproject.ui.fragment.NewThisAccountFragment"
+        android:label="new_this_account_fragment"
+        tools:layout="@layout/new_this_account_fragment" >
+        <action
+            android:id="@+id/action_newThisAccountFragment_to_addAccount1Fragment"
+            app:destination="@id/addAccount1Fragment" />
+    </fragment>
+</navigation>
