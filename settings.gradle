@@ -7,6 +7,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "2ndProject"
-include ':presenter'
+include ':presentation'
 include ':data'
 include ':domain'
