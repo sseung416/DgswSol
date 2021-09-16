@@ -8,6 +8,9 @@
 package com.example.a2ndproject.ui.fragment
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,11 +20,14 @@ import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.a2ndproject.R
+import com.example.a2ndproject.databinding.ActivityAddAccountBinding.bind
 import com.example.a2ndproject.databinding.ActivityAddAccountBinding.inflate
 import com.example.a2ndproject.databinding.SignUpFragmentBinding
 import com.example.a2ndproject.ui.adapter.SignUpViewPagerAdapter
 import com.example.a2ndproject.ui.base.BaseFragment
 import com.example.a2ndproject.ui.viewmodel.SignUpViewModel
+import com.google.android.material.internal.TextWatcherAdapter
+import com.google.android.material.textfield.TextInputLayout
 
 class SignUpFragment : BaseFragment<SignUpFragmentBinding, SignUpViewModel>() {
 
@@ -37,12 +43,12 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding, SignUpViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViewPager()
+        init()
 
         /* 확인 버튼 클릭 시 ViewPager의 다음 페이지로 넘어감 */
         binding.btnConfirmSignUp.setOnClickListener {
             when (binding.viewPagerSignUp.currentItem) {
-                /* 중복 체크가 되었는지 확인 */
+                /* 중복 체크 버튼을 눌렀는지 확인 */
                 0 -> {
                     val errorMsg = viewModel.isDuplicateCheck()
 
@@ -65,40 +71,55 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding, SignUpViewModel>() {
             /* 다음 페이지로 이동을 위해 현재 페이지에서 1을 더함 */
             binding.viewPagerSignUp.currentItem += 1
         }
+
+        adapter.binding.etIdViewPagerItemSignUp.apply {
+            addTextChangedListener(object : TextWatcherAdapter() {
+                override fun afterTextChanged(s: Editable) {
+                    adapter.binding.etLayoutIdViewPagerItemSignUp.error =
+                        viewModel.isValidId(text.toString())
+                }
+            })
+
+            /* 엔터키 눌렀을 때 이벤트 처리: 패스워드 editText 로 focus. */
+            setOnKeyListener { _, keyCode, _ ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    adapter.binding.etPasswordViewPagerItemSignUp.isFocusable = true
+                    return@setOnKeyListener true
+                }
+                return@setOnKeyListener false
+            }
+        }
+
+        adapter.binding.etPasswordViewPagerItemSignUp.apply {
+            addTextChangedListener(object : TextWatcherAdapter() {
+                override fun afterTextChanged(s: Editable) {
+                    adapter.binding.etLayoutPasswordViewPagerItemSignUp.error =
+                        viewModel.isValidPassword(text.toString())
+                }
+            })
+
+            /* 엔터키 눌렀을 때 이벤트 처리: 패스워드 editText 로 focus. */
+            setOnKeyListener { _, keyCode, _ ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    // todo(키보드 숨기기)
+                    return@setOnKeyListener true
+                }
+                return@setOnKeyListener false
+            }
+        }
+
+
+
+
     }
 
-    /**
-     * ViewPager를 초기화하는 메서드
-     * adapter, isUserInputEnabled, 어댑터 클릭 이벤트 설정
-     * */
-    private fun initViewPager() {
+    private fun init() {
         binding.viewPagerSignUp.adapter = adapter
 
         /* ViewPager의 스와이프를 막음 */
         binding.viewPagerSignUp.isUserInputEnabled = false
-
-        /* 아이디 중복 검사 버튼 클릭시 실행 */
-        adapter.setOnClickSignUpIdListener {
-            adapter.binding.apply {
-                /* 아이디 정규식 검사 */
-                etLayoutIdViewPagerItemSignUp.error = viewModel.isValidId(etIdViewPagerItemSignUp.text.toString())
-
-                /* 오류가 없다면 중복체크를 완료 */
-                if (etLayoutIdViewPagerItemSignUp.error == null) viewModel.isDoubleCheckedId = true
-            }
-        }
-
-        /* 비밀번호 중복 검사 버튼 클릭시 실행 */
-        adapter.setOnClickSignUpPasswordListener {
-            adapter.binding.apply {
-                /* 비밀번호 정규식 검사 */
-                etLayoutPasswordViewPagerItemSignUp.error = viewModel.isValidPassword(etPasswordViewPagerItemSignUp.text.toString())
-
-                /* 오류가 없다면 중복체크를 완료 */
-                if (etLayoutPasswordViewPagerItemSignUp.error == null) viewModel.isDoubleCheckedPassword = true
-            }
-        }
     }
+
 
     /**
      * 회원가입 후 핀번호 설정하도록 PinNumberFragment로 이동하는 메서드

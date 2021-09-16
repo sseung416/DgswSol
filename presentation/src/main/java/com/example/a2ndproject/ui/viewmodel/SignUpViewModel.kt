@@ -14,6 +14,10 @@ class SignUpViewModel : BaseViewModel() {
     var isDoubleCheckedId = false
     var isDoubleCheckedPassword = false
 
+    fun duplicateCheck(): Boolean {
+        return true
+    }
+
     /**
      * 아이디 정규식 검사 메서드
      *

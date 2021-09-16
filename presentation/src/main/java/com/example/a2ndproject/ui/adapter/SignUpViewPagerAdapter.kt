@@ -64,6 +64,7 @@ class SignUpViewPagerAdapter : RecyclerView.Adapter<SignUpViewPagerAdapter.ViewH
                 2 -> binding.constraintLayout3ViewPagerItemSignUp.visibility = View.VISIBLE
             }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -84,5 +85,4 @@ class SignUpViewPagerAdapter : RecyclerView.Adapter<SignUpViewPagerAdapter.ViewH
     }
 
     override fun getItemCount(): Int = 3
-
 }
