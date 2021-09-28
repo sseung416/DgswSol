@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="님! 간편하게 입출금 통장을 만드세요!"
+                    android:text="님! 간편하게 입출금 통장을 관리하세요!"
                     android:textColor="@color/grey" />
 
                 <View
@@ -87,32 +87,61 @@
                     android:layout_height="1dp"
                     android:background="@color/light_grey" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/imageButton"
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:padding="15dp"
-                        android:src="@drawable/ic_android_black_24dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textView3"
-                        style="@style/SmallTextView"
+                        <ImageButton
+                            android:id="@+id/imageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:padding="15dp"
+                            android:src="@drawable/ic_android_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="통장 만들기" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="통장 만들기"
-                        app:layout_constraintEnd_toEndOf="@+id/imageButton"
-                        app:layout_constraintStart_toStartOf="@+id/imageButton"
-                        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/imageButton2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:padding="15dp"
+                            android:src="@drawable/ic_android_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="송금하기" />
+                    </LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -17,4 +17,5 @@
     <string name="nickname">닉네임</string>
     <string name="sign_up">회원가입</string>
     <string name="phone_number">휴대폰 번호</string>
+    <string name="name">이름(실명)</string>
 </resources>
