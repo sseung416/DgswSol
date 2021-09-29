@@ -8,5 +8,5 @@
 package com.example.domain.base
 
 abstract class ParamsUseCase<in Params, out T> {
-    abstract suspend fun invoke(params: Params): T
+    abstract suspend fun buildUseCase(params: Params): T
 }

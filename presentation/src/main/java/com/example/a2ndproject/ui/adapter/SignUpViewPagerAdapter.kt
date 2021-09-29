@@ -7,6 +7,7 @@
  * */
 package com.example.a2ndproject.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,7 +42,6 @@ class SignUpViewPagerAdapter : RecyclerView.Adapter<SignUpViewPagerAdapter.ViewH
     lateinit var binding: ViewPagerItemSignUpFragmentBinding
 
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
-
         /**
          * position에 따라 view의 visibility 변경하는 메서드
          *

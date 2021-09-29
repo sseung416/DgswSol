@@ -9,28 +9,18 @@ package com.example.a2ndproject.ui.fragment
 
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
-import android.telephony.PhoneNumberUtils
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.DataBindingUtil.inflate
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.a2ndproject.R
-import com.example.a2ndproject.databinding.ActivityAddAccountBinding.bind
-import com.example.a2ndproject.databinding.ActivityAddAccountBinding.inflate
 import com.example.a2ndproject.databinding.SignUpFragmentBinding
 import com.example.a2ndproject.ui.adapter.SignUpViewPagerAdapter
 import com.example.a2ndproject.ui.base.BaseFragment
 import com.example.a2ndproject.ui.viewmodel.SignUpViewModel
-import com.google.android.material.internal.TextWatcherAdapter
-import com.google.android.material.textfield.TextInputLayout
+import kotlin.concurrent.thread
 
 class SignUpFragment : BaseFragment<SignUpFragmentBinding, SignUpViewModel>() {
 
@@ -41,7 +31,7 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding, SignUpViewModel>() {
 
     override fun getViewModelClass(): Class<SignUpViewModel> = SignUpViewModel::class.java
 
-    private val adapter: SignUpViewPagerAdapter by lazy { SignUpViewPagerAdapter() }
+    private val adapter = SignUpViewPagerAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -75,9 +65,14 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding, SignUpViewModel>() {
             binding.viewPagerSignUp.currentItem += 1
         }
 
-        setIdEditTextListener()
-        setPasswordEditTextListener()
-        setPhoneNumberEditTextListener()
+        // onCreateViewHolder가 이 코드보다 늦게 실행돼서 binding이 초기화가 안 됨 -> 따라서 무지성으로 sleep 함 ㅎㅎ
+        // todo 다른 방법 찾아보기..
+        thread {
+            Thread.sleep(200)
+            setIdEditTextListener()
+            setPasswordEditTextListener()
+            setPhoneNumberEditTextListener()
+        }
     }
 
     private fun init() {
@@ -98,37 +93,17 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding, SignUpViewModel>() {
         navController.navigate(R.id.action_signUpFragment_to_pinNuberFragment, bundle)
     }
 
-    private fun setIdEditTextListener() = adapter.binding.etIdViewPagerItemSignUp.apply {
-        addTextChangedListener {
+    private fun setIdEditTextListener() {
+        adapter.binding.etIdViewPagerItemSignUp.addTextChangedListener {
             adapter.binding.etLayoutIdViewPagerItemSignUp.error =
                 viewModel.isValidId(it.toString().trim())
         }
-
-        /* 엔터키 눌렀을 때 이벤트 처리: 패스워드 editText 로 focus. */
-        setOnKeyListener { _, keyCode, _ ->
-            return@setOnKeyListener when (keyCode) {
-                KeyEvent.KEYCODE_ENTER -> {
-                    adapter.binding.etPasswordViewPagerItemSignUp.isFocusable = true
-                    true
-                }
-                else -> false
-            }
-        }
     }
 
-    private fun setPasswordEditTextListener() = adapter.binding.etPasswordViewPagerItemSignUp.apply {
-        addTextChangedListener {
+    private fun setPasswordEditTextListener() {
+        adapter.binding.etPasswordViewPagerItemSignUp.addTextChangedListener {
             adapter.binding.etLayoutPasswordViewPagerItemSignUp.error =
-                viewModel.isValidPassword(text.toString().trim())
-        }
-
-        /* 엔터키 눌렀을 때 이벤트 처리: 패스워드 editText 로 focus. */
-        setOnKeyListener { _, keyCode, _ ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                // todo(키보드 숨기기)
-                return@setOnKeyListener true
-            }
-            return@setOnKeyListener false
+                viewModel.isValidPassword(it.toString().trim())
         }
     }
 

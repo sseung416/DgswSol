@@ -11,8 +11,8 @@ import com.example.a2ndproject.ui.base.BaseViewModel
 
 class SignUpViewModel : BaseViewModel() {
 
-    var isDoubleCheckedId = false
-    var isDoubleCheckedPassword = false
+    private var isDoubleCheckedId = true
+    private var isDoubleCheckedPassword = true
 
     fun duplicateCheck(): Boolean {
         return true

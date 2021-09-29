@@ -6,28 +6,27 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.a2ndproject.R
 import com.example.a2ndproject.ui.adapter.MainViewPagerAdapter
 import com.example.a2ndproject.ui.fragment.LifeFragment
-import com.example.a2ndproject.ui.fragment.MainFragment
+import com.example.a2ndproject.ui.fragment.HomeFragment
 import com.example.a2ndproject.ui.fragment.MyAssetsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewPager2: ViewPager2
-    private lateinit var bottomNavigationView: BottomNavigationView
+    private val viewPager2: ViewPager2 by lazy { findViewById(R.id.viewPager2) }
+    private val bottomNavigationView: BottomNavigationView by lazy { findViewById(R.id.bottomNavigationView) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewPager2 = findViewById(R.id.viewPager2)
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-
         initViewPager()
         initBottomNavigationView()
+
+        viewPager2.currentItem = 1
     }
 
     private fun initViewPager() {
-        val list = listOf(MyAssetsFragment(), MainFragment(), LifeFragment())
+        val list = listOf(MyAssetsFragment(), HomeFragment(), LifeFragment())
 
         viewPager2.adapter = MainViewPagerAdapter(this, list)
         viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

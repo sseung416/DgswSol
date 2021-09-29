@@ -1,21 +1,17 @@
 /**
- * 계정 관련 레포지토리...
  *
- * @author 최승연
- * @date 2021-09-10
+ * @author
+ * @date
  * */
 package com.example.domain.repository
 
-import com.example.domain.entity.Token
-import com.example.domain.request.SignInIdRequest
-import com.example.domain.request.SignInPinRequest
-import com.example.domain.request.SignUpRequest
+import com.example.domain.entity.request.SignIn
+import com.example.domain.entity.request.SignUp
+import com.example.domain.entity.response.Response
+import com.example.domain.entity.response.Token
 
 interface AccountRepository {
+    suspend fun postSignUp(signUp: SignUp): Response<Token>
 
-    suspend fun postSignUp(signUpRequest: SignUpRequest): Token
-
-    suspend fun postSignInId(signInIdRequest: SignInIdRequest): Token
-
-    suspend fun postSignInPin(signInPinRequest: SignInPinRequest): Token
+    suspend fun postSignIn(signIn: SignIn): Response<Token>
 }

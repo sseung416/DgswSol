@@ -1,28 +1,27 @@
 package com.example.a2ndproject.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.a2ndproject.R
-import com.example.a2ndproject.databinding.MainFragmentBinding
-import com.example.a2ndproject.ui.viewmodel.MainViewModel
+import com.example.a2ndproject.databinding.HomeFragmentBinding
+import com.example.a2ndproject.ui.viewmodel.HomeViewModel
 import com.google.android.material.tabs.TabLayout
 import kotlin.concurrent.thread
 
-class MainFragment : Fragment() {
+class HomeFragment : Fragment() {
 
-    private lateinit var viewModel: MainViewModel
-    private lateinit var binding: MainFragmentBinding
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var binding: HomeFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
 
         return binding.root
     }
@@ -36,7 +35,7 @@ class MainFragment : Fragment() {
     }
 
     private fun initTabLayout() {
-        val fragment = TabLayoutFragment()
+        val fragment = HomeTabFragment()
 
         // TabLayout
         parentFragmentManager.beginTransaction().replace(R.id.frame_layout_tab_main, fragment).commit()
@@ -58,6 +57,7 @@ class MainFragment : Fragment() {
         })
 
         /* 탭 레이아웃 5초마다 움직이게... */
+        // todo rx든 코루틴이든 암튼 바꾸기
         thread {
             while (true) {
                 Thread.sleep(5000)
@@ -73,7 +73,6 @@ class MainFragment : Fragment() {
                             fragment.setTab(0)
                         }
                     }
-                    Log.d("tq","tlfgod")
                 }
             }
         }

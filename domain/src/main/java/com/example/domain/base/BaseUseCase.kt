@@ -8,5 +8,5 @@
 package com.example.domain.base
 
 abstract class BaseUseCase<out T> {
-    abstract suspend fun invoke(): T
+    abstract suspend fun buildUseCase(): T
 }

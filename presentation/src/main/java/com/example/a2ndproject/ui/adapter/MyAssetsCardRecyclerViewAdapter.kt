@@ -32,6 +32,7 @@ class MyAssetsCardRecyclerViewAdapter(private val list: List<Card>) :
             binding.tvSubtitleRvItemMyAssets.text = data.subtitle
 
             binding.cvRvItemMyAssets.setOnClickListener {
+                // todo change getBindingAdapterPosition() or getAbsoluteAdapterPosition()
                 onClickMyAssetsCardListener.onClick(it, adapterPosition)
             }
         }

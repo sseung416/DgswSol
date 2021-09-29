@@ -7,8 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="@dimen/layout_padding">
+        android:orientation="horizontal">
 
         <!-- 첫 번째: 아이디, 비밀번호 -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,6 +50,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_password_view_pager_item_sign_up"
                     style="@style/SignTextInputEditText"
+                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
@@ -99,7 +99,6 @@
                     style="@style/SignTextInputEditText"
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:inputType="number"
                     android:maxEms="8"
                     android:layout_height="wrap_content"
                     android:hint="@string/phone_number" />
@@ -116,14 +115,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+                app:layout_constraintTop_toBottomOf="@+id/layout_rrn_view_pager_item_sign_up">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_name_view_pager_item_sign_up"
                     style="@style/SignTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="이름(실명)" />
+                    android:hint="@string/name" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -138,7 +137,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/et_layout_phone_number_view_pager_item_sign_up" />
 
             <LinearLayout
-                android:id="@+id/linearLayout2"
+                android:id="@+id/layout_rrn_view_pager_item_sign_up"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
