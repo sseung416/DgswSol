@@ -2,7 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.fragment.SignUpFragment">
+    tools:context=".ui.view.fragment.SignUpFragment">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -24,6 +30,7 @@
             style="@style/Widget.AppCompat.Button.MainButton.EnableFalse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:onClick=""
             android:text="@string/check"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

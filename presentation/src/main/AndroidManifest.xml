@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.2ndProject">
         <activity
-            android:name=".ui.activity.AddAccountActivity"
+            android:name=".ui.view.activity.AddAccountActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.activity.IntroActivity"
+            android:name=".ui.view.activity.IntroActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan"
             android:theme="@style/SplashTheme">
@@ -26,7 +26,7 @@
 <!--             </intent-filter>-->
         </activity>
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".ui.view.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

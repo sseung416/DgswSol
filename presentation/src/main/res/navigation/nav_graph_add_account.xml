@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/addAccount1Fragment"
-        android:name="com.example.a2ndproject.ui.fragment.AddAccountFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.AddAccountFragment"
         android:label="add_account1_fragment"
         tools:layout="@layout/add_account_fragment" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/connectThisAccountFragment"
-        android:name="com.example.a2ndproject.ui.fragment.ConnectThisAccountFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.ConnectThisAccountFragment"
         android:label="connect_this_account_fragment"
         tools:layout="@layout/connect_this_account_fragment" >
         <action

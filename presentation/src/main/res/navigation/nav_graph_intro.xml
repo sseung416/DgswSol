@@ -6,7 +6,7 @@
     app:startDestination="@id/introFragment">
     <fragment
         android:id="@+id/introFragment"
-        android:name="com.example.a2ndproject.ui.fragment.IntroFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.IntroFragment"
         android:label="intro_fragment"
         tools:layout="@layout/intro_fragment" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.a2ndproject.ui.fragment.SignUpFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.SignUpFragment"
         android:label="sign_up_fragment"
         tools:layout="@layout/sign_up_fragment" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/pinNuberFragment"
-        android:name="com.example.a2ndproject.ui.fragment.PinNumberFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.PinNumberFragment"
         android:label="pin_number_fragment"
         tools:layout="@layout/pin_number_fragment" >
         <action

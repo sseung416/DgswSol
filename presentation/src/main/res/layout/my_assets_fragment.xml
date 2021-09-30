@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.fragment.MyAssetsFragment">
+    tools:context=".ui.view.fragment.MyAssetsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:padding="@dimen/layout_padding"
@@ -50,13 +50,13 @@
 
                 <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/fragmentContainerView1_my_assets"
-                    android:name="com.example.a2ndproject.ui.fragment.MyAssetsCardFragment"
+                    android:name="com.example.a2ndproject.ui.view.fragment.MyAssetsCardFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/fragmentContainerView2_my_assets"
-                    android:name="com.example.a2ndproject.ui.fragment.MyAssetsCardFragment"
+                    android:name="com.example.a2ndproject.ui.view.fragment.MyAssetsCardFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

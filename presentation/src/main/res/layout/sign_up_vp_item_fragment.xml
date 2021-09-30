@@ -7,7 +7,7 @@
     <data>
         <variable
             name="vm"
-            type="com.example.a2ndproject.ui.viewmodel.SignUpViewModel" />
+            type="com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel" />
     </data>
 
     <LinearLayout
@@ -37,6 +37,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_id_view_pager_item_sign_up"
                     style="@style/SignTextInputEditText"
+                    android:onTextChanged=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/id"
