@@ -7,12 +7,11 @@
  * */
 package com.example.a2ndproject.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.a2ndproject.databinding.ViewPagerItemSignUpFragmentBinding
+import com.example.a2ndproject.databinding.SignUpVpItemFragmentBinding
 
 class SignUpViewPagerAdapter : RecyclerView.Adapter<SignUpViewPagerAdapter.ViewHolder>() {
 
@@ -39,7 +38,7 @@ class SignUpViewPagerAdapter : RecyclerView.Adapter<SignUpViewPagerAdapter.ViewH
         }
     }
 
-    lateinit var binding: ViewPagerItemSignUpFragmentBinding
+    lateinit var binding: SignUpVpItemFragmentBinding
 
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
         /**
@@ -68,7 +67,7 @@ class SignUpViewPagerAdapter : RecyclerView.Adapter<SignUpViewPagerAdapter.ViewH
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        binding = ViewPagerItemSignUpFragmentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = SignUpVpItemFragmentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder()
     }
 

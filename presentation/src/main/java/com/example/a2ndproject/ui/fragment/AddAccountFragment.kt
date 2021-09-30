@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.AddAccount1FragmentBinding
 
-class AddAccount1Fragment : Fragment() {
+class AddAccountFragment : Fragment() {
 
     private val navController: NavController by lazy {
         findNavController()
@@ -23,7 +23,7 @@ class AddAccount1Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.add_account1_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.add_account_fragment, container, false)
 
         return binding.root
     }
