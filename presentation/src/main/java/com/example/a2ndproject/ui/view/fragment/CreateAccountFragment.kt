@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.a2ndproject.databinding.CreateAccountFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
+import com.example.a2ndproject.ui.viewmodel.fragment.CreateAccountViewModel
 
 class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateAccountViewModel>() {
 

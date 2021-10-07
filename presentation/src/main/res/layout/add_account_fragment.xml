@@ -22,7 +22,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_connect_add_account"
-                android:background="@drawable/btn_borderline"
+                android:background="@drawable/btn_outline"
                 android:textColor="@color/main_sky_blue"
                 android:textSize="17sp"
                 android:layout_width="match_parent"

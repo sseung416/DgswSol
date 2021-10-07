@@ -7,4 +7,5 @@
     <dimen name="pin_card_size">25dp</dimen>
     <dimen name="pin_num_pad_table_row">80dp</dimen>
     <dimen name="main_tab_height">220dp</dimen>
+    <dimen name="layout_padding_add_account">20dp</dimen>
 </resources>

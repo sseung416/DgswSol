@@ -8,6 +8,7 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/btn_main.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/dot_indicator_background.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_baseline_close_24.xml" value="0.259375" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/outline.xml" value="0.259375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/tab_select_background_gradient.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/tab_select_background_main.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_add_account.xml" value="0.25885416666666666" />
@@ -17,8 +18,9 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account1_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account_fragment.xml" value="0.264" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/connect_this_account_fragment.xml" value="0.25885416666666666" />
-        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/create_account_check_info_fragment.xml" value="0.2477355072463768" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/create_account_check_info_fragment.xml" value="0.264" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/create_account_fragment.xml" value="0.264" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/create_account_success_fragment.xml" value="0.2" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/main_fragment.xml" value="0.4" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/main_fragment_tab.xml" value="0.2" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/main_fragment_tab_vp_item.xml" value="0.536" />
