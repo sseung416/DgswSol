@@ -7,7 +7,6 @@
     <string name="life">라이프</string>
     <string name="start">시작하기</string>
     <string name="input_pin_number">핀번호를 입력해주세요.</string>
-    <string name="check">확인</string>
     <string name="delete">삭제</string>
     <string name="register">가입하기</string>
     <string name="id">아이디</string>
@@ -17,6 +16,7 @@
     <string name="sign_up">회원가입</string>
     <string name="phone_number">휴대폰 번호</string>
     <string name="name">이름(실명)</string>
+    <string name="confirm">확인</string>
 
     <!-- errorMsg -->
     <string name="error_input_info">정보를 입력해주세요.</string>

@@ -8,8 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="light_grey">#FFC4C4C4</color>
-    <color name="main_sky_blue">#FF2196F3</color>
+    <color name="light_grey">#CFCFCF</color>
+    <color name="main_sky_blue">#FF3A8BE2</color>
+    <color name="blue">#FF1455CF</color>
     <color name="grey">#FF757575</color>
     <color name="error">#FFF44336</color>
 </resources>

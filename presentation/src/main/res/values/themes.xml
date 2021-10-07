@@ -35,6 +35,11 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="BigTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
     <style name="RegularTextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">15sp</item>
@@ -69,6 +74,11 @@
         <item name="contentPadding">20dp</item>
     </style>
 
+    <style name="CardView.StrokeCard">
+        <item name="strokeColor">@color/light_grey</item>
+        <item name="strokeWidth">5dp</item>
+        <item name="android:padding">20dp</item>
+    </style>
 
     <!-- TextInputLayout -->
     <style name="SignTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -85,6 +95,12 @@
         <item name="boxCornerRadiusTopStart">30dp</item>
     </style>
 
+    <style name="TransParentTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintEnabled">false</item>
+        <item name="boxStrokeColor">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
     <!-- EditText -->
     <style name="SignTextInputEditText" parent="Widget.AppCompat.EditText">
         <item name="hintEnabled">false</item>
@@ -96,6 +112,13 @@
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:includeFontPadding">true</item>
+    </style>
+
+    <style name="TransParentTextInputEditText" parent="Widget.AppCompat.EditText">
+        <item name="maxLines">1</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
     <!-- Button -->
@@ -111,10 +134,16 @@
         <item name="android:textColor">@color/grey</item>
     </style>
 
-    <style name="Widget.AppCompat.Button.PinButton" parent="Widget.AppCompat.Button">
+    <style name="Widget.AppCompat.Button.PinButton">
         <item name="background">@android:color/transparent</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="Widget.AppCompat.Button.BottomBlueButton">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:background">@color/blue</item>
     </style>
 
 </resources>
