@@ -12,21 +12,21 @@ import retrofit2.http.Path
 interface UserService {
 
     @GET("/signup/id/{id}")
-    fun getDuplicateId(@Path("id") id: String): Response<String?>
+    suspend fun getDuplicateId(@Path("id") id: String): Response<String?>
 
     @GET("/signup/name/{name}")
-    fun getDuplicateName(@Path("name") name: String): Response<String?>
+    suspend fun getDuplicateName(@Path("name") name: String): Response<String?>
 
     // todo 아 추워요
     @POST("/signup")
     fun postSignUp()
 
     @POST("/signup/quick")
-    fun postQuickSignUp(@Body quickPw: QuickPw): Response<TokenResponse>
+    suspend fun postQuickSignUp(@Body quickPw: QuickPw): Response<TokenResponse>
 
     @POST("/login")
-    fun postLogin(@Body login: Login): Response<TokenResponse>
+    suspend fun postLogin(@Body login: Login): Response<TokenResponse>
 
     @POST("/login/quick")
-    fun postQuickLogin(@Body quickPw: QuickPw): Response<TokenResponse>
+    suspend fun postQuickLogin(@Body quickPw: QuickPw): Response<TokenResponse>
 }
