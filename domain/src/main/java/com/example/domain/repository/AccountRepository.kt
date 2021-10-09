@@ -1,17 +1,16 @@
-/**
- *
- * @author
- * @date
- * */
 package com.example.domain.repository
 
-import com.example.domain.entity.request.SignIn
-import com.example.domain.entity.request.SignUp
-import com.example.domain.entity.response.Response
-import com.example.domain.entity.response.Token
+import com.example.domain.entity.request.CheckAccount
+import com.example.domain.entity.request.CreateAccount
 
 interface AccountRepository {
-    suspend fun postSignUp(signUp: SignUp): Response<Token>
 
-    suspend fun postSignIn(signIn: SignIn): Response<Token>
+    // 계좌 개인정보 확인
+    suspend fun postCheckAccount(checkAccount: CheckAccount): String
+
+    // 통장 개설
+    suspend fun postCreateAccount(createAccount: CreateAccount): String
+
+    // 본인의 계좌에서 돈 가져오기
+    suspend fun getHold()
 }

@@ -1,6 +1,6 @@
 package com.example.domain.entity.request
 
-data class SignIn(
+data class Login(
     val id: String,
-    val password: String
+    val pw: String
 )
