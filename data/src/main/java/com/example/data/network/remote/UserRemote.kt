@@ -11,12 +11,12 @@ class UserRemote @Inject constructor(
     override val service: UserService
 ) : BaseRemote<UserService>() {
 
-    suspend fun getDuplicateId(id: String): String {
-        return getResponse(service.getDuplicateId(id))!!
+    suspend fun getDuplicateIdCheck(id: String): String {
+        return getResponse(service.getDuplicateIdCheck(id))!!
     }
 
-    suspend fun getDuplicateName(name: String): String {
-        return getResponse(service.getDuplicateName(name))!!
+    suspend fun getDuplicateNameCheck(name: String): String {
+        return getResponse(service.getDuplicateNameCheck(name))!!
     }
 
     suspend fun postQuickSignUp(quickPw: QuickPw): TokenResponse {

@@ -13,12 +13,12 @@ class UserDataSource @Inject constructor(
     override val remote: UserRemote
 ) : BaseDataSource<UserRemote>() {
 
-    suspend fun getDuplicateId(id: String): String {
-        return remote.getDuplicateId(id)
+    suspend fun getDuplicateIdCheck(id: String): String {
+        return remote.getDuplicateIdCheck(id)
     }
 
-    suspend fun getDuplicateName(name: String): String {
-        return remote.getDuplicateName(name)
+    suspend fun getDuplicateNameCheck(name: String): String {
+        return remote.getDuplicateNameCheck(name)
     }
 
     suspend fun postQuickSignUp(quickPw: QuickPw): Token {

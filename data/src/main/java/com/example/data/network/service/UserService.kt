@@ -12,10 +12,10 @@ import retrofit2.http.Path
 interface UserService {
 
     @GET("/signup/id/{id}")
-    suspend fun getDuplicateId(@Path("id") id: String): Response<String?>
+    suspend fun getDuplicateIdCheck(@Path("id") id: String): Response<String?>
 
     @GET("/signup/name/{name}")
-    suspend fun getDuplicateName(@Path("name") name: String): Response<String?>
+    suspend fun getDuplicateNameCheck(@Path("name") name: String): Response<String?>
 
     // todo 아 추워요
     @POST("/signup")
