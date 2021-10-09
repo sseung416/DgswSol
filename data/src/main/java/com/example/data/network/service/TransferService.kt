@@ -12,13 +12,13 @@ interface TransferService {
 
     // 송금 계좌 확인
     @GET("/send/check/{receive}")
-    suspend fun getTransferCheck(): Response<String>
+    suspend fun getTransferCheck(): Response<String?>
 
     // 송금
     @POST("/send")
-    suspend fun postTransfer(@Body transfer: Transfer): Response<String>
+    suspend fun postTransfer(@Body transfer: Transfer): Response<String?>
 
     // 송금 비밀번호 확인
     @POST("/send/pw")
-    suspend fun postTransferPw(@Body transferPw: TransferPw): Response<String>
+    suspend fun postTransferPw(@Body transferPw: TransferPw): Response<String?>
 }

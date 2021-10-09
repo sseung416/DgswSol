@@ -12,5 +12,5 @@ interface AccountService {
     suspend fun postCheckAccount(@Body checkAccount: CheckAccount): Response<String?>
 
     @POST("/account/create")
-    suspend fun postCreateAccount(@Body createAccount: CreateAccount): Response<String>
+    suspend fun postCreateAccount(@Body createAccount: CreateAccount): Response<String?>
 }
