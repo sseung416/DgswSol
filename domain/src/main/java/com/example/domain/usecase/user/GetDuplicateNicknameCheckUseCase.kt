@@ -5,9 +5,9 @@ import com.example.domain.entity.request.DuplicateNickname
 import com.example.domain.repository.UserRepository
 import javax.inject.Inject
 
-class GetDuplicateNicknameUseCase @Inject constructor(
+class GetDuplicateNicknameCheckUseCase @Inject constructor(
     private val userRepository: UserRepository
-) : ParamsUseCase<GetDuplicateNicknameUseCase.Params, String>() {
+) : ParamsUseCase<GetDuplicateNicknameCheckUseCase.Params, String>() {
 
     override suspend fun buildUseCase(params: Params): String {
         return userRepository.getDuplicateNicknameCheck(params.duplicateNickname)

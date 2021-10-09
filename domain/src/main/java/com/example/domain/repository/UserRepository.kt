@@ -12,10 +12,10 @@ import com.example.domain.entity.response.Token
 interface UserRepository {
 
     // 아이디 중복 체크
-    suspend fun getDuplicateIdCheck(duplicateId: DuplicateId): String
+    suspend fun getDuplicateIdCheck(id: String): String
 
     // 별명 중복 체크
-    suspend fun getDuplicateNicknameCheck(duplicateNickname: DuplicateNickname): String
+    suspend fun getDuplicateNicknameCheck(nickname: String): String
 
     // 회원가입
     suspend fun postSignUp(signUp: SignUp): String
