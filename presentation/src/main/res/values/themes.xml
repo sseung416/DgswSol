@@ -23,6 +23,12 @@
     </style>
 
     <!-- TextView -->
+    <style name="MoneyTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">50sp</item>
+    </style>
+    
     <style name="TitleTextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>

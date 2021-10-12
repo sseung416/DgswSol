@@ -20,7 +20,7 @@
             android:id="@+id/constraintLayout_1_view_pager_item_sign_up"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
+            android:visibility="visible"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
@@ -37,7 +37,6 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_id_view_pager_item_sign_up"
                     style="@style/SignTextInputEditText"
-                    android:onTextChanged=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/id"
@@ -57,10 +56,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_password_view_pager_item_sign_up"
                     style="@style/SignTextInputEditText"
-                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
+                    android:inputType="textPassword"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,6 +88,7 @@
             android:id="@+id/constraintLayout_2_view_pager_item_sign_up"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
@@ -105,10 +105,10 @@
                     android:id="@+id/et_phone_number_view_pager_item_sign_up"
                     style="@style/SignTextInputEditText"
                     android:layout_width="match_parent"
-                    android:focusable="true"
-                    android:maxEms="8"
                     android:layout_height="wrap_content"
-                    android:hint="@string/phone_number" />
+                    android:focusable="true"
+                    android:hint="@string/phone_number"
+                    android:maxEms="8" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

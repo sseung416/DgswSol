@@ -13,6 +13,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.viewModels
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.SignUpFragmentBinding
 import com.example.a2ndproject.ui.view.adapter.SignUpViewPagerAdapter
@@ -20,16 +22,13 @@ import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel
 import kotlin.concurrent.thread
 
-class SignUpFragment : BaseFragment<SignUpFragmentBinding, SignUpViewModel>() {
-
-    override fun getFragmentBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): SignUpFragmentBinding = SignUpFragmentBinding.inflate(inflater, container, false)
-
-    override fun getViewModelClass(): Class<SignUpViewModel> = SignUpViewModel::class.java
+class SignUpFragment : BaseFragment<SignUpFragmentBinding>() {
+    private val viewModel: SignUpViewModel by viewModels()
 
     private val adapter = SignUpViewPagerAdapter()
+
+    override fun getLayoutResId(): Int =
+        R.layout.sign_up_fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

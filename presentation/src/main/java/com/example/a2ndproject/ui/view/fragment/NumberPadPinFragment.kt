@@ -8,36 +8,27 @@
 
 package com.example.a2ndproject.ui.view.fragment
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.a2ndproject.R
-import com.example.a2ndproject.databinding.PinNumberFragmentBinding
-import com.example.a2ndproject.ui.view.activity.MainActivity
-import com.example.a2ndproject.ui.viewmodel.fragment.PinNumberViewModel
+import com.example.a2ndproject.databinding.NumberPadPinFragmentBinding
+import com.example.a2ndproject.ui.view.base.BaseFragment
 import java.util.*
 
-class PinNumberFragment : Fragment() {
-
-    private lateinit var binding: PinNumberFragmentBinding
-    private val viewModel: PinNumberViewModel by viewModels()
+class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
 
     private lateinit var pinCardList: List<CardView>
+    private var pinNumber: Stack<Int> = Stack()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.pin_number_fragment, container, false)
-        return binding.root
-    }
+    override fun getLayoutResId(): Int =
+        R.layout.number_pad_pin_fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -62,9 +53,8 @@ class PinNumberFragment : Fragment() {
         return list
     }
 
-    private var pinNumber: Stack<Int> = Stack()
 
-//    override fun onClick(v: View?) {
+    //    override fun onClick(v: View?) {
 //        when (v!!.id) {
 //            binding.btnDeletePinNumber.id -> {
 //                if (pinNumber.size != 0)  {
@@ -101,6 +91,7 @@ class PinNumberFragment : Fragment() {
 //                }
 //            }
 //        }
+
 //    }
 
     /**
@@ -126,10 +117,5 @@ class PinNumberFragment : Fragment() {
         pinCardList.forEach {
             it.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
         }
-    }
-
-    private fun intentToMain() {
-        val intent = Intent(requireActivity(), MainActivity::class.java)
-        startActivity(intent)
     }
 }

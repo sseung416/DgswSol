@@ -5,20 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.HomeFragmentTabBinding
 import com.example.a2ndproject.ui.view.activity.AddAccountActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.viewmodel.fragment.HomeViewModel
 
-class HomeTabFragment : BaseFragment<HomeFragmentTabBinding, HomeViewModel>() {
+class HomeTabFragment : BaseFragment<HomeFragmentTabBinding>() {
 
-    override fun getFragmentBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): HomeFragmentTabBinding =
-        HomeFragmentTabBinding.inflate(inflater, container, false)
-
-    override fun getViewModelClass(): Class<HomeViewModel> = HomeViewModel::class.java
+    override fun getLayoutResId(): Int =
+        R.layout.home_fragment_tab
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -8,30 +8,22 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.HomeFragmentBinding
+import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.viewmodel.fragment.HomeViewModel
 import com.google.android.material.tabs.TabLayout
 import kotlin.concurrent.thread
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<HomeFragmentBinding>() {
 
     private lateinit var viewModel: HomeViewModel
-    private lateinit var binding: HomeFragmentBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
-
-        return binding.root
-    }
+    override fun getLayoutResId(): Int =
+        R.layout.home_fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initTabLayout()
-
-
     }
 
     private fun initTabLayout() {

@@ -27,9 +27,9 @@
     </fragment>
     <fragment
         android:id="@+id/pinNuberFragment"
-        android:name="com.example.a2ndproject.ui.view.fragment.PinNumberFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.NumberPadPinFragment"
         android:label="pin_number_fragment"
-        tools:layout="@layout/pin_number_fragment" >
+        tools:layout="@layout/number_pad_pin_fragment" >
         <action
             android:id="@+id/action_pinNuberFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />

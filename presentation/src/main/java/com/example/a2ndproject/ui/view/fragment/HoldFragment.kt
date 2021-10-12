@@ -7,15 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.a2ndproject.R
-import com.example.a2ndproject.databinding.CreateAccountCheckInfoFragmentBinding
+import com.example.a2ndproject.databinding.HoldFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
-import com.example.a2ndproject.ui.viewmodel.fragment.CreateAccountCheckInfoViewModel
+import com.example.a2ndproject.ui.viewmodel.HoldViewModel
 
-class CreateAccountCheckInfoFragment : BaseFragment<CreateAccountCheckInfoFragmentBinding>() {
+class HoldFragment : BaseFragment<HoldFragmentBinding>() {
 
-    private lateinit var viewModel: CreateAccountCheckInfoViewModel
+    private lateinit var viewModel: HoldViewModel
 
     override fun getLayoutResId(): Int =
-        R.layout.create_account_check_info_fragment
+        R.layout.hold_fragment
 
 }

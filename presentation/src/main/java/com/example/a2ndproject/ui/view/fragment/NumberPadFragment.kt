@@ -15,32 +15,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.NumberPadFragmentBinding
+import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadViewModel
 
-class NumberPadFragment : Fragment() {
+class NumberPadFragment : BaseFragment<NumberPadFragmentBinding>() {
 
-    private lateinit var binding: NumberPadFragmentBinding
-    private lateinit var viewModel: NumberPadViewModel
+    private val viewModel: NumberPadViewModel by viewModels()
 
     private lateinit var keyButtonList: List<Button>
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.number_pad_fragment, container, false)
-        init()
-        return binding.root
-    }
+    override fun getLayoutResId(): Int =
+        R.layout.number_pad_fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         keyButtonList = getButtons(view)
 
+        // list의 view의 클릭 리스너를 설정함
         keyButtonList.forEach {
             it.setOnClickListener { v ->
                 /* resource id로 resource name 구하고, name에서 숫자만 추출해 pinNumber에 저장함. */
@@ -49,13 +45,10 @@ class NumberPadFragment : Fragment() {
                 Log.d("pinNumber", "click: $number")
             }
         }
+
         binding.btnDeletePinNumber.setOnClickListener {
             viewModel.removeNumber()
         }
-    }
-
-    private fun init() {
-        viewModel = ViewModelProvider(requireActivity()).get(NumberPadViewModel::class.java)
     }
 
     /**
