@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="vm"
+            type="com.example.a2ndproject.ui.viewmodel.fragment.NumberPadMoneyViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -43,6 +49,7 @@
 
                 <ImageView
                     android:id="@+id/imageView3"
+                    android:src="@{vm.account.bankImgSrc}"
                     android:layout_margin="10dp"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -51,6 +58,7 @@
                 <TextView
                     android:id="@+id/tv_account_number_number_pad_money1"
                     style="@style/BigTextView"
+                    android:text="@{vm.account.accountNumber}"
                     android:layout_marginStart="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -62,6 +70,8 @@
         <TextView
             android:id="@+id/tv_error_number_pad_money"
             style="@style/RegularTextView"
+            android:text="@{vm.moneyErr}"
+            android:textColor="@color/error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -73,6 +83,7 @@
         <TextView
             android:id="@+id/tv_money_kr_number_pad_money"
             style="@style/BigTextView"
+            android:text="@{vm.moneyKR}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/tv_error_number_pad_money"
@@ -110,11 +121,12 @@
             android:id="@+id/tv_bank_number_pad_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@{vm.account.bankName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView3"
+            tools:text="토스"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

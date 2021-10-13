@@ -42,7 +42,7 @@ class NumberPadFragment : BaseFragment<NumberPadFragmentBinding>() {
                 /* resource id로 resource name 구하고, name에서 숫자만 추출해 pinNumber에 저장함. */
                 val number = v.resources.getResourceEntryName(v.id).replace(("[^0-9]").toRegex(), "").toInt()
                 viewModel.addNumber(number)
-                Log.d("pinNumber", "click: $number")
+                Log.d(TAG, "click: $number")
             }
         }
 
