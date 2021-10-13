@@ -2,6 +2,7 @@ package com.example.a2ndproject.ui.viewmodel.fragment
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.a2ndproject.R
 import java.util.*
 
 class NumberPadViewModel : ViewModel() {
@@ -17,5 +18,4 @@ class NumberPadViewModel : ViewModel() {
         stack.pop()
         numberList.value = stack
     }
-
 }

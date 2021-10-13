@@ -9,23 +9,29 @@
 package com.example.a2ndproject.ui.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.NumberPadPinFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
+import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadViewModel
 import java.util.*
 
 class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
 
+    private val numberPadViewModel: NumberPadViewModel by activityViewModels()
+
     private lateinit var pinCardList: List<CardView>
-    private var pinNumber: Stack<Int> = Stack()
 
     override fun getLayoutResId(): Int =
         R.layout.number_pad_pin_fragment
@@ -34,6 +40,8 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         pinCardList = getCards(view)
+
+        observe()
     }
 
     /**
@@ -53,67 +61,56 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
         return list
     }
 
+    private fun observe() = with(numberPadViewModel) {
+        var size = numberList.value?.size
 
-    //    override fun onClick(v: View?) {
-//        when (v!!.id) {
-//            binding.btnDeletePinNumber.id -> {
-//                if (pinNumber.size != 0)  {
-//                    fillPinShape(true)
-//
-//                    Log.d("pinNumber", "pop: ${pinNumber.pop()}")
-//                }
-//            }
-//
-//            /*
-//            * 삭제 버튼이 아닌 숫자 패드 클릭시 실행.
-//            * resource id로 resource name 구하고, name에서 숫자만 추출해 pinNumber에 저장함.
-//            */
-//            else -> {
-//                val number = v.resources.getResourceEntryName(v.id).replace(("[^0-9]").toRegex(), "").toInt()
-//
-//                Log.d("pinNumber", "click: $number")
-//                pinNumber.push(number)
-//
-//                fillPinShape(false)
-//
-//                /*
-//                * 핀 번호를 6자리 입력했을 때 핀번호가 맞는지 검사함.
-//                * true 시 메인 화면으로 이동, false 시 pinNumber를 비우고 에러를 출력함.
-//                */
-//                if (pinNumber.size == 6) {
-//                    if (viewModel.isCorrectPin())
-//                        intentToMain()
-//                    else {
-//                        Thread.sleep(100)
-//                        clearPinShape()
-//                        binding.tvErrorPinNumber.text = viewModel.getErrorText()
-//                    }
-//                }
-//            }
-//        }
+        numberList.observe(viewLifecycleOwner, {
+            when (it.size) {
+                6 -> {
+                    if (true) {
+                        Log.d(TAG, it.toString())
+                        //알맞는지 검사
+                    } else {
+                        Thread.sleep(100)
+                        binding.tvErrorPinNumber.visibility = VISIBLE
+                        clearPinShape()
+                        this.numberList.value = Stack() // 이걸로 스택 비워지는지 확인
+                    }
+                }
 
-//    }
+                else -> {
+                    var isDelete = false
+                    if (size != null) {
+                        if (size > it.size) {
+                            isDelete = true
+                        }
+                    }
+
+                    fillPinShape(isDelete, it.lastIndex)
+                }
+            }
+
+        })
+    }
 
     /**
      * 키패드 클릭 시 핀 모양의 색을 바꿈.
      *
      * @param isDelete: 삭제 버튼을 눌렀는지, 숫자 버튼을 눌렀는지 판별을 위함.
      * */
-    private fun fillPinShape(isDelete: Boolean) {
+    private fun fillPinShape(isDelete: Boolean, pos: Int) {
         val color: Int = when (isDelete) {
             true -> R.color.grey
             false -> R.color.black
         }
 
-        pinCardList[pinNumber.size-1].setCardBackgroundColor(ContextCompat.getColor(requireContext(), color))
+        pinCardList[pos].setCardBackgroundColor(ContextCompat.getColor(requireContext(), color))
     }
 
     /**
      * 저장된 핀번호(pinNumber item)를 모두 삭제하고 핀 모양의 색을 grey로 바꿈
      * */
     private fun clearPinShape() {
-        pinNumber.clear()
-
         pinCardList.forEach {
             it.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
         }
