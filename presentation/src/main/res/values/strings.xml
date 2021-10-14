@@ -6,6 +6,13 @@
     <string name="error_input_info">정보를 입력해주세요.</string>
     <string name="error_not_resident_number">올바르지 않은 주민등록번호입니다.</string>
 
+    <!-- home tab -->
+    <string name="home_tab_create_title">간편한 입출금통장</string>
+    <string name="home_tab_create_content">통장과 체크카드를 한번에!</string>
+    <string name="home_tab_connect_title">오픈뱅킹 서비스</string>
+    <string name="home_tab_connect_content">신한은행 계좌 없이도 다른은행 계좌 조회, 이체를 신한 쏠에서 편하게!</string>
+    <string name="home_tab_connect_button">다른은행 계좌 등록하기</string>
+
     <string name="banking">뱅킹</string>
     <string name="life">라이프</string>
     <string name="start">시작하기</string>
