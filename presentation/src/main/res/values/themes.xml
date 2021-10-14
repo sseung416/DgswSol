@@ -48,12 +48,12 @@
 
     <style name="RegularTextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="SmallTextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="ResidentRegistrationNumberTextView" parent="Widget.AppCompat.TextView">
@@ -84,6 +84,13 @@
         <item name="strokeColor">@color/light_grey</item>
         <item name="strokeWidth">5dp</item>
         <item name="android:padding">20dp</item>
+    </style>
+
+    <style name="CardView.BankImgCard">
+        <item name="elevation">0dp</item>
+        <item name="cardCornerRadius">15dp</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
     </style>
 
     <!-- TextInputLayout -->
