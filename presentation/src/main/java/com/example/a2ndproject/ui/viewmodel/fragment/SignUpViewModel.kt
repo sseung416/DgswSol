@@ -19,6 +19,9 @@ class SignUpViewModel : BaseViewModel() {
 
     val textChange = MutableLiveData<Unit>()
 
+    fun onTextChange() {
+
+    }
 
 
     private var isDoubleCheckedId = true

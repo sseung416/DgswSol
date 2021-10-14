@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_add_account"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_addAccountFragment"
+            app:destination="@id/addAccountFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_numberPadMoneyFragment"
+            app:destination="@id/numberPadMoneyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAccountFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.AddAccountFragment"
+        android:label="add_account_fragment"
+        tools:layout="@layout/add_account_fragment" >
+        <action
+            android:id="@+id/action_addAccountFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_addAccountFragment_to_identityAuthFragment"
+            app:destination="@id/identityAuthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAccountSuccessFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.CreateAccountSuccessFragment"
+        android:label="add_account_create_success_fragment"
+        tools:layout="@layout/add_account_create_success_fragment" >
+        <action
+            android:id="@+id/action_createAccountSuccessFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/numberPadPinFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.NumberPadPinFragment"
+        android:label="number_pad_pin_fragment"
+        tools:layout="@layout/number_pad_pin_fragment" >
+        <action
+            android:id="@+id/action_numberPadPinFragment_to_createAccountSuccessFragment"
+            app:destination="@id/createAccountSuccessFragment" />
+        <action
+            android:id="@+id/action_numberPadPinFragment_to_checkInfoFragment"
+            app:destination="@id/checkInfoFragment" />
+        <action
+            android:id="@+id/action_numberPadPinFragment_self"
+            app:destination="@id/numberPadPinFragment" />
+        <action
+            android:id="@+id/action_numberPadPinFragment_to_numberPadMoneyFragment"
+            app:destination="@id/numberPadMoneyFragment" />
+        <action
+            android:id="@+id/action_numberPadPinFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/numberPadMoneyFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.NumberPadMoneyFragment"
+        android:label="NumberPadMoneyFragment"
+        tools:layout="@layout/number_pad_money_fragment">
+        <action
+            android:id="@+id/action_numberPadMoneyFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_numberPadMoneyFragment_to_numberPadPinFragment"
+            app:destination="@id/numberPadPinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkInfoFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.CheckInfoFragment"
+        android:label="CheckInfoFragment"
+        tools:layout="@layout/add_account_check_info_fragment">
+        <action
+            android:id="@+id/action_checkInfoFragment_to_numberPadPinFragment"
+            app:destination="@id/numberPadPinFragment" />
+        <action
+            android:id="@+id/action_checkInfoFragment_to_identityAuthFragment"
+            app:destination="@id/identityAuthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/connectAccountFragment2"
+        android:name="com.example.a2ndproject.ui.view.fragment.ConnectAccountFragment"
+        android:label="ConnectAccountFragment"
+        tools:layout="@layout/add_account_connect_fragment">
+        <action
+            android:id="@+id/action_connectAccountFragment2_to_identityAuthFragment"
+            app:destination="@id/identityAuthFragment" />
+        <action
+            android:id="@+id/action_connectAccountFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/identityAuthFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.IdentityAuthFragment"
+        android:label="IdentityAuthFragment"
+        tools:layout="@layout/add_account_identity_auth_fragment">
+        <action
+            android:id="@+id/action_identityAuthFragment_to_checkInfoFragment"
+            app:destination="@id/checkInfoFragment" />
+        <action
+            android:id="@+id/action_identityAuthFragment_to_connectAccountFragment2"
+            app:destination="@id/connectAccountFragment2" />
+    </fragment>
+</navigation>

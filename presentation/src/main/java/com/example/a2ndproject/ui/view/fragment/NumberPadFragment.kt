@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.a2ndproject.R
@@ -24,7 +25,7 @@ import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadViewModel
 
 class NumberPadFragment : BaseFragment<NumberPadFragmentBinding>() {
 
-    private val viewModel: NumberPadViewModel by viewModels()
+    private val viewModel: NumberPadViewModel by activityViewModels()
 
     private lateinit var keyButtonList: List<Button>
 

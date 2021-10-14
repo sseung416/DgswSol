@@ -13,7 +13,7 @@ class CreateAccountSuccessFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.create_account_success_fragment, container, false)
+        return inflater.inflate(R.layout.add_account_create_success_fragment, container, false)
     }
 
 }

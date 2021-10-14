@@ -106,6 +106,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/linearLayout9"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -114,7 +115,7 @@
                         android:orientation="vertical">
 
                         <ImageButton
-                            android:id="@+id/imageButton"
+                            android:id="@+id/btn_create_account_home"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
@@ -126,10 +127,11 @@
                             style="@style/SmallTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="통장 만들기" />
+                            android:text="통장만들기" />
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/linear"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -138,7 +140,7 @@
                         android:orientation="vertical">
 
                         <ImageButton
-                            android:id="@+id/imageButton2"
+                            android:id="@+id/btn_transfer_home"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
@@ -150,7 +152,30 @@
                             style="@style/SmallTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="송금하기" />
+                            android:text="@string/transfer" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:padding="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_android_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/textView17"
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="이체하기" />
                     </LinearLayout>
                 </LinearLayout>
 

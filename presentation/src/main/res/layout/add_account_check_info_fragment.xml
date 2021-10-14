@@ -7,7 +7,7 @@
         android:padding="@dimen/layout_padding_add_account"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.fragment.CreateAccountCheckInfoFragment">
+        tools:context=".ui.view.fragment.CheckInfoFragment">
 
         <TextView
             android:id="@+id/textView8"

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.HomeFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
@@ -15,7 +16,7 @@ import kotlin.concurrent.thread
 
 class HomeFragment : BaseFragment<HomeFragmentBinding>() {
 
-    private lateinit var viewModel: HomeViewModel
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun getLayoutResId(): Int =
         R.layout.home_fragment
@@ -24,6 +25,14 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         initTabLayout()
+
+        binding.btnCreateAccountHome.setOnClickListener {
+            navigateToAddAccount()
+        }
+
+        binding.btnTransferHome.setOnClickListener {
+
+        }
     }
 
     private fun initTabLayout() {
@@ -49,7 +58,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
         })
 
         /* 탭 레이아웃 5초마다 움직이게... */
-        // todo rx든 코루틴이든 암튼 바꾸기
+        // todo 뭔가 이상함
         thread {
             while (true) {
                 Thread.sleep(5000)
@@ -68,5 +77,13 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
                 }
             }
         }
+    }
+
+    private fun navigateToAddAccount() {
+        navController.navigate(R.id.action_homeFragment_to_addAccountFragment)
+    }
+
+    private fun navigateToTransfer() {
+
     }
 }
