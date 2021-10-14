@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">2ndProject</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- errorMsg -->
     <string name="error_input_info">정보를 입력해주세요.</string>
+    <string name="error_not_resident_number">올바르지 않은 주민등록번호입니다.</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="banking">뱅킹</string>
     <string name="life">라이프</string>
     <string name="start">시작하기</string>
@@ -21,6 +22,7 @@
     <string name="confirm">확인</string>
     <string name="transfer">송금하기</string>
     <string name="won">원</string>
+    <string name="input_account_name">계좌 별명 입력</string>
 
 
 </resources>

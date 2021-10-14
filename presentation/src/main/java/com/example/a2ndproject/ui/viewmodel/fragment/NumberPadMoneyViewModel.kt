@@ -1,13 +1,14 @@
 package com.example.a2ndproject.ui.viewmodel.fragment
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.a2ndproject.ui.view.model.Account
 import java.text.NumberFormat
 import java.util.Locale
 
 class NumberPadMoneyViewModel(
     val account: Account
-) : NumberPadViewModel() {
+) : ViewModel() {
 
     private var moneyText: String = ""
     var moneyKR: String = ""

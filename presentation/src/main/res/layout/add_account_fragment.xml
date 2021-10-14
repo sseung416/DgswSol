@@ -22,8 +22,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_connect_add_account"
-                android:background="@drawable/btn_outline"
-                android:textColor="@color/main_sky_blue"
+                android:background="@drawable/btn_blue_outline"
+                android:textColor="@color/blue"
                 android:textSize="17sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -33,7 +33,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_register_add_account"
-                android:background="@color/main_sky_blue"
+                android:background="@color/blue"
                 android:textColor="@color/white"
                 android:textSize="17sp"
                 android:layout_width="match_parent"

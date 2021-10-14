@@ -6,14 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.a2ndproject.R
+import com.example.a2ndproject.databinding.AddAccountCreateSuccessFragmentBinding
+import com.example.a2ndproject.ui.view.base.BaseFragment
 
-class CreateAccountSuccessFragment : Fragment() {
+class CreateAccountSuccessFragment : BaseFragment<AddAccountCreateSuccessFragmentBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.add_account_create_success_fragment, container, false)
+    override fun getLayoutResId(): Int =
+        R.layout.add_account_create_success_fragment
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnConfirmCreateSuccess.setOnClickListener {
+            navController.navigate(R.id.action_createAccountSuccessFragment_to_homeFragment)
+        }
     }
-
 }

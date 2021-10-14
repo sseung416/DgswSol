@@ -1,103 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="@dimen/layout_padding_add_account"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.view.fragment.CreateAccountSuccessFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="20dp"
-        android:layout_height="100dp"
-        tools:src="@tools:sample/backgrounds/scenic" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:padding="@dimen/layout_padding_add_account"
+            app:layout_constraintBottom_toTopOf="@+id/btn_confirm_create_success"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".ui.view.fragment.CreateAccountSuccessFragment">
 
-        <TextView
-            android:id="@+id/textView16"
-            style="@style/BigTextView"
-            android:textColor="@color/main_sky_blue"
-            android:layout_width="wrap_content"
-            android:textStyle="bold"
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="20dp"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    style="@style/BigTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="계좌 개설"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/BigTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이 완료되었습니다." />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/dark_grey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView12"
+                    style="@style/RegularTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="계좌 종류"
+                    android:textColor="@color/dark_grey" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    style="@style/RegularTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="자유입출금" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    style="@style/RegularTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이체 한도"
+                    android:textColor="@color/dark_grey" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    style="@style/RegularTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1일 최대 1만 원" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_confirm_create_success"
+            style="@style/Widget.AppCompat.Button.BottomBlueButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="계좌개설" />
-
-        <TextView
-            android:id="@+id/textView5"
-            style="@style/BigTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이 완료되었습니다." />
-    </LinearLayout>
-
-    <View
-        android:background="@color/dark_grey"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView12"
-            style="@style/RegularTextView"
-            android:textColor="@color/dark_grey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="계좌 종류" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/textView11"
-            style="@style/RegularTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="자유입출금" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView13"
-            style="@style/RegularTextView"
-            android:textColor="@color/dark_grey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이체 한도" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/textView14"
-            style="@style/RegularTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1일 최대 1만 원" />
-    </LinearLayout>
-
-</LinearLayout>
+            android:text="@string/confirm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

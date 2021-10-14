@@ -3,17 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="vm"
+            type="com.example.a2ndproject.ui.viewmodel.fragment.IdentityAuthViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/layout_padding_add_account"
         tools:context=".ui.view.fragment.IdentityAuthFragment">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/btn_confirm_create_account"
+            android:padding="@dimen/layout_padding_big"
+            app:layout_constraintBottom_toTopOf="@+id/textView23"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -29,9 +35,9 @@
                 android:text="본인인증을 위해\n 성명과 주민등록번호를 입력해주세요." />
 
             <LinearLayout
-                android:background="@drawable/outline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/outline"
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -75,20 +81,22 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_create_account"
                             style="@style/TransParentTextInputEditText"
-                            android:hint="주민등록번호"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="주민등록번호"
                             android:inputType="number"
-                            android:maxLength="6"/>
+                            android:letterSpacing="@{vm.number.length() > 0 ? 1 : 0}"
+                            android:maxLength="6"
+                            android:text="@={vm.number}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
-                        android:textSize="30sp"
-                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:text="-"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"/>
+                        android:textColor="@color/black"
+                        android:textSize="30sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/et_layout2_create_account"
@@ -106,20 +114,19 @@
                             android:inputType="number"
                             android:letterSpacing="1"
                             android:maxLength="1"
-                            tools:text="4" />
+                            android:text="@={vm.numberBack}"
+                            tools:ignore="SpeakableTextPresentCheck" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
                         android:letterSpacing="1"
-                        android:text="******"/>
+                        android:text="******"
+                        android:textColor="@color/black" />
                 </LinearLayout>
-
-
-
             </LinearLayout>
+
 
         </LinearLayout>
 
@@ -128,10 +135,23 @@
             style="@style/Widget.AppCompat.Button.BottomBlueButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:enabled="false"
+            android:enabled="@{vm.btnEnabled}"
+            android:textColor="@{vm.btnEnabled ? @color/white : @color/grey}"
+            android:onClick="@{() -> vm.navigateCheckInfo()}"
             android:text="@string/confirm"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView23"
+            style="@style/RegularTextView"
+            android:textColor="@color/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="@{vm.error}"
+            app:layout_constraintBottom_toTopOf="@+id/btn_confirm_create_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

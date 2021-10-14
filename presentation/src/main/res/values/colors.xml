@@ -12,6 +12,6 @@
     <color name="main_sky_blue">#FF3A8BE2</color>
     <color name="blue">#FF1455CF</color>
     <color name="grey">#FF757575</color>
-    <color name="dark_grey">#424242</color>
+    <color name="dark_grey">#FF424242</color>
     <color name="error">#FFF44336</color>
 </resources>

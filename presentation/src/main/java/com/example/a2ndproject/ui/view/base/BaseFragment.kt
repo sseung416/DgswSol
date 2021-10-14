@@ -32,12 +32,8 @@ abstract class BaseFragment<B: ViewDataBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
     override fun onDestroyView() {

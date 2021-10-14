@@ -19,13 +19,11 @@ class AddAccountFragment : BaseFragment<AddAccountFragmentBinding>() {
         }
 
         binding.btnConnectAddAccount.setOnClickListener {
-            navigateToConnectAccount()
+            navigateToCreateAccount()
         }
     }
 
-    private fun navigateToConnectAccount() {
-    }
-
     private fun navigateToCreateAccount() {
+        navController.navigate(R.id.action_addAccountFragment_to_identityAuthFragment)
     }
 }

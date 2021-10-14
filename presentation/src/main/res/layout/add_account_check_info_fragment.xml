@@ -1,113 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:padding="@dimen/layout_padding_add_account"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.view.fragment.CheckInfoFragment">
+    <data>
+        <variable
+            name="vm"
+            type="com.example.a2ndproject.ui.viewmodel.fragment.CheckInfoViewModel" />
+    </data>
 
-        <TextView
-            android:id="@+id/textView8"
-            style="@style/BigTextView"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginBottom="20dp"
-            android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button4"
+            style="@style/Widget.AppCompat.Button.BottomBlueButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="계좌 개설을 위해\n 개인정보를 확인해 주세요." />
+            android:text="@string/confirm"
+            android:enabled="@{vm.accountName.length() == 0 ? false : true}"
+            android:onClick="@{() -> vm.navigateToPin()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:background="@drawable/outline"
-            android:orientation="horizontal">
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:padding="@dimen/layout_padding_add_account"
+            app:layout_constraintBottom_toTopOf="@+id/button4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".ui.view.fragment.CheckInfoFragment">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/textView8"
+                style="@style/BigTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView"
-                    style="@style/RegularTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/name" />
-
-                <TextView
-                    android:id="@+id/textView10"
-                    style="@style/RegularTextView"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="주민등록번호" />
-
-                <TextView
-                    android:id="@+id/textView9"
-                    style="@style/RegularTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/phone_number" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_marginStart="20dp"
-                android:background="@color/grey"
-                android:layout_width="1dp"
-                android:layout_height="match_parent"/>
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="계좌 개설을 위해\n 개인정보를 확인해 주세요." />
 
             <LinearLayout
-                android:orientation="vertical"
-                android:gravity="end"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/tv_name_check_info"
-                    style="@style/RegularTextView"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    tools:text="최승연"/>
-
-                <TextView
-                    android:id="@+id/tv_number_check_info"
-                    style="@style/RegularTextView"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    tools:text="040416-1234567" />
-
-                <TextView
-                    android:id="@+id/tv_phone_number_check_info"
-                    style="@style/RegularTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    tools:text="010-0000-0000"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/et_layout_check_info"
-            android:layout_marginTop="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_check_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="계좌 별명 입력" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:background="@drawable/outline"
+                android:orientation="horizontal"
+                android:padding="20dp">
 
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        style="@style/RegularTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/name" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        style="@style/RegularTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="주민등록번호" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        style="@style/RegularTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/phone_number" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:background="@color/grey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_name_check_info"
+                        style="@style/RegularTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        tools:text="최승연" />
+
+                    <TextView
+                        android:id="@+id/tv_number_check_info"
+                        style="@style/RegularTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        tools:text="040416-1234567" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_number_check_info"
+                        style="@style/RegularTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        tools:text="010-0000-0000" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_layout_check_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_check_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={vm.accountName}"
+                    android:hint="@string/input_account_name" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
