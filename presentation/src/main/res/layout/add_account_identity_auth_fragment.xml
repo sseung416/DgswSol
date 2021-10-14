@@ -51,7 +51,7 @@
                         android:id="@+id/et_name_create_account"
                         style="@style/TransParentTextInputEditText"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:hint="@string/name" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,7 +82,7 @@
                             android:id="@+id/et_create_account"
                             style="@style/TransParentTextInputEditText"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:hint="주민등록번호"
                             android:inputType="number"
                             android:letterSpacing="@{vm.number.length() > 0 ? 1 : 0}"
@@ -121,6 +121,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingEnd="10dp"
                         android:letterSpacing="1"
                         android:text="******"
                         android:textColor="@color/black" />
