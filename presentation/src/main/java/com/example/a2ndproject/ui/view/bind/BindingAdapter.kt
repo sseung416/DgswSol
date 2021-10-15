@@ -3,8 +3,12 @@ package com.example.a2ndproject.ui.view.bind
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.EditText
 import android.widget.ImageView
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.BindingAdapter
+import androidx.databinding.adapters.TextViewBindingAdapter
+import com.google.android.material.internal.TextWatcherAdapter
 import com.google.android.material.textfield.TextInputLayout
 
 object BindingAdapter {
@@ -21,10 +25,14 @@ object BindingAdapter {
         this.error = error
     }
 
+    @BindingAdapter("onTextChangedListener")
+    fun EditText.setOnTextChangedListener(listener: () -> Unit) {
+        this.addTextChangedListener { listener }
+    }
+
     @BindingAdapter("imageUrl")
     fun ImageView.loadImage(url: String?) {
 
     }
-
 
 }

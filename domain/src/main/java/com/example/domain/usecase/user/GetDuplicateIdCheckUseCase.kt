@@ -10,10 +10,10 @@ class GetDuplicateIdCheckUseCase @Inject constructor(
 ) : ParamsUseCase<GetDuplicateIdCheckUseCase.Params, String>() {
 
     override suspend fun buildUseCase(params: Params): String {
-        return userRepository.getDuplicateIdCheck(params.duplicateId)
+        return userRepository.getDuplicateIdCheck(params.id)
     }
 
     data class Params(
-        val duplicateId: DuplicateId
+        val id: String
     )
 }

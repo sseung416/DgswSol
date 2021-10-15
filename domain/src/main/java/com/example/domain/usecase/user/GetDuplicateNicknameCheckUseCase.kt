@@ -10,10 +10,10 @@ class GetDuplicateNicknameCheckUseCase @Inject constructor(
 ) : ParamsUseCase<GetDuplicateNicknameCheckUseCase.Params, String>() {
 
     override suspend fun buildUseCase(params: Params): String {
-        return userRepository.getDuplicateNicknameCheck(params.duplicateNickname)
+        return userRepository.getDuplicateNicknameCheck(params.nickname)
     }
 
     data class Params(
-        val duplicateNickname: DuplicateNickname
+        val nickname: String
     )
 }
