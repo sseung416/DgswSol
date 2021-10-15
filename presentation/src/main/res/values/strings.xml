@@ -3,7 +3,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- errorMsg -->
-    <string name="error_input_info">정보를 입력해주세요.</string>
+    <string name="error_input"> 입력해주세요.</string>
+    <string name="error_not_regular_id">영문자, 숫자, 특수기호를 모두 포함한 8~12글자를 입력해주세요.</string>
+    <string name="error_not_regular_password">영문자, 숫자, 특수기호를 모두 포함한 8~12글자를 입력해주세요.</string>
+    <string name="error_not_regular_nickname">2글자 이상의 닉네임을 입력해주세요.</string>
+
     <string name="error_not_resident_number">올바르지 않은 주민등록번호입니다.</string>
 
     <!-- home tab -->

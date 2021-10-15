@@ -20,66 +20,92 @@
             android:id="@+id/constraintLayout_1_view_pager_item_sign_up"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible"
+            android:visibility="gone"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
+            <TextView
+                android:id="@+id/textView28"
+                style="@style/SignTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/id"
+                app:layout_constraintBottom_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/et_layout_id_view_pager_item_sign_up" />
+
+            <TextView
+                android:id="@+id/textView29"
+                style="@style/SignTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password"
+                app:layout_constraintBottom_toBottomOf="@+id/et_layout_password_view_pager_item_sign_up"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_id_view_pager_item_sign_up"
-                style="@style/SignTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
+                setError="@{vm.idError}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:helperText="영어, 숫자를 포함한 3~12글자 이내"
-                app:layout_constraintEnd_toStartOf="@+id/btn_id_double_check_view_pager_item_sign_up"
-                app:layout_constraintStart_toStartOf="parent"
+                app:helperText="영어, 숫자를 포함한 3~12글자"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/et_layout_password_view_pager_item_sign_up"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_id_view_pager_item_sign_up"
-                    style="@style/SignTextInputEditText"
+                    style="@style/Widget.AppCompat.EditText.Sign"
+                    onTextChangedListener="@{() -> vm.setIdError()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/id"
-                    android:maxLines="1" />
+                    android:paddingEnd="80dp"
+                    android:text="@={vm.id}"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_password_view_pager_item_sign_up"
-                style="@style/SignTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
+                setError="@{vm.passwordError}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:helperText="영어, 숫자, 특수기호를 포함한 8~12글자 이내"
-                app:layout_constraintEnd_toStartOf="@+id/btn_password_double_check_view_pager_item_sign_up"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="15dp"
+                app:helperText="영어, 숫자, 특수기호를 포함한 8~12글자"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView29"
                 app:layout_constraintTop_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_password_view_pager_item_sign_up"
-                    style="@style/SignTextInputEditText"
+                    style="@style/Widget.AppCompat.EditText.Sign"
+                    onTextChangedListener="@{() -> vm.setPasswordError()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/password"
                     android:inputType="textPassword"
-                    android:maxLines="1" />
+                    android:text="@={vm.password}"
+                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_id_double_check_view_pager_item_sign_up"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:enabled="@{vm.idError.length() == 0 ? true : false}"
+                android:onClick="@{() -> vm.duplicateCheck()}"
                 android:text="@string/double_check"
-                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/et_layout_id_view_pager_item_sign_up" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_password_double_check_view_pager_item_sign_up"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/double_check"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/et_layout_password_view_pager_item_sign_up" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -92,54 +118,68 @@
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
+            <TextView
+                android:id="@+id/textView30"
+                style="@style/SignTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_number"
+                app:layout_constraintBottom_toBottomOf="@+id/et_layout_phone_number_view_pager_item_sign_up"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/et_layout_phone_number_view_pager_item_sign_up" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_phone_number_view_pager_item_sign_up"
-                style="@style/SignTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
+                setError="@{vm.phoneNumberError}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView30"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_phone_number_view_pager_item_sign_up"
-                    style="@style/SignTextInputEditText"
+                    style="@style/Widget.AppCompat.EditText.Sign"
+                    onTextChangedListener="@{() -> vm.setPhoneNumberError()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="true"
-                    android:hint="@string/phone_number"
-                    android:maxEms="8" />
+                    android:maxEms="8"
+                    android:text="@={vm.phoneNumber}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_name_view_pager_item_sign_up"
-                style="@style/SignTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
+                setError="@{vm.nameError}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="15dp"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView31"
                 app:layout_constraintTop_toBottomOf="@+id/layout_rrn_view_pager_item_sign_up">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_name_view_pager_item_sign_up"
-                    style="@style/SignTextInputEditText"
+                    style="@style/Widget.AppCompat.EditText.Sign"
+                    onTextChangedListener="@{() -> vm.setNameError()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/name" />
+                    android:text="@={vm.name}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/textView15"
-                style="@style/SmallTextView"
+                style="@style/SignTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="주민 등록 번호"
+                android:layout_marginTop="15dp"
+                android:text="주민등록번호"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_layout_phone_number_view_pager_item_sign_up" />
 
@@ -153,63 +193,78 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView15">
 
-                <TextView
-                    android:id="@+id/tv_rrn1_view_pager_item_sign_up"
-                    style="@style/ResidentRegistrationNumberTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/tv_rrn2_view_pager_item_sign_up"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/tv_rrn3_view_pager_item_sign_up"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/tv_rrn4_view_pager_item_sign_up"
-                    style="@style/ResidentRegistrationNumberTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/tv_rrn5_view_pager_item_sign_up"
-                    style="@style/ResidentRegistrationNumberTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/tv_rrn6_view_pager_item_sign_up"
-                    style="@style/ResidentRegistrationNumberTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    style="@style/BoldTextView"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_layout_create_account"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
+                    setError="@{vm.residentNumberError}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:text="-" />
+                    android:layout_weight="1"
+                    app:hintEnabled="false"
+                    tools:layout_editor_absoluteX="20dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_create_account"
+                        style="@style/TransParentTextInputEditText"
+                        onTextChangedListener="@{() -> vm.setResidentNumberError()}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="number"
+                        android:letterSpacing="1"
+                        android:maxLength="6"
+                        android:text="@={vm.residentNumber}" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
-                    android:id="@+id/tv_rrn7_view_pager_item_sign_up"
-                    style="@style/ResidentRegistrationNumberTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical"
+                    android:text="-"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
 
-                <TextView
-                    style="@style/BoldTextView"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_layout2_create_account"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="* * * * * *" />
+                    app:hintEnabled="false"
+                    tools:layout_editor_absoluteX="20dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_create2_account"
+                        style="@style/Widget.AppCompat.EditText.Sign"
+                        onTextChangedListener="@{() -> vm.setResidentNumberError()}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:letterSpacing="1"
+                        android:maxLength="1"
+                        android:text="@={vm.residentNumberBack}"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="1"
+                    android:paddingEnd="10dp"
+                    android:text="******"
+                    android:textColor="@color/black" />
+
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView31"
+                style="@style/SignTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                app:layout_constraintBottom_toBottomOf="@+id/et_layout_name_view_pager_item_sign_up"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/et_layout_name_view_pager_item_sign_up" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -219,7 +274,6 @@
             android:id="@+id/constraintLayout_3_view_pager_item_sign_up"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
@@ -245,22 +299,55 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_nick_name_view_pager_item_sign_up"
-                style="@style/SignTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
                 android:layout_width="0dp"
                 android:layout_height="82dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 app:helperText="2글자 이상"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_profile_img_view_pager_item_sign_up">
+                app:layout_constraintStart_toEndOf="@+id/textView32"
+                app:layout_constraintTop_toBottomOf="@+id/cv_profile_img_view_pager_item_sign_up"
+                setError="@{vm.nickNameError}">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_nick_name_view_pager_item_sign_up"
-                    style="@style/SignTextInputEditText"
+                    style="@style/Widget.AppCompat.EditText.Sign"
+                    onTextChangedListener="@{() -> vm.setNicknameError()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/nickname" />
+                    android:text="@={vm.nickname}"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView32"
+                style="@style/SignTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nickname"
+                app:layout_constraintBottom_toBottomOf="@+id/et_layout_nick_name_view_pager_item_sign_up"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/et_layout_nick_name_view_pager_item_sign_up" />
+
+            <CheckBox
+                android:id="@+id/check_box_view_pager_item_sign_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="약관동의"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view6" />
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/light_grey"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_layout_nick_name_view_pager_item_sign_up" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 

@@ -64,6 +64,15 @@
         <item name="android:layout_marginEnd">5dp</item>
     </style>
 
+    <style name="SignTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/main_sky_blue</item>
+        <item name="android:layout_marginEnd">13dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+    </style>
+
     <!-- CardView -->
     <style name="CardView.Pin">
         <item name="cardBackgroundColor">@color/grey</item>
@@ -94,18 +103,23 @@
     </style>
 
     <!-- TextInputLayout -->
-    <style name="SignTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+<!--    <style name="SignTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
+<!--        <item name="errorEnabled">true</item>-->
+<!--        <item name="hintEnabled">false</item>-->
+<!--        <item name="helperTextEnabled">true</item>-->
+<!--        &lt;!&ndash; color &ndash;&gt;-->
+<!--        <item name="boxStrokeColor">@color/main_sky_blue</item>-->
+<!--        <item name="boxStrokeErrorColor">@color/error</item>-->
+<!--        &lt;!&ndash; radius &ndash;&gt;-->
+<!--        <item name="boxCornerRadiusBottomEnd">30dp</item>-->
+<!--        <item name="boxCornerRadiusBottomStart">30dp</item>-->
+<!--        <item name="boxCornerRadiusTopEnd">30dp</item>-->
+<!--        <item name="boxCornerRadiusTopStart">30dp</item>-->
+<!--    </style>-->
+    
+    <style name="Widget.MaterialComponents.TextInputLayout.FilledBox.Sign">
         <item name="errorEnabled">true</item>
-        <item name="hintEnabled">false</item>
         <item name="helperTextEnabled">true</item>
-        <!-- color -->
-        <item name="boxStrokeColor">@color/main_sky_blue</item>
-        <item name="boxStrokeErrorColor">@color/error</item>
-        <!-- radius -->
-        <item name="boxCornerRadiusBottomEnd">30dp</item>
-        <item name="boxCornerRadiusBottomStart">30dp</item>
-        <item name="boxCornerRadiusTopEnd">30dp</item>
-        <item name="boxCornerRadiusTopStart">30dp</item>
     </style>
 
     <style name="TransParentTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -115,16 +129,25 @@
     </style>
 
     <!-- EditText -->
-    <style name="SignTextInputEditText" parent="Widget.AppCompat.EditText">
-        <item name="hintEnabled">false</item>
-        <item name="android:maxLines">1</item>
-        <!-- padding -->
-        <item name="android:paddingStart">22dp</item>
-        <item name="android:paddingEnd">22dp</item>
-        <!-- font -->
-        <item name="android:textSize">15sp</item>
+    <!-- 원형 버전 -->
+<!--    <style name="SignTextInputEditText" parent="Widget.AppCompat.EditText">-->
+<!--        <item name="hintEnabled">false</item>-->
+<!--        <item name="android:maxLines">1</item>-->
+<!--        &lt;!&ndash; padding &ndash;&gt;-->
+<!--        <item name="android:paddingStart">22dp</item>-->
+<!--        <item name="android:paddingEnd">22dp</item>-->
+<!--        &lt;!&ndash; font &ndash;&gt;-->
+<!--        <item name="android:textSize">15sp</item>-->
+<!--        <item name="android:textColor">@color/black</item>-->
+<!--        <item name="android:includeFontPadding">true</item>-->
+<!--    </style>-->
+    
+    <!-- 밑줄 버전 -->
+    <style name="Widget.AppCompat.EditText.Sign">
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:includeFontPadding">true</item>
+        <item name="android:textSize">15sp</item>
+        <item name="maxLines">1</item>
     </style>
 
     <style name="TransParentTextInputEditText" parent="Widget.AppCompat.EditText">
