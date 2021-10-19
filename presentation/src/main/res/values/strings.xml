@@ -4,6 +4,7 @@
 
     <!-- errorMsg -->
     <string name="error_input"> 입력해주세요.</string>
+    <string name="error_input_info">정보를 입력해주세요.</string>
     <string name="error_not_regular_id">영문자, 숫자, 특수기호를 모두 포함한 8~12글자를 입력해주세요.</string>
     <string name="error_not_regular_password">영문자, 숫자, 특수기호를 모두 포함한 8~12글자를 입력해주세요.</string>
     <string name="error_not_regular_nickname">2글자 이상의 닉네임을 입력해주세요.</string>
@@ -34,6 +35,7 @@
     <string name="transfer">송금하기</string>
     <string name="won">원</string>
     <string name="input_account_name">계좌 별명 입력</string>
+    <string name="login">로그인</string>
 
 
 </resources>

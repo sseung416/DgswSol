@@ -34,4 +34,21 @@
             android:id="@+id/action_pinNuberFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_loginFragment_to_pinNuberFragment"
+            app:destination="@id/pinNuberFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_loginBasicFragment"
+            app:destination="@id/loginBasicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginBasicFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.LoginBasicFragment"
+        android:label="LoginBasicFragment"
+        tools:layout="@layout/login_basic_fragment"/>
 </navigation>
