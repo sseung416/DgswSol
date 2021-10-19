@@ -9,13 +9,10 @@ object Preference {
     private lateinit var sharedPreferences: SharedPreferences
 
     fun init(context: Context) {
-        sharedPreferences = context.getSharedPreferences("token", MODE_PRIVATE)
+        sharedPreferences = context.getSharedPreferences("authorization", MODE_PRIVATE)
     }
 
-    var token: Token
-        get() {
-            TODO()
-//            sharedPreferences.getString()
-        }
-        set(value) = sharedPreferences.edit().putString("token", value.token).apply()
+    var token: String
+        get() = sharedPreferences.getString("token", "")?:""
+        set(value) = sharedPreferences.edit().putString("token", value).apply()
 }
