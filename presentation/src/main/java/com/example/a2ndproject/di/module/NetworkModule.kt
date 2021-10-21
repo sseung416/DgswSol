@@ -1,5 +1,6 @@
 package com.example.a2ndproject.di.module
 
+import com.example.a2ndproject.ui.view.utils.TokenInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,15 +16,16 @@ import javax.inject.Singleton
 object NetworkModule {
     @Singleton
     @Provides
-    fun providesRetrofit(): Retrofit =
+    fun providesOkhttpClient() =
+        OkHttpClient.Builder().addInterceptor(TokenInterceptor())
+
+    @Singleton
+    @Provides
+    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("http://123/")
+            .client(okHttpClient)
             .build()
 
-//    @Singleton
-//    @Provides
-//    fun providesOkHttpClient(): OkHttpClient {
-//
-//    }
 }
