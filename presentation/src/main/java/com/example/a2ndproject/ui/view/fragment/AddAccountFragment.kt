@@ -11,6 +11,8 @@ class AddAccountFragment : BaseFragment<AddAccountFragmentBinding>() {
     override fun getLayoutResId(): Int =
         R.layout.add_account_fragment
 
+    override fun setViewModel() {}
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -26,4 +28,6 @@ class AddAccountFragment : BaseFragment<AddAccountFragmentBinding>() {
     private fun navigateToCreateAccount() {
         navController.navigate(R.id.action_addAccountFragment_to_identityAuthFragment)
     }
+
+
 }

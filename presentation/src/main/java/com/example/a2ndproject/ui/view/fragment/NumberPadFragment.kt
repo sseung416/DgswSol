@@ -32,6 +32,8 @@ class NumberPadFragment : BaseFragment<NumberPadFragmentBinding>() {
     override fun getLayoutResId(): Int =
         R.layout.number_pad_fragment
 
+    override fun setViewModel() {}
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

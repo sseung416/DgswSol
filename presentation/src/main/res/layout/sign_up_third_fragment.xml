@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.fragment.SignUpThirdFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_profile_img_view_pager_item_sign_up"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:clickable="true"
+        app:cardCornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <ImageView
+            android:id="@+id/iv_profile_view_pager_item_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:src="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_layout_nick_name_view_pager_item_sign_up"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
+        android:layout_width="0dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:helperText="2글자 이상"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView32"
+        app:layout_constraintTop_toBottomOf="@+id/cv_profile_img_view_pager_item_sign_up"
+        setError="@{vm.nickNameError}">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_nick_name_view_pager_item_sign_up"
+            style="@style/Widget.AppCompat.EditText.Sign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={vm.nickname}"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView32"
+        style="@style/SignTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nickname"
+        app:layout_constraintBottom_toBottomOf="@+id/et_layout_nick_name_view_pager_item_sign_up"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_layout_nick_name_view_pager_item_sign_up" />
+
+    <CheckBox
+        android:id="@+id/check_box_view_pager_item_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="약관동의"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view6" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_layout_nick_name_view_pager_item_sign_up" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

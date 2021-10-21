@@ -11,9 +11,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.a2ndproject.databinding.SignUpVpItemFragmentBinding
+import com.example.a2ndproject.databinding.VpItemSignUpFragmentBinding
+import com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel
 
-class SignUpViewPagerAdapter : RecyclerView.Adapter<SignUpViewPagerAdapter.ViewHolder>() {
+class SignUpViewPagerAdapter(
+    private val viewModel: SignUpViewModel
+) : RecyclerView.Adapter<SignUpViewPagerAdapter.ViewHolder>() {
 
     interface OnClickSignUpListener {
         fun onClick()
@@ -38,7 +41,7 @@ class SignUpViewPagerAdapter : RecyclerView.Adapter<SignUpViewPagerAdapter.ViewH
         }
     }
 
-    lateinit var binding: SignUpVpItemFragmentBinding
+    lateinit var binding: VpItemSignUpFragmentBinding
 
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
         /**
@@ -48,39 +51,37 @@ class SignUpViewPagerAdapter : RecyclerView.Adapter<SignUpViewPagerAdapter.ViewH
          *  */
         fun setLayout(position: Int) {
             /* 모든 view의 visibility를 gone으로 바꾸고 해당하는 position의 view만 visible로 바꿈 */
-            binding.constraintLayout1ViewPagerItemSignUp.visibility = View.GONE
-            binding.constraintLayout2ViewPagerItemSignUp.visibility = View.GONE
-            binding.constraintLayout3ViewPagerItemSignUp.visibility = View.GONE
-
-            when (position) {
-                /* 아이디, 비밀번호 설정 */
-                0 -> binding.constraintLayout1ViewPagerItemSignUp.visibility = View.VISIBLE
-
-                /* 주민등록번호(7자리), 전화번호, 실명 설정 */
-                1 -> binding.constraintLayout2ViewPagerItemSignUp.visibility = View.VISIBLE
-
-                /* 프로필 사진, 별명 설정 */
-                2 -> binding.constraintLayout3ViewPagerItemSignUp.visibility = View.VISIBLE
-            }
+//            binding.constraintLayout1ViewPagerItemSignUp.visibility = View.GONE
+//            binding.constraintLayout2ViewPagerItemSignUp.visibility = View.GONE
+//            binding.constraintLayout3ViewPagerItemSignUp.visibility = View.GONE
+//
+//            when (position) {
+//                /* 아이디, 비밀번호 설정 */
+//                0 -> binding.constraintLayout1ViewPagerItemSignUp.visibility = View.VISIBLE
+//
+//                /* 주민등록번호(7자리), 전화번호, 실명 설정 */
+//                1 -> binding.constraintLayout2ViewPagerItemSignUp.visibility = View.VISIBLE
+//
+//                /* 프로필 사진, 별명 설정 */
+//                2 -> binding.constraintLayout3ViewPagerItemSignUp.visibility = View.VISIBLE
+//            }
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        binding = SignUpVpItemFragmentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = VpItemSignUpFragmentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding.vm = viewModel
         return ViewHolder()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setLayout(position)
 
-        binding.btnIdDoubleCheckViewPagerItemSignUp.setOnClickListener {
-            setOnClickSignUpIdListener.onClick()
-        }
+//        binding.btnIdDoubleCheckViewPagerItemSignUp.setOnClickListener {
+//            setOnClickSignUpIdListener.onClick()
+//        }
 
-        binding.btnPasswordDoubleCheckViewPagerItemSignUp.setOnClickListener {
-            setOnClickSignUpPasswordListener.onClick()
-        }
     }
 
     override fun getItemCount(): Int = 3

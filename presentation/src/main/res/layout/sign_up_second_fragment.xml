@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.fragment.SignUpSecondFragment">
+
+        <TextView
+            android:id="@+id/textView30"
+            style="@style/SignTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_number"
+            app:layout_constraintBottom_toBottomOf="@+id/et_layout_phone_number_view_pager_item_sign_up"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/et_layout_phone_number_view_pager_item_sign_up" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_layout_phone_number_view_pager_item_sign_up"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
+            setError="@{vm.phoneNumberError}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView30"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_phone_number_view_pager_item_sign_up"
+                style="@style/Widget.AppCompat.EditText.Sign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:text="@={vm.phoneNumber}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_layout_name_view_pager_item_sign_up"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
+            setError="@{vm.nameError}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView31"
+            app:layout_constraintTop_toBottomOf="@+id/layout_rrn_view_pager_item_sign_up">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name_view_pager_item_sign_up"
+                style="@style/Widget.AppCompat.EditText.Sign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={vm.name}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView15"
+            style="@style/SignTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="주민등록번호"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_layout_phone_number_view_pager_item_sign_up" />
+
+        <LinearLayout
+            android:id="@+id/layout_rrn_view_pager_item_sign_up"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_layout_create_account"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
+                setError="@{vm.residentNumberError}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:hintEnabled="false"
+                tools:layout_editor_absoluteX="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_create_account"
+                    style="@style/TransParentTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:letterSpacing="1"
+                    android:maxLength="6"
+                    android:text="@={vm.residentNumber}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                android:text="-"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_layout2_create_account"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:hintEnabled="false"
+                tools:layout_editor_absoluteX="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_create2_account"
+                    style="@style/Widget.AppCompat.EditText.Sign"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:letterSpacing="1"
+                    android:maxLength="1"
+                    android:text="@={vm.residentNumberBack}"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="1"
+                android:paddingEnd="10dp"
+                android:text="******"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView31"
+            style="@style/SignTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            app:layout_constraintBottom_toBottomOf="@+id/et_layout_name_view_pager_item_sign_up"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/et_layout_name_view_pager_item_sign_up" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

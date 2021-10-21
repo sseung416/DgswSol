@@ -16,6 +16,10 @@ class HomeTabFragment : BaseFragment<HomeFragmentTabBinding>() {
     override fun getLayoutResId(): Int =
         R.layout.home_fragment_tab
 
+    override fun setViewModel() {
+        binding.vm = viewModel
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

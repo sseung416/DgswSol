@@ -33,6 +33,7 @@ abstract class BaseFragment<B: ViewDataBinding> : Fragment() {
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+        setViewModel()
         return binding.root
     }
 
@@ -43,10 +44,5 @@ abstract class BaseFragment<B: ViewDataBinding> : Fragment() {
 
     protected abstract fun getLayoutResId(): Int
 
-    // todo moved to utils
-    protected fun showToast(msg: String) =
-        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
-
-    protected fun showLog(msg: String) =
-        Log.d(TAG, msg)
+    protected abstract fun setViewModel()
 }

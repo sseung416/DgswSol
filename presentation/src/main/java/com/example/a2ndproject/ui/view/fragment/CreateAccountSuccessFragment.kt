@@ -14,6 +14,8 @@ class CreateAccountSuccessFragment : BaseFragment<AddAccountCreateSuccessFragmen
     override fun getLayoutResId(): Int =
         R.layout.add_account_create_success_fragment
 
+    override fun setViewModel() {}
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

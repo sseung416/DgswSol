@@ -1,96 +1,193 @@
-/**
- * Sign Up ViewModel Class
- *
- * @author 최승연
- * @date 2021-09-07
- * */
 package com.example.a2ndproject.ui.viewmodel.fragment
 
+import android.app.Application
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.example.a2ndproject.R
 import com.example.a2ndproject.ui.view.base.BaseViewModel
+import com.example.a2ndproject.ui.view.utils.getString
+import com.example.domain.entity.request.SignUp
+import com.example.domain.usecase.user.GetDuplicateIdCheckUseCase
+import com.example.domain.usecase.user.PostQuickSignUpUseCase
+import com.example.domain.usecase.user.PostSignUpUseCase
 
-class SignUpViewModel : BaseViewModel() {
+class SignUpViewModel(
+    application: Application,
+    private val postSignUpUseCase: PostSignUpUseCase? = null,
+    private val postQuickSignUpUseCase: PostQuickSignUpUseCase? = null,
+    private val getDuplicateIdCheckUseCase: GetDuplicateIdCheckUseCase? = null
+) : AndroidViewModel(application) {
 
-    // 오류
-    val idError = MutableLiveData<String>()
-    val pwError = MutableLiveData<String>()
-    val nickNameError = MutableLiveData<String>()
+    val id = MutableLiveData("")
+    val password = MutableLiveData("")
 
+    val residentNumber = MutableLiveData("")
+    val residentNumberBack = MutableLiveData("")
+    val name = MutableLiveData("")
 
-    val textChange = MutableLiveData<Unit>()
+    val phoneNumber = MutableLiveData<String>()
+    val nickname = MutableLiveData<String>()
+    val agree = MutableLiveData(false)
 
-    fun onTextChange() {
+    // 에러 메시지
+    val idError = MutableLiveData("")
+    val passwordError = MutableLiveData("")
+
+    val residentNumberError = MutableLiveData("")
+    val phoneNumberError = MutableLiveData("")
+    val nameError = MutableLiveData<String>()
+
+    val nickNameError = MutableLiveData("")
+
+//    val duplicateCheckId = MutableLiveData("")
+
+    val currentItem = MutableLiveData(0)
+
+    /* 회원가입 다음 화면으로 전환 */
+    fun navigateToNext() {
+        when (currentItem.value) {
+            0 -> {
+                val list = listOf(id.value, password.value, idError.value, passwordError.value)
+
+                if (isNotEmpty(list))
+                    currentItem.value = 1
+            }
+
+            1 -> {
+                val list = listOf(residentNumber.value,
+                    phoneNumber.value,
+                    name.value,
+                    residentNumberError.value,
+                    phoneNumberError.value,
+                    nameError.value
+                )
+
+                if (isNotEmpty(list))
+                    currentItem.value = 2
+            }
+
+            2 -> {
+
+            }
+        }
 
     }
 
+    /* 회원가입 첫 번째 화면 */
+    fun setIdError() {
+        val id = id.value!!
 
-    private var isDoubleCheckedId = true
-    private var isDoubleCheckedPassword = true
-
-    /**
-     * 아이디 정규식 검사 메서드
-     *
-     * @return String? : 에러 메세지를 반환(에러가 없을 시 null)
-     * @param id : 아이디
-     * */
-    fun isValidId(id: String): String? {
         /* 영어, 숫자를 포함한 3~12글자의 정규식 */
         val reg = "^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z[0-9]]{3,12}".toRegex()
 
-        if (id.isEmpty()) return "아이디를 입력해주세요."
-        else if (!id.matches(reg)) return "영문자 및 숫자를 포함한 3~12글자를 입력해주세요."
+        this.idError.value = when {
+            id.isEmpty() ->
+                getStringErrorInputMsg("아이디를")
 
-        return null
+            !id.matches(reg) ->
+                this.getString(getApplication(), R.string.error_not_regular_id)
+
+            else -> ""
+        }
     }
 
-    /**
-     * 비밀번호 정규식 검사 메서드
-     *
-     * @return String? : 에러 메세지를 반환(에러가 없을 시 null)
-     * @param password : 비밀번호
-     * */
-    fun isValidPassword(password: String): String? {
+    fun setPasswordError() {
+        val password = password.value!!
+
         /* 영어, 숫자, 특수기호를 모두 포함한 8~12글자의 정규식 */
         val reg = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{8,12}$".toRegex()
 
-        if (password.isBlank()) return "비밀번호를 입력해주세요."
-        else if (!password.matches(reg)) return "영문자, 숫자, 특수기호를 모두 포함한 8~12글자를 입력해주세요."
+        this.passwordError.value = when {
+            password.isBlank() ->
+                getStringErrorInputMsg("비밀번호를")
 
-        return null
+            !password.matches(reg) ->
+                this.getString(getApplication(), R.string.error_not_regular_password)
+
+            else -> ""
+        }
     }
 
-    /**
-     * 닉네임 정규식 검사 메서드
-     *
-     * @return String? : 에러 메세지를 반환(에러가 없을 시 null)
-     * @param nickName : 닉네임
-     * */
-    fun isValidNickName(nickName: String): String? {
+    /* 회원가입 두 번째 화면 */
+    fun setResidentNumberError() {
+        val number = residentNumber.value!!
+        val numberBack = residentNumberBack.value!!
+
+        residentNumberError.value = when {
+            number.isBlank() || numberBack.isBlank() ->
+                getStringErrorInputMsg("주민등록번호를")
+
+            else -> ""
+        }
+    }
+
+    fun setPhoneNumberError() {
+        val phoneNumber = residentNumber.value!!
+
+        phoneNumberError.value = when {
+            phoneNumber.isBlank() ->
+                getStringErrorInputMsg("휴대폰 번호를")
+
+            else -> ""
+        }
+    }
+
+    fun setNameError() {
+        val name = name.value!!
+
+        nameError.value = when {
+            name.isBlank() ->
+                getStringErrorInputMsg("이름을")
+
+            else -> ""
+        }
+    }
+
+    /* 회원가입 마지막 화면 */
+    fun setNicknameError() {
+        val nickname = nickname.value!!
+
         /* 영어, 한글, 숫자의 2글자 이상의 조합의 정규식 */
-        // ToDo (최대 닉네임 길이 정하기)
         val reg = "^[a-zA-Z가-힣[0-9]]{2,100}".toRegex()
 
-        if (nickName.isBlank()) return "닉네임을 입력해주세요."
-        else if (!nickName.matches(reg)) return "2글자 이상의 닉네임을 입력해주세요."
+        nickNameError.value = when {
+            nickname.isBlank() ->
+                getStringErrorInputMsg("별명을")
 
-        return null
+            !nickname.matches(reg) ->
+                this.getString(getApplication(), R.string.error_not_regular_nickname)
+
+            else -> ""
+        }
     }
 
-    /**
-     * 중복 확인 버튼을 눌렀는가에 따라 에러 메시지를 반환하는 메서드
-     *
-     * @return String? : 에러 메시지를 반환(에러가 없을 시 null)
-     * */
-    fun isDuplicateCheck(): String? {
-        return if (isDoubleCheckedId && isDoubleCheckedPassword) {
-            null
-        } else if (isDoubleCheckedId && !isDoubleCheckedPassword) {
-            "비밀번호 중복 확인을 해주세요."
-        } else if (!isDoubleCheckedId && isDoubleCheckedPassword) {
-            "아이디 중복 확인을 해주세요."
-        } else {
-            "아이디와 비밀번호 중복 확인을 해주세요."
+    fun signUp() {
+//        val signUp = SignUp(
+//            id.value!!,
+//            password.value!!,
+//            phoneNumber.value!!.replace("-",""),
+//            bir
+//        )
+//
+//        postSignUpUseCase.buildUseCase(PostSignUpUseCase.Params())
+    }
+
+    fun quickSignUp() {
+
+    }
+
+    /* '~를 입력하세요.' 에러 메세지를 가져오는 메서드 */
+    private fun getStringErrorInputMsg(s: String) =
+        s + this.getString(getApplication(), R.string.error_input)
+
+    private fun isNotEmpty(list: List<*>): Boolean {
+        list.forEach { item ->
+            if (item.toString().isNullOrBlank())
+                return false
         }
+
+        return true
     }
 
 }

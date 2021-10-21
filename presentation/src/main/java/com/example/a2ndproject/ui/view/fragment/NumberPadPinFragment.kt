@@ -24,10 +24,32 @@ import androidx.fragment.app.viewModels
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.NumberPadPinFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
+import com.example.a2ndproject.ui.view.base.BaseViewModel
+import com.example.a2ndproject.ui.view.base.BaseViewModelFactory
+import com.example.a2ndproject.ui.viewmodel.fragment.LoginViewModel
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadViewModel
+import com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel
+import com.example.domain.entity.request.SignUp
+import com.example.domain.usecase.user.PostQuickLoginUseCase
+import com.example.domain.usecase.user.PostQuickSignUpUseCase
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
+import javax.inject.Inject
 
+//@AndroidEntryPoint
 class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
+
+//    @Inject
+//    lateinit var postQuickLoginUseCase: PostQuickLoginUseCase
+//    @Inject
+//    lateinit var postQuickSignupUseCase: PostQuickSignUpUseCase
+//
+//    private val loginViewModel: LoginViewModel by activityViewModels {
+//        BaseViewModelFactory(postQuickLoginUseCase)
+//    }
+//    private val signUpViewModel: SignUpViewModel by activityViewModels {
+//        BaseViewModelFactory(postQuickSignupUseCase)
+//    }
 
     private val numberPadViewModel: NumberPadViewModel by activityViewModels()
 
@@ -35,6 +57,10 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
 
     override fun getLayoutResId(): Int =
         R.layout.number_pad_pin_fragment
+
+    override fun setViewModel() {
+
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

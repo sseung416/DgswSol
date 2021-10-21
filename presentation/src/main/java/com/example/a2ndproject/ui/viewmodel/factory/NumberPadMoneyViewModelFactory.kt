@@ -12,7 +12,7 @@ class NumberPadMoneyViewModelFactory(
         return if (modelClass.isAssignableFrom(NumberPadMoneyViewModel::class.java)) {
             NumberPadMoneyViewModel(account) as T
         } else {
-            throw IllegalAccessException()
+            throw IllegalAccessException("ViewModelFactory")
         }
     }
 }

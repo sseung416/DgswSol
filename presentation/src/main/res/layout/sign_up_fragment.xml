@@ -12,22 +12,23 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/layout_padding_big">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/tv_title_sign_up"
             style="@style/TitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="정보를 입력해주세요."
+            android:layout_marginTop="@dimen/layout_padding_big"
+            android:text="@string/error_input_info"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_confirm_sign_up"
-            style="@style/Widget.AppCompat.Button.MainButton.EnableFalse"
+            style="@style/Widget.AppCompat.Button.BottomBlueButton"
+            android:onClick="@{() -> vm.navigateToNext()}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/confirm"
@@ -35,18 +36,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/view_pager_sign_up"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/btn_confirm_sign_up"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_sign_up">
-
-        </androidx.viewpager2.widget.ViewPager2>
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_sign_up"></LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

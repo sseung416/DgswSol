@@ -30,8 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="35dp"
-                android:text="@{vm.position == 0 ?
-                    @string/home_tab_create_title : @string/home_tab_connect_title}"
+                android:text="@{vm.position == 0 ? @string/home_tab_create_title : @string/home_tab_connect_title}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -46,8 +45,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="32dp"
                 android:gravity="center_horizontal"
-                android:text="@{vm.position == 0 ?
-                    @string/home_tab_create_content : @string/home_tab_connect_content}"
+                android:text="@{vm.position == 0 ? @string/home_tab_create_content : @string/home_tab_connect_content}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_tab"
@@ -69,8 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:text="@{vm.position == 0 ?
-                    @string/register : @string/home_tab_connect_button}"
+                android:text="@{vm.position == 0 ? @string/register : @string/home_tab_connect_button}"
                 android:onClick="@{() -> vm.navigateAddAccount()}"
                 android:textColor="@color/main_sky_blue"
                 android:textStyle="bold"

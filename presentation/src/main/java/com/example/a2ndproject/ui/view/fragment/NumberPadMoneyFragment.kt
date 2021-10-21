@@ -24,6 +24,10 @@ class NumberPadMoneyFragment : BaseFragment<NumberPadMoneyFragmentBinding>() {
     override fun getLayoutResId(): Int =
         R.layout.number_pad_money_fragment
 
+    override fun setViewModel() {
+        binding.vm = moneyViewModel
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

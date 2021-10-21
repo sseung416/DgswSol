@@ -23,7 +23,7 @@ class IntroViewPagerAdapter(private val list: List<String>) : RecyclerView.Adapt
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflate = LayoutInflater.from(parent.context).inflate(R.layout.intro_view_pager_fragment, parent, false)
+        val inflate = LayoutInflater.from(parent.context).inflate(R.layout.vp_item_intro_fragment, parent, false)
         return ViewHolder(inflate)
     }
 

@@ -15,6 +15,10 @@ class IdentityAuthFragment : BaseFragment<AddAccountIdentityAuthFragmentBinding>
     override fun getLayoutResId(): Int =
         R.layout.add_account_identity_auth_fragment
 
+    override fun setViewModel() {
+        binding.vm = viewModel
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

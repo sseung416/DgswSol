@@ -16,19 +16,22 @@ import com.example.domain.usecase.user.PostLoginUseCase
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@AndroidEntryPoint
+//@AndroidEntryPoint
 class LoginBasicFragment : BaseFragment<LoginBasicFragmentBinding>() {
 
-    @Inject
-    lateinit var postLoginUseCase: PostLoginUseCase
+//    @Inject
+//    lateinit var postLoginUseCase: PostLoginUseCase
 
-    private val viewModel: LoginViewModel by activityViewModels {
-        BaseViewModelFactory(postLoginUseCase)
-    }
+    private val viewModel: LoginViewModel by activityViewModels()
+//        BaseViewModelFactory(postLoginUseCase)
+
 
     override fun getLayoutResId(): Int =
         R.layout.login_basic_fragment
 
+    override fun setViewModel() {
+        binding.vm = viewModel
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,7 +43,7 @@ class LoginBasicFragment : BaseFragment<LoginBasicFragmentBinding>() {
 
     private fun observe() = with(viewModel) {
         isSuccess.observe(viewLifecycleOwner) {
-            token = it.token
+            token = it.token!!
         }
 
         isFailure.observe(viewLifecycleOwner) {
