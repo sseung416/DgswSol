@@ -1,32 +1,47 @@
 package com.example.a2ndproject.ui.viewmodel.fragment
 
 import android.app.Application
+import android.text.Editable
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.a2ndproject.R
 import com.example.a2ndproject.ui.view.base.BaseViewModel
+import com.example.a2ndproject.ui.view.utils.MessageUtil
 import com.example.a2ndproject.ui.view.utils.getString
+import com.example.a2ndproject.ui.view.utils.isBlankAll
+import com.example.a2ndproject.ui.view.utils.isNotBlankAll
+import com.example.domain.entity.request.QuickPw
 import com.example.domain.entity.request.SignUp
 import com.example.domain.usecase.user.GetDuplicateIdCheckUseCase
 import com.example.domain.usecase.user.PostQuickSignUpUseCase
 import com.example.domain.usecase.user.PostSignUpUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import java.lang.Exception
+import javax.inject.Inject
 
-class SignUpViewModel(
-    application: Application,
-    private val postSignUpUseCase: PostSignUpUseCase? = null,
-    private val postQuickSignUpUseCase: PostQuickSignUpUseCase? = null,
-    private val getDuplicateIdCheckUseCase: GetDuplicateIdCheckUseCase? = null
-) : AndroidViewModel(application) {
+@HiltViewModel
+class SignUpViewModel @Inject constructor(
+    private val application: Application,
+    private val getDuplicateIdCheckUseCase: GetDuplicateIdCheckUseCase,
+    private val postSignUpUseCase: PostSignUpUseCase,
+    private val postQuickSignUpUseCase: PostQuickSignUpUseCase
+): ViewModel() {
 
     val id = MutableLiveData("")
     val password = MutableLiveData("")
+    val idCheck = MutableLiveData(false)
 
     val residentNumber = MutableLiveData("")
     val residentNumberBack = MutableLiveData("")
     val name = MutableLiveData("")
-
     val phoneNumber = MutableLiveData<String>()
+
+    val profile = MutableLiveData("")
     val nickname = MutableLiveData<String>()
     val agree = MutableLiveData(false)
 
@@ -40,9 +55,27 @@ class SignUpViewModel(
 
     val nickNameError = MutableLiveData("")
 
-//    val duplicateCheckId = MutableLiveData("")
-
     val currentItem = MutableLiveData(0)
+
+    // 통신 결과
+    private val _isSuccessGetIdCheck: MutableLiveData<GetDuplicateIdCheckUseCase> = MutableLiveData()
+    val isSuccessIdCheck = _isSuccessGetIdCheck
+//
+//    private val _isFailureGetIdCheck: MutableLiveData<GetDuplicateIdCheckUseCase> = MutableLiveData()
+//    val isFailureIdCheck = _isFailureGetIdCheck
+//
+    private val _isSuccessPostSignUp: MutableLiveData<PostSignUpUseCase> = MutableLiveData()
+    val isSuccessPostSignUp = _isSuccessPostSignUp
+//
+//    private val _isFailurePostSignUp: MutableLiveData<PostSignUpUseCase> = MutableLiveData()
+//    val isFailurePostSignUp = _isFailurePostSignUp
+//
+    private val _isSuccessPostQuickSignUp: MutableLiveData<PostQuickSignUpUseCase> = MutableLiveData()
+    val isSuccessPostQuickSignUp = _isSuccessPostQuickSignUp
+//
+//    private val _isFailurePostQuickSignUp: MutableLiveData<PostQuickSignUpUseCase> = MutableLiveData()
+//    val isFailurePostQuickSignUp = _isFailurePostQuickSignUp
+
 
     /* 회원가입 다음 화면으로 전환 */
     fun navigateToNext() {
@@ -50,12 +83,13 @@ class SignUpViewModel(
             0 -> {
                 val list = listOf(id.value, password.value, idError.value, passwordError.value)
 
-                if (isNotEmpty(list))
+                if (idCheck.value!! && list.isNotBlankAll())
                     currentItem.value = 1
             }
 
             1 -> {
-                val list = listOf(residentNumber.value,
+                val list = listOf(
+                    residentNumber.value,
                     phoneNumber.value,
                     name.value,
                     residentNumberError.value,
@@ -63,19 +97,23 @@ class SignUpViewModel(
                     nameError.value
                 )
 
-                if (isNotEmpty(list))
+                if (list.isNotBlankAll())
                     currentItem.value = 2
             }
 
             2 -> {
+                val list = listOf(profile.value, nickname.value)
 
+                if (agree.value!! && list.isBlankAll())
+                    currentItem.value = 3
             }
         }
 
     }
 
     /* 회원가입 첫 번째 화면 */
-    fun setIdError() {
+    fun setIdError(s: Editable?) {
+        MessageUtil.printLog("setIdError", "실행되긴 함")
         val id = id.value!!
 
         /* 영어, 숫자를 포함한 3~12글자의 정규식 */
@@ -86,13 +124,13 @@ class SignUpViewModel(
                 getStringErrorInputMsg("아이디를")
 
             !id.matches(reg) ->
-                this.getString(getApplication(), R.string.error_not_regular_id)
+                this.getString(application, R.string.error_not_regular_id)
 
             else -> ""
         }
     }
 
-    fun setPasswordError() {
+    fun setPasswordError(editable: Editable?) {
         val password = password.value!!
 
         /* 영어, 숫자, 특수기호를 모두 포함한 8~12글자의 정규식 */
@@ -103,14 +141,14 @@ class SignUpViewModel(
                 getStringErrorInputMsg("비밀번호를")
 
             !password.matches(reg) ->
-                this.getString(getApplication(), R.string.error_not_regular_password)
+                this.getString(application, R.string.error_not_regular_password)
 
             else -> ""
         }
     }
 
     /* 회원가입 두 번째 화면 */
-    fun setResidentNumberError() {
+    fun setResidentNumberError(editable: Editable?) {
         val number = residentNumber.value!!
         val numberBack = residentNumberBack.value!!
 
@@ -122,7 +160,7 @@ class SignUpViewModel(
         }
     }
 
-    fun setPhoneNumberError() {
+    fun setPhoneNumberError(editable: Editable?) {
         val phoneNumber = residentNumber.value!!
 
         phoneNumberError.value = when {
@@ -133,7 +171,7 @@ class SignUpViewModel(
         }
     }
 
-    fun setNameError() {
+    fun setNameError(editable: Editable?) {
         val name = name.value!!
 
         nameError.value = when {
@@ -145,7 +183,7 @@ class SignUpViewModel(
     }
 
     /* 회원가입 마지막 화면 */
-    fun setNicknameError() {
+    fun setNicknameError(editable: Editable?) {
         val nickname = nickname.value!!
 
         /* 영어, 한글, 숫자의 2글자 이상의 조합의 정규식 */
@@ -156,9 +194,22 @@ class SignUpViewModel(
                 getStringErrorInputMsg("별명을")
 
             !nickname.matches(reg) ->
-                this.getString(getApplication(), R.string.error_not_regular_nickname)
+                this.getString(application, R.string.error_not_regular_nickname)
 
             else -> ""
+        }
+    }
+
+    fun checkId() {
+        viewModelScope.launch {
+            val id = ""
+
+            try {
+                getDuplicateIdCheckUseCase!!.buildUseCase(GetDuplicateIdCheckUseCase.Params(id))
+                MessageUtil.printLog("checkId", "성공")
+            } catch (e: Exception) {
+                MessageUtil.printLog("checkId", "실패")
+            }
         }
     }
 
@@ -174,20 +225,20 @@ class SignUpViewModel(
     }
 
     fun quickSignUp() {
+        viewModelScope.launch {
+            val quickPw = QuickPw("123456")
 
+            try {
+                postQuickSignUpUseCase!!.buildUseCase(PostQuickSignUpUseCase.Params(quickPw))
+                MessageUtil.printLog("quickSignup", "성공")
+            } catch (e: Exception) {
+                MessageUtil.printLog("quickSignup", "실패")
+            }
+        }
     }
 
     /* '~를 입력하세요.' 에러 메세지를 가져오는 메서드 */
-    private fun getStringErrorInputMsg(s: String) =
-        s + this.getString(getApplication(), R.string.error_input)
-
-    private fun isNotEmpty(list: List<*>): Boolean {
-        list.forEach { item ->
-            if (item.toString().isNullOrBlank())
-                return false
-        }
-
-        return true
-    }
+    private fun getStringErrorInputMsg(s: String) = ""
+//        s + this.getString(application, R.string.error_input)
 
 }
