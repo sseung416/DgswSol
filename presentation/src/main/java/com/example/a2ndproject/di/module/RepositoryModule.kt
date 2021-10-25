@@ -6,6 +6,9 @@ import com.example.data.datasource.UserDataSource
 import com.example.data.repository.AccountRepositoryImpl
 import com.example.data.repository.TransferRepositoryImpl
 import com.example.data.repository.UserRepositoryImpl
+import com.example.domain.repository.AccountRepository
+import com.example.domain.repository.TransferRepository
+import com.example.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,16 +22,16 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun providesUserRepository(dataSource: UserDataSource) =
+    fun providesUserRepository(dataSource: UserDataSource): UserRepository =
         UserRepositoryImpl(dataSource)
 
     @Singleton
     @Provides
-    fun providesAccountRepository(dataSource: AccountDataSource) =
+    fun providesAccountRepository(dataSource: AccountDataSource): AccountRepository =
         AccountRepositoryImpl(dataSource)
 
     @Singleton
     @Provides
-    fun providesTransferRepository(dataSource: TransferDataSource) =
+    fun providesTransferRepository(dataSource: TransferDataSource): TransferRepository =
         TransferRepositoryImpl(dataSource)
 }

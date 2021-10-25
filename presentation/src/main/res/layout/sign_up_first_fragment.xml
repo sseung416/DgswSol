@@ -41,15 +41,14 @@
             setError="@{vm.idError}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:helperText="영어, 숫자를 포함한 3~12글자"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/et_layout_password_view_pager_item_sign_up"
             app:layout_constraintTop_toTopOf="parent">
 
-            <!-- onTextChangedListener="@{() -> vm.setIdError()}" -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_id_view_pager_item_sign_up"
                 style="@style/Widget.AppCompat.EditText.Sign"
+                android:afterTextChanged="@{(text)->vm.setIdError(text)}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingEnd="80dp"
@@ -66,7 +65,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="15dp"
-            app:helperText="영어, 숫자, 특수기호를 포함한 8~12글자"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView29"
             app:layout_constraintTop_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up">
@@ -74,6 +72,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_password_view_pager_item_sign_up"
                 style="@style/Widget.AppCompat.EditText.Sign"
+                android:afterTextChanged="@{(text)->vm.setPasswordError(text)}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -86,12 +85,13 @@
             android:id="@+id/btn_id_double_check_view_pager_item_sign_up"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:enabled="@{vm.idError.length() == 0 ? true : false}"
+            android:enabled="@{vm.idError.length() == 0 &amp;&amp; vm.id.length() != 0 ? true : false}"
+            android:onClick="@{() -> vm.checkId()}"
             android:text="@string/double_check"
-            app:layout_constraintBottom_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/et_layout_id_view_pager_item_sign_up" />
 

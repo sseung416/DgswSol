@@ -11,12 +11,12 @@ import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.SignUpThirdFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpThirdFragment : BaseFragment<SignUpThirdFragmentBinding>() {
 
-    private val viewModel: SignUpViewModel by activityViewModels {
-        ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
-    }
+    private val viewModel: SignUpViewModel by activityViewModels()
 
     override fun setViewModel() {
         binding.vm = viewModel

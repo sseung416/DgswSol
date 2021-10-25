@@ -41,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="true"
+                android:afterTextChanged="@{(text)->vm.setPhoneNumberError(text)}"
                 android:text="@={vm.phoneNumber}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -61,6 +62,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_name_view_pager_item_sign_up"
                 style="@style/Widget.AppCompat.EditText.Sign"
+                android:afterTextChanged="@{(text)->vm.setNameError(text)}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@={vm.name}" />
@@ -103,6 +105,7 @@
                     android:layout_height="match_parent"
                     android:inputType="number"
                     android:letterSpacing="1"
+                    android:afterTextChanged="@{(text)->vm.setResidentNumberError(text)}"
                     android:maxLength="6"
                     android:text="@={vm.residentNumber}" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -128,6 +131,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_create2_account"
                     style="@style/Widget.AppCompat.EditText.Sign"
+                    android:afterTextChanged="@{(text)->vm.setPhoneNumberError(text)}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"

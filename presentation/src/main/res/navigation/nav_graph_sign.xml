@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_sign"
+    app:startDestination="@id/signUpFirstFragment">
+
+    <fragment
+        android:id="@+id/signUpFirstFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.SignUpFirstFragment"
+        android:label="SignUpFirstFragment"
+        tools:layout="@layout/sign_up_first_fragment">
+        <action
+            android:id="@+id/action_signUpFirstFragment_to_signUpSecondFragment"
+            app:destination="@id/signUpSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpSecondFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.SignUpSecondFragment"
+        android:label="SignUpSecondFragment"
+        tools:layout="@layout/sign_up_second_fragment">
+        <action
+            android:id="@+id/action_signUpSecondFragment_to_signUpThirdFragment"
+            app:destination="@id/signUpThirdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpThirdFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.SignUpThirdFragment"
+        android:label="SignUpThirdFragment"
+        tools:layout="@layout/sign_up_third_fragment"/>
+</navigation>

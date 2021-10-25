@@ -16,12 +16,14 @@ import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.SignUpFragmentBinding
 import com.example.a2ndproject.ui.view.adapter.SignUpViewPagerAdapter
 import com.example.a2ndproject.ui.view.base.BaseFragment
+import com.example.a2ndproject.ui.view.utils.MessageUtil
 import com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpFragment : BaseFragment<SignUpFragmentBinding>() {
-    private val viewModel: SignUpViewModel by activityViewModels {
-        ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
-    }
+
+    private val viewModel: SignUpViewModel by activityViewModels()
 
     override fun getLayoutResId(): Int =
         R.layout.sign_up_fragment
@@ -32,40 +34,28 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        observe()
     }
-
-    /**
-     * 회원가입 후 핀번호 설정하도록 PinNumberFragment로 이동하는 메서드
-     * */
-    private fun navigateToPinNumber() {
-        /* 핀 번호를 설정 하는 지, 로그인 하는 지에 따라 type이 달라짐 */
-        val bundle = Bundle()
-        bundle.putInt("type", 0)
-
-        navController.navigate(R.id.action_signUpFragment_to_pinNuberFragment, bundle)
-    }
-
-//    private fun setIdEditTextListener() {
-//        adapter.binding.etIdViewPagerItemSignUp.addTextChangedListener {
-//            adapter.binding.etLayoutIdViewPagerItemSignUp.error =
-//                viewModel.isValidId(it.toString().trim())
-//        }
-//    }
-//
-//    private fun setPasswordEditTextListener() {
-//        adapter.binding.etPasswordViewPagerItemSignUp.addTextChangedListener {
-//            adapter.binding.etLayoutPasswordViewPagerItemSignUp.error =
-//                viewModel.isValidPassword(it.toString().trim())
-//        }
-//    }
-
-//    private fun setPhoneNumberEditTextListener() = adapter.binding.etPhoneNumberViewPagerItemSignUp.apply {
-//        addTextChangedListener(object : PhoneNumberFormattingTextWatcher(){})
-//    }
 
     private fun observe() = with(viewModel) {
-        idError.observe(viewLifecycleOwner) {
 
+        // 다음 화면으로 이동
+        currentItem.observe(viewLifecycleOwner) {
+            var layout = when (it) {
+                1 -> R.id.action_signUpFirstFragment_to_signUpSecondFragment
+
+                2 -> R.id.action_signUpSecondFragment_to_signUpThirdFragment
+
+                3 -> {
+                    navController.navigate(R.id.action_signUpFragment_to_pinNuberFragment)
+                    return@observe
+                }
+
+                else -> return@observe
+            }
+
+            navController.navigate(layout!!)
         }
     }
 

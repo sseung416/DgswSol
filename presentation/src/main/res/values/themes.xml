@@ -147,7 +147,7 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">15sp</item>
-        <item name="maxLines">1</item>
+        <item name="android:maxLines">1</item>
     </style>
 
     <style name="TransParentTextInputEditText" parent="Widget.AppCompat.EditText">

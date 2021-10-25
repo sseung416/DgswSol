@@ -10,21 +10,20 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-//todo 베이스 url 설정
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
     @Singleton
     @Provides
-    fun providesOkhttpClient() =
-        OkHttpClient.Builder().addInterceptor(TokenInterceptor())
+    fun providesOkhttpClient(): OkHttpClient =
+        OkHttpClient.Builder().addInterceptor(TokenInterceptor()).build()
 
     @Singleton
     @Provides
     fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://123/")
+            .baseUrl("http://10.80.161.222:3000/")
             .client(okHttpClient)
             .build()
 
