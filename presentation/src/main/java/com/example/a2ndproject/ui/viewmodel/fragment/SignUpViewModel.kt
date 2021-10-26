@@ -4,16 +4,14 @@ import android.app.Application
 import android.text.Editable
 import android.util.Log
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.a2ndproject.R
 import com.example.a2ndproject.ui.view.base.BaseViewModel
-import com.example.a2ndproject.ui.view.utils.MessageUtil
-import com.example.a2ndproject.ui.view.utils.getString
-import com.example.a2ndproject.ui.view.utils.isBlankAll
-import com.example.a2ndproject.ui.view.utils.isNotBlankAll
+import com.example.a2ndproject.ui.view.utils.*
 import com.example.domain.entity.request.QuickPw
 import com.example.domain.entity.request.SignUp
 import com.example.domain.usecase.user.GetDuplicateIdCheckUseCase
@@ -21,6 +19,8 @@ import com.example.domain.usecase.user.PostQuickSignUpUseCase
 import com.example.domain.usecase.user.PostSignUpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.File
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -42,7 +42,7 @@ class SignUpViewModel @Inject constructor(
     val phoneNumber = MutableLiveData<String>()
 
     val profile = MutableLiveData("")
-    val nickname = MutableLiveData<String>()
+    val nickname = MutableLiveData("")
     val agree = MutableLiveData(false)
 
     // 에러 메시지
@@ -51,14 +51,14 @@ class SignUpViewModel @Inject constructor(
 
     val residentNumberError = MutableLiveData("")
     val phoneNumberError = MutableLiveData("")
-    val nameError = MutableLiveData<String>()
+    val nameError = MutableLiveData("")
 
     val nickNameError = MutableLiveData("")
 
     val currentItem = MutableLiveData(0)
 
     // 통신 결과
-    private val _isSuccessGetIdCheck: MutableLiveData<GetDuplicateIdCheckUseCase> = MutableLiveData()
+    private val _isSuccessGetIdCheck: MutableLiveData<String> = MutableLiveData()
     val isSuccessIdCheck = _isSuccessGetIdCheck
 //
 //    private val _isFailureGetIdCheck: MutableLiveData<GetDuplicateIdCheckUseCase> = MutableLiveData()
@@ -81,9 +81,10 @@ class SignUpViewModel @Inject constructor(
     fun navigateToNext() {
         when (currentItem.value) {
             0 -> {
-                val list = listOf(id.value, password.value, idError.value, passwordError.value)
+                val list = listOf(id.value, password.value)
+                val errList = listOf(idError.value, passwordError.value)
 
-                if (idCheck.value!! && list.isNotBlankAll())
+                if (idCheck.value!! && list.isNotBlankAll() && errList.isBlankAll())
                     currentItem.value = 1
             }
 
@@ -92,28 +93,34 @@ class SignUpViewModel @Inject constructor(
                     residentNumber.value,
                     phoneNumber.value,
                     name.value,
+                )
+                val errList = listOf(
                     residentNumberError.value,
                     phoneNumberError.value,
                     nameError.value
                 )
 
-                if (list.isNotBlankAll())
+                if (list.isNotBlankAll() && errList.isBlankAll())
                     currentItem.value = 2
             }
 
             2 -> {
                 val list = listOf(profile.value, nickname.value)
 
-                if (agree.value!! && list.isBlankAll())
+
+                if (agree.value!! && list.isNotBlankAll()) {
+
                     currentItem.value = 3
+                }
             }
+
+            else -> Log.d("signUp", "오잉? 웨안돼지")
         }
 
     }
 
     /* 회원가입 첫 번째 화면 */
     fun setIdError(s: Editable?) {
-        MessageUtil.printLog("setIdError", "실행되긴 함")
         val id = id.value!!
 
         /* 영어, 숫자를 포함한 3~12글자의 정규식 */
@@ -202,18 +209,44 @@ class SignUpViewModel @Inject constructor(
 
     fun checkId() {
         viewModelScope.launch {
-            val id = ""
+            val id = id.value!!
 
             try {
-                getDuplicateIdCheckUseCase!!.buildUseCase(GetDuplicateIdCheckUseCase.Params(id))
-                MessageUtil.printLog("checkId", "성공")
+                val msg = getDuplicateIdCheckUseCase.buildUseCase(GetDuplicateIdCheckUseCase.Params(id))
+
+                _isSuccessGetIdCheck.postValue(msg)
             } catch (e: Exception) {
-                MessageUtil.printLog("checkId", "실패")
+                MessageUtil.printLog("checkId-viewModel", e.message.toString())
             }
         }
     }
 
     fun signUp() {
+        val id = id.value!!
+        val pw = password.value!!
+        val phone = phoneNumber.value!!
+        val birth = residentNumber.value + residentNumberBack.value
+        val name = name.value!!
+        val attachment = File("C:\\")
+        val nickName = nickname.value!!
+
+        viewModelScope.launch {
+            try {
+                postSignUpUseCase.buildUseCase(PostSignUpUseCase.Params(
+                    id.getRequestBody(),
+                    pw.getRequestBody(),
+                    phone.getRequestBody(),
+                    birth.getRequestBody(),
+                    name.getRequestBody(),
+                    nickName.getRequestBody(),
+                    attachment.toUri().getImageBody("attachment", application.contentResolver)
+                ))
+            } catch (e: Exception) {
+
+            }
+        }
+
+
 //        val signUp = SignUp(
 //            id.value!!,
 //            password.value!!,

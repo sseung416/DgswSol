@@ -16,8 +16,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_profile_img_view_pager_item_sign_up"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="@dimen/profile_img_width"
+        android:layout_height="@dimen/profile_img_width"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:clickable="true"
@@ -28,7 +28,8 @@
         tools:ignore="SpeakableTextPresentCheck">
 
         <ImageView
-            android:id="@+id/iv_profile_view_pager_item_sign_up"
+            android:id="@+id/iv_profile_sign_up_third"
+            android:scaleType="centerCrop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:src="@tools:sample/avatars" />

@@ -42,20 +42,8 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding>() {
 
         // 다음 화면으로 이동
         currentItem.observe(viewLifecycleOwner) {
-            var layout = when (it) {
-                1 -> R.id.action_signUpFirstFragment_to_signUpSecondFragment
-
-                2 -> R.id.action_signUpSecondFragment_to_signUpThirdFragment
-
-                3 -> {
-                    navController.navigate(R.id.action_signUpFragment_to_pinNuberFragment)
-                    return@observe
-                }
-
-                else -> return@observe
-            }
-
-            navController.navigate(layout!!)
+            if (it == 3)
+                navController.navigate(R.id.action_signUpFragment_to_pinNuberFragment)
         }
     }
 

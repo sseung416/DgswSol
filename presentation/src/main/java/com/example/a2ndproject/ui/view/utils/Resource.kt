@@ -11,7 +11,7 @@ fun ViewModel.getString(application: Application, id: Int) =
 fun ViewModel.getColor(application: Application, id: Int) =
     ContextCompat.getColor(application.applicationContext, id)
 
-fun Fragment.getString(id: Int) =
+fun Fragment.getStringText(id: Int) =
     resources.getString(id)
 
 fun Fragment.getColor(id: Int) =

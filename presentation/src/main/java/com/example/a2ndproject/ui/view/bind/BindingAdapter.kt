@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.BindingAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputLayout
 
 object BindingAdapter {
@@ -29,7 +30,7 @@ object BindingAdapter {
     @JvmStatic
     @BindingAdapter("imageUrl")
     fun ImageView.loadImage(url: String?) {
-
+        Glide.with(context).load(url).into(this)
     }
 
 }

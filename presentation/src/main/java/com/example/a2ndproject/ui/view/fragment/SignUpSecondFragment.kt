@@ -25,6 +25,13 @@ class SignUpSecondFragment : BaseFragment<SignUpSecondFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.vm = viewModel
+        observe()
+    }
+
+    private fun observe() = with(viewModel) {
+        currentItem.observe(viewLifecycleOwner) {
+            if (it == 2)
+                navController.navigate(R.id.action_signUpSecondFragment_to_signUpThirdFragment)
+        }
     }
 }
