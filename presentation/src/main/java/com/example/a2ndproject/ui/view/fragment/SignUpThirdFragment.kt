@@ -27,6 +27,7 @@ import com.example.a2ndproject.databinding.SignUpThirdFragmentBinding
 import com.example.a2ndproject.di.application.MyHiltApplication_HiltComponents
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.utils.MessageUtil
+import com.example.a2ndproject.ui.view.utils.Preference.token
 import com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -54,6 +55,7 @@ class SignUpThirdFragment : BaseFragment<SignUpThirdFragmentBinding>() {
             if (it.resultCode == RESULT_OK && it.data?.data != null) {
                 try {
                     val imgUri = it.data?.data
+                    viewModel.profile.value = imgUri
 
                     var bitmap: Bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                         val source = ImageDecoder.createSource(requireActivity().contentResolver, imgUri!!)
@@ -69,18 +71,21 @@ class SignUpThirdFragment : BaseFragment<SignUpThirdFragmentBinding>() {
             }
         }
 
-        observe()
-
         binding.ivProfileSignUpThird.setOnClickListener {
             getImage()
         }
     }
 
     private fun getImage() {
+        val readStorage = android.Manifest.permission.READ_EXTERNAL_STORAGE
+        val permission = ActivityCompat.checkSelfPermission(requireActivity(), readStorage)
+
+        if (permission == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(readStorage), 1)
+        }
+
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         intent.type = "image/*"
         resultLauncher.launch(Intent.createChooser(intent, "사진을 선택해주세요."))
     }
-
-    private fun observe() = with(viewModel) {}
 }

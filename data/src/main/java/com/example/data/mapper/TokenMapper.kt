@@ -4,7 +4,7 @@ import com.example.data.entity.TokenResponse
 import com.example.domain.entity.response.Token
 
 fun Token.toResponse(): TokenResponse =
-    TokenResponse(this.token)
+    TokenResponse(this.logintoken)
 
 fun TokenResponse.toEntity(): Token =
-    Token(this.token)
+    Token(this.logintoken)

@@ -34,7 +34,7 @@ class UserRemote @Inject constructor(
         name: RequestBody,
         nickname: RequestBody,
         attachment: MultipartBody.Part
-    ): String {
+    ): TokenResponse {
         return getResponse(service.postSignUp(id, pw, phonenum, birth, name, nickname, attachment))
     }
 

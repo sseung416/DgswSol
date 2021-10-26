@@ -28,7 +28,7 @@ class UserRepositoryImpl @Inject constructor(
         name: RequestBody,
         nickname: RequestBody,
         attachment: MultipartBody.Part
-    ): String {
+    ): Token {
         return userDataSource.postSignUp(id, pw, phonenum, birth, name, nickname, attachment)
     }
 

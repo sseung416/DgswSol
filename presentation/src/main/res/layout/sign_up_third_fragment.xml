@@ -20,6 +20,8 @@
         android:layout_height="@dimen/profile_img_width"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
+        app:cardElevation="0dp"
+        android:elevation="0dp"
         android:clickable="true"
         app:cardCornerRadius="100dp"
         app:layout_constraintEnd_toEndOf="parent"

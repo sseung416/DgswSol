@@ -1,6 +1,7 @@
 package com.example.a2ndproject.ui.viewmodel.fragment
 
 import android.app.Application
+import android.net.Uri
 import android.text.Editable
 import android.util.Log
 import androidx.core.content.ContextCompat
@@ -19,6 +20,7 @@ import com.example.domain.usecase.user.PostQuickSignUpUseCase
 import com.example.domain.usecase.user.PostSignUpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import java.lang.Exception
@@ -29,7 +31,6 @@ class SignUpViewModel @Inject constructor(
     private val application: Application,
     private val getDuplicateIdCheckUseCase: GetDuplicateIdCheckUseCase,
     private val postSignUpUseCase: PostSignUpUseCase,
-    private val postQuickSignUpUseCase: PostQuickSignUpUseCase
 ): ViewModel() {
 
     val id = MutableLiveData("")
@@ -39,9 +40,9 @@ class SignUpViewModel @Inject constructor(
     val residentNumber = MutableLiveData("")
     val residentNumberBack = MutableLiveData("")
     val name = MutableLiveData("")
-    val phoneNumber = MutableLiveData<String>()
+    val phoneNumber = MutableLiveData("")
 
-    val profile = MutableLiveData("")
+    val profile: MutableLiveData<Uri> = MutableLiveData()
     val nickname = MutableLiveData("")
     val agree = MutableLiveData(false)
 
@@ -58,24 +59,17 @@ class SignUpViewModel @Inject constructor(
     val currentItem = MutableLiveData(0)
 
     // 통신 결과
+    private val _isFailure = MutableLiveData("")
+    val isFailure = _isFailure
+
     private val _isSuccessGetIdCheck: MutableLiveData<String> = MutableLiveData()
     val isSuccessIdCheck = _isSuccessGetIdCheck
-//
-//    private val _isFailureGetIdCheck: MutableLiveData<GetDuplicateIdCheckUseCase> = MutableLiveData()
-//    val isFailureIdCheck = _isFailureGetIdCheck
-//
-    private val _isSuccessPostSignUp: MutableLiveData<PostSignUpUseCase> = MutableLiveData()
-    val isSuccessPostSignUp = _isSuccessPostSignUp
-//
-//    private val _isFailurePostSignUp: MutableLiveData<PostSignUpUseCase> = MutableLiveData()
-//    val isFailurePostSignUp = _isFailurePostSignUp
-//
-    private val _isSuccessPostQuickSignUp: MutableLiveData<PostQuickSignUpUseCase> = MutableLiveData()
-    val isSuccessPostQuickSignUp = _isSuccessPostQuickSignUp
-//
-//    private val _isFailurePostQuickSignUp: MutableLiveData<PostQuickSignUpUseCase> = MutableLiveData()
-//    val isFailurePostQuickSignUp = _isFailurePostQuickSignUp
 
+    private val _isSuccessPostSignUp: MutableLiveData<String> = MutableLiveData()
+    val isSuccessPostSignUp = _isSuccessPostSignUp
+
+    private val _isSuccessPostQuickSignUp: MutableLiveData<String> = MutableLiveData()
+    val isSuccessPostQuickSignUp = _isSuccessPostQuickSignUp
 
     /* 회원가입 다음 화면으로 전환 */
     fun navigateToNext() {
@@ -105,13 +99,11 @@ class SignUpViewModel @Inject constructor(
             }
 
             2 -> {
-                val list = listOf(profile.value, nickname.value)
+                signUp()
 
-
-                if (agree.value!! && list.isNotBlankAll()) {
-
-                    currentItem.value = 3
-                }
+//                if (!agree.value!! && nickname.value!!.isNotBlank()) {
+//                    currentItem.value = 3
+//                }
             }
 
             else -> Log.d("signUp", "오잉? 웨안돼지")
@@ -216,58 +208,41 @@ class SignUpViewModel @Inject constructor(
 
                 _isSuccessGetIdCheck.postValue(msg)
             } catch (e: Exception) {
-                MessageUtil.printLog("checkId-viewModel", e.message.toString())
+                MessageUtil.printLog("checkId", e.message.toString())
             }
         }
     }
 
-    fun signUp() {
+    private fun signUp() {
         val id = id.value!!
         val pw = password.value!!
-        val phone = phoneNumber.value!!
+        val phone = phoneNumber.value!!.replace("-", "")
         val birth = residentNumber.value + residentNumberBack.value
         val name = name.value!!
-        val attachment = File("C:\\")
+        val attachment = profile.value?:Uri.EMPTY
         val nickName = nickname.value!!
 
         viewModelScope.launch {
             try {
-                postSignUpUseCase.buildUseCase(PostSignUpUseCase.Params(
+                val msg = postSignUpUseCase.buildUseCase(PostSignUpUseCase.Params(
                     id.getRequestBody(),
                     pw.getRequestBody(),
                     phone.getRequestBody(),
                     birth.getRequestBody(),
                     name.getRequestBody(),
                     nickName.getRequestBody(),
-                    attachment.toUri().getImageBody("attachment", application.contentResolver)
-                ))
+                    attachment.getImageBody("attachment", application.contentResolver))
+                )
+                Log.d("signUp","실행")
+                _isSuccessPostSignUp.postValue(msg.logintoken)
+                // todo 아무튼 sharedpreference에 ㄴ허기!
             } catch (e: Exception) {
-
+                Log.d("signUp", e.message.toString())
+                _isFailure.postValue(e.message.toString())
             }
         }
 
 
-//        val signUp = SignUp(
-//            id.value!!,
-//            password.value!!,
-//            phoneNumber.value!!.replace("-",""),
-//            bir
-//        )
-//
-//        postSignUpUseCase.buildUseCase(PostSignUpUseCase.Params())
-    }
-
-    fun quickSignUp() {
-        viewModelScope.launch {
-            val quickPw = QuickPw("123456")
-
-            try {
-                postQuickSignUpUseCase!!.buildUseCase(PostQuickSignUpUseCase.Params(quickPw))
-                MessageUtil.printLog("quickSignup", "성공")
-            } catch (e: Exception) {
-                MessageUtil.printLog("quickSignup", "실패")
-            }
-        }
     }
 
     /* '~를 입력하세요.' 에러 메세지를 가져오는 메서드 */

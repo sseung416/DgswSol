@@ -3,6 +3,7 @@ package com.example.data.network.service
 import com.example.data.entity.TokenResponse
 import com.example.domain.entity.request.Login
 import com.example.domain.entity.request.QuickPw
+import com.example.domain.entity.response.Token
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -18,15 +19,15 @@ interface UserService {
 
     @Multipart
     @POST("/signup")
-    fun postSignUp(
-        @Part id: RequestBody,
-        @Part pw: RequestBody,
-        @Part phonenum: RequestBody,
-        @Part birth: RequestBody,
-        @Part name: RequestBody,
-        @Part nickname: RequestBody,
+    suspend fun postSignUp(
+        @Part("id") id: RequestBody,
+        @Part("pw") pw: RequestBody,
+        @Part("phonenum") phonenum: RequestBody,
+        @Part("birth") birth: RequestBody,
+        @Part("name") name: RequestBody,
+        @Part("nickname") nickname: RequestBody,
         @Part attachment: MultipartBody.Part
-    ): Response<String>
+    ): Response<TokenResponse>
 
     @POST("/signup/quick")
     suspend fun postQuickSignUp(@Body quickPw: QuickPw): Response<TokenResponse>

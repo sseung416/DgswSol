@@ -33,6 +33,10 @@
         <action
             android:id="@+id/action_pinNuberFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <argument
+            android:name="type"
+            app:argType="integer"
+            android:defaultValue="-1"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

@@ -34,8 +34,8 @@ class UserDataSource @Inject constructor(
         name: RequestBody,
         nickname: RequestBody,
         attachment: MultipartBody.Part
-    ): String {
-        return remote.postSignUp(id, pw, phonenum, birth, name, nickname, attachment)
+    ): Token {
+        return remote.postSignUp(id, pw, phonenum, birth, name, nickname, attachment).toEntity()
     }
 
     suspend fun postLogin(login: Login): Token {

@@ -7,6 +7,7 @@
  * */
 package com.example.a2ndproject.ui.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -14,9 +15,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.SignUpFragmentBinding
+import com.example.a2ndproject.ui.view.activity.IntroActivity
+import com.example.a2ndproject.ui.view.activity.MainActivity
 import com.example.a2ndproject.ui.view.adapter.SignUpViewPagerAdapter
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.utils.MessageUtil
+import com.example.a2ndproject.ui.view.utils.Preference.token
 import com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,6 +48,11 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding>() {
         currentItem.observe(viewLifecycleOwner) {
             if (it == 3)
                 navController.navigate(R.id.action_signUpFragment_to_pinNuberFragment)
+        }
+
+        isSuccessPostSignUp.observe(viewLifecycleOwner) {
+            token = it
+            navController.navigate(SignUpFragmentDirections.actionSignUpFragmentToPinNuberFragment(0))
         }
     }
 

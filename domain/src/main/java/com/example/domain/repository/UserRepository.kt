@@ -28,7 +28,7 @@ interface UserRepository {
         name: RequestBody,
         nickname: RequestBody,
         attachment: MultipartBody.Part
-    ): String
+    ): Token
 
     // 회원가입 - 간편 인증 번호
     suspend fun postQuickSignUp(quickPw: QuickPw): Token
