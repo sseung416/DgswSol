@@ -4,6 +4,8 @@ import com.example.data.datasource.UserDataSource
 import com.example.domain.entity.request.*
 import com.example.domain.entity.response.Token
 import com.example.domain.repository.UserRepository
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
@@ -18,8 +20,16 @@ class UserRepositoryImpl @Inject constructor(
         return userDataSource.getDuplicateNameCheck(nickname)
     }
 
-    override suspend fun postSignUp(signUp: SignUp): String {
-        TODO("Not yet implemented")
+    override suspend fun postSignUp(
+        id: RequestBody,
+        pw: RequestBody,
+        phonenum: RequestBody,
+        birth: RequestBody,
+        name: RequestBody,
+        nickname: RequestBody,
+        attachment: MultipartBody.Part
+    ): String {
+        return userDataSource.postSignUp(id, pw, phonenum, birth, name, nickname, attachment)
     }
 
     override suspend fun postQuickSignUp(quickPw: QuickPw): Token {

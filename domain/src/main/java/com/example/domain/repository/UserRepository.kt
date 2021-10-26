@@ -8,6 +8,8 @@ package com.example.domain.repository
 import com.example.domain.entity.request.*
 import com.example.domain.entity.response.Response
 import com.example.domain.entity.response.Token
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 interface UserRepository {
 
@@ -18,7 +20,15 @@ interface UserRepository {
     suspend fun getDuplicateNicknameCheck(nickname: String): String
 
     // 회원가입
-    suspend fun postSignUp(signUp: SignUp): String
+    suspend fun postSignUp(
+        id: RequestBody,
+        pw: RequestBody,
+        phonenum: RequestBody,
+        birth: RequestBody,
+        name: RequestBody,
+        nickname: RequestBody,
+        attachment: MultipartBody.Part
+    ): String
 
     // 회원가입 - 간편 인증 번호
     suspend fun postQuickSignUp(quickPw: QuickPw): Token

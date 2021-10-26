@@ -32,6 +32,6 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun providesTransferRepository(dataSource: TransferDataSource): TransferRepository =
+    fun providesTransferRepository(dataSource: TransferDataSource): TransferRepository   =
         TransferRepositoryImpl(dataSource)
 }
