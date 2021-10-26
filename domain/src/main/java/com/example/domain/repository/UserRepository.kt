@@ -31,7 +31,7 @@ interface UserRepository {
     ): Token
 
     // 회원가입 - 간편 인증 번호
-    suspend fun postQuickSignUp(quickPw: QuickPw): Token
+    suspend fun postQuickSignUp(quickPw: QuickPw): String
 
     // 일반 로그인
     suspend fun postLogin(login: Login): Token

@@ -43,7 +43,7 @@ class LoginBasicFragment : BaseFragment<LoginBasicFragmentBinding>() {
 
     private fun observe() = with(viewModel) {
         isSuccess.observe(viewLifecycleOwner) {
-            token = it.token!!
+            token = it.logintoken!!
         }
 
         isFailure.observe(viewLifecycleOwner) {

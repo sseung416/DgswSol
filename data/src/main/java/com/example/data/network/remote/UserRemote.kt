@@ -22,7 +22,7 @@ class UserRemote @Inject constructor(
         return getResponse(service.getDuplicateNameCheck(name))!!
     }
 
-    suspend fun postQuickSignUp(quickPw: QuickPw): TokenResponse {
+    suspend fun postQuickSignUp(quickPw: QuickPw): String {
         return getResponse(service.postQuickSignUp(quickPw))
     }
 

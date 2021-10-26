@@ -22,8 +22,8 @@ class UserDataSource @Inject constructor(
         return remote.getDuplicateNameCheck(name)
     }
 
-    suspend fun postQuickSignUp(quickPw: QuickPw): Token {
-        return remote.postQuickSignUp(quickPw).toEntity()
+    suspend fun postQuickSignUp(quickPw: QuickPw): String {
+        return remote.postQuickSignUp(quickPw)
     }
 
     suspend fun postSignUp(
@@ -43,6 +43,6 @@ class UserDataSource @Inject constructor(
     }
 
     suspend fun postQuickLogin(quickPw: QuickPw): Token {
-        return remote.postQuickSignUp(quickPw).toEntity()
+        return remote.postQuickLogin(quickPw).toEntity()
     }
 }

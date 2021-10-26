@@ -30,7 +30,7 @@ interface UserService {
     ): Response<TokenResponse>
 
     @POST("/signup/quick")
-    suspend fun postQuickSignUp(@Body quickPw: QuickPw): Response<TokenResponse>
+    suspend fun postQuickSignUp(@Body quickPw: QuickPw): Response<String>
 
     @POST("/login")
     suspend fun postLogin(@Body login: Login): Response<TokenResponse>

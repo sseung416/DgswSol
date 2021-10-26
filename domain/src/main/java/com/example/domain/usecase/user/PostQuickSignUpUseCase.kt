@@ -8,9 +8,9 @@ import javax.inject.Inject
 
 class PostQuickSignUpUseCase @Inject constructor(
     private val userRepository: UserRepository
-) : ParamsUseCase<PostQuickSignUpUseCase.Params, Token>() {
+) : ParamsUseCase<PostQuickSignUpUseCase.Params, String>() {
 
-    override suspend fun buildUseCase(params: Params): Token {
+    override suspend fun buildUseCase(params: Params): String {
         return userRepository.postQuickSignUp(params.quickPw)
     }
 

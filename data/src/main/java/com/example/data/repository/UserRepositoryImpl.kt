@@ -32,7 +32,7 @@ class UserRepositoryImpl @Inject constructor(
         return userDataSource.postSignUp(id, pw, phonenum, birth, name, nickname, attachment)
     }
 
-    override suspend fun postQuickSignUp(quickPw: QuickPw): Token {
+    override suspend fun postQuickSignUp(quickPw: QuickPw): String {
         return userDataSource.postQuickSignUp(quickPw)
     }
 
