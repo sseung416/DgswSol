@@ -8,8 +8,9 @@
     <string name="error_not_regular_id">영문자, 숫자, 특수기호를 모두 포함한 8~12글자를 입력해주세요.</string>
     <string name="error_not_regular_password">영문자, 숫자, 특수기호를 모두 포함한 8~12글자를 입력해주세요.</string>
     <string name="error_not_regular_nickname">2글자 이상의 닉네임을 입력해주세요.</string>
-
     <string name="error_not_resident_number">올바르지 않은 주민등록번호입니다.</string>
+
+    <string name="fail_server">서버 통신에 실패했습니다.</string>
 
     <!-- home tab -->
     <string name="home_tab_create_title">간편한 입출금통장</string>
