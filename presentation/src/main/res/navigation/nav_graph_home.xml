@@ -57,11 +57,11 @@
         <action
             android:id="@+id/action_numberPadPinFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-        <!--  -->
-<!--        <argument-->
-<!--            android:name="type"-->
-<!--            app:argType="Integer"-->
-<!--            android:defaultValue="-1"/>-->
+
+        <argument
+            android:name="type"
+            app:argType="integer"
+            app:nullable="true"/>
     </fragment>
     <fragment
         android:id="@+id/numberPadMoneyFragment"
@@ -110,5 +110,9 @@
         <action
             android:id="@+id/action_identityAuthFragment_to_connectAccountFragment2"
             app:destination="@id/connectAccountFragment2" />
+        <argument
+            android:name="type"
+            app:nullable="true"
+            app:argType="integer" />
     </fragment>
 </navigation>

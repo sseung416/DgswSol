@@ -14,13 +14,12 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button4"
+            android:id="@+id/btn_confirm_check_info"
             style="@style/Widget.AppCompat.Button.BottomBlueButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/confirm"
             android:enabled="@{vm.accountName.length() == 0 ? false : true}"
-            android:onClick="@{() -> vm.navigateToPin()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -30,7 +29,7 @@
             android:layout_height="0dp"
             android:orientation="vertical"
             android:padding="@dimen/layout_padding_add_account"
-            app:layout_constraintBottom_toTopOf="@+id/button4"
+            app:layout_constraintBottom_toTopOf="@+id/btn_confirm_check_info"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

@@ -233,20 +233,21 @@ class SignUpViewModel @Inject constructor(
                     nickName.getRequestBody(),
                     attachment.getImageBody("attachment", application.contentResolver))
                 )
-                Log.d("signUp","실행")
+
                 _isSuccessPostSignUp.postValue(msg.logintoken)
-                // todo 아무튼 sharedpreference에 ㄴ허기!
             } catch (e: Exception) {
                 Log.d("signUp", e.message.toString())
                 _isFailure.postValue(e.message.toString())
             }
         }
+    }
 
+    fun signUpQuick() {
 
     }
 
     /* '~를 입력하세요.' 에러 메세지를 가져오는 메서드 */
-    private fun getStringErrorInputMsg(s: String) = ""
-//        s + this.getString(application, R.string.error_input)
+    private fun getStringErrorInputMsg(s: String) =
+        s + this.getString(application, R.string.error_input)
 
 }

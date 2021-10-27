@@ -9,12 +9,4 @@ class CheckInfoViewModel : ViewModel() {
     val accountName = MutableLiveData<String>()
 
     val navigateToPin = MutableLiveData(false)
-
-    fun navigateToPin() {
-        viewModelScope.launch {
-            // todo ~ ~ ~
-        }
-
-        navigateToPin.postValue(true)
-    }
 }

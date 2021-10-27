@@ -31,10 +31,10 @@
 
         <ImageView
             android:id="@+id/iv_profile_sign_up_third"
+            android:src="@drawable/ic_profile_default"
             android:scaleType="centerCrop"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:src="@tools:sample/avatars" />
+            android:layout_height="match_parent"/>
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.textfield.TextInputLayout

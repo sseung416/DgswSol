@@ -5,7 +5,13 @@ import android.view.View
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.AddAccountFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
+import com.example.a2ndproject.ui.view.data.FragmentType
 
+/**
+ * 기존 계좌를 추가 혹은 계좌를 개설을 선택하는 프래그먼트
+ * 계좌 개설: AddAccount - IdentityAuth - CheckInfo - NumberPadPin - CreateAccountSuccess - Home
+ * 계좌 추가: AddAccount - IdentityAuth - ConnectAccount - Home
+ * */
 class AddAccountFragment : BaseFragment<AddAccountFragmentBinding>() {
 
     override fun getLayoutResId(): Int =
@@ -17,17 +23,15 @@ class AddAccountFragment : BaseFragment<AddAccountFragmentBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnRegisterAddAccount.setOnClickListener {
-            navigateToCreateAccount()
+            navigateToIdentityAuth(FragmentType.IDENTITY_AUTH_CREATE.type)
         }
 
         binding.btnConnectAddAccount.setOnClickListener {
-            navigateToCreateAccount()
+            navigateToIdentityAuth(FragmentType.IDENTITY_AUTH_CONNECT.type)
         }
     }
 
-    private fun navigateToCreateAccount() {
-        navController.navigate(R.id.action_addAccountFragment_to_identityAuthFragment)
+    private fun navigateToIdentityAuth(type: Int) {
+        navController.navigate(AddAccountFragmentDirections.actionAddAccountFragmentToIdentityAuthFragment(type))
     }
-
-
 }

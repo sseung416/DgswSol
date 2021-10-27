@@ -20,7 +20,9 @@ import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.NumberPadPinFragmentBinding
 import com.example.a2ndproject.ui.view.activity.MainActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
+import com.example.a2ndproject.ui.view.data.FragmentType
 import com.example.a2ndproject.ui.view.utils.MessageUtil
+import com.example.a2ndproject.ui.view.utils.Preference.token
 import com.example.a2ndproject.ui.view.utils.getStringText
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadPinViewModel
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadViewModel
@@ -57,14 +59,7 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
             when (it.size) {
                 // 비밀번호 6자리가 모두 입력되었을 때, type에 따라 서버 통신 실행
                 6 -> {
-                    when (args.type) {
-                        0 ->
-                            numberPadPinViewModel.quickSignUp(numberPadViewModel.getNumber())
-                        1 ->
-                            numberPadPinViewModel.quickLogin(numberPadViewModel.getNumber())
-                        else ->
-                            Log.d("NumberPadPin", "navArgs 값 체크하기!")
-                    }
+
                 }
 
                 else -> {
@@ -94,8 +89,10 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
                     MessageUtil.showDialog(requireActivity(), "알림", "로그인에 실패하셨씀당!")
                 }
 
-                else ->
+                else -> {
+                    token = it.logintoken!!
                     navigateToMain()
+                }
             }
         }
 
@@ -109,6 +106,22 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
                     MessageUtil.showDialog(requireActivity(), "알림", "어쨋든 실패했어여...")
                 }
             }
+        }
+    }
+
+    private fun asdf() {
+        when (args.type) {
+            FragmentType.PIN_QUICK_SIGN_UP.type ->
+                numberPadPinViewModel.quickSignUp(numberPadViewModel.getNumber())
+
+            FragmentType.PIN_QUICK_SIGN_IN.type ->
+                numberPadPinViewModel.quickLogin(numberPadViewModel.getNumber())
+
+            FragmentType.PIN_ACCOUNT_PW.type ->
+                ""
+
+            else ->
+                Log.d("NumberPadPin", "navArgs 값 체크하기!")
         }
     }
 

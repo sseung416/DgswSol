@@ -3,31 +3,50 @@ package com.example.a2ndproject.ui.view.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.AddAccountIdentityAuthFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
+import com.example.a2ndproject.ui.view.utils.MessageUtil
+import com.example.a2ndproject.ui.view.utils.getStringText
+import com.example.a2ndproject.ui.view.utils.isNotBlankAll
 import com.example.a2ndproject.ui.viewmodel.fragment.IdentityAuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class IdentityAuthFragment : BaseFragment<AddAccountIdentityAuthFragmentBinding>() {
 
     private val viewModel: IdentityAuthViewModel by viewModels()
 
+    private val navArgs by navArgs<IdentityAuthFragmentArgs>()
+
     override fun getLayoutResId(): Int =
         R.layout.add_account_identity_auth_fragment
 
-    override fun setViewModel() {
-        binding.vm = viewModel
-    }
+    override fun setViewModel() { binding.vm = viewModel }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.vm = viewModel
 
         observe()
     }
 
     private fun observe() = with(viewModel) {
+        isFailure.observe(viewLifecycleOwner) {
+            MessageUtil.showDialog(requireActivity(), "알림", getStringText(R.string.fail_server))
+        }
+
+        isSuccessCheckAccount.observe(viewLifecycleOwner) {
+            when (it) {
+                "success" -> {
+                    navController.navigate(R.id.action_identityAuthFragment_to_checkInfoFragment)
+                }
+
+                "fail" ->
+                    MessageUtil.showDialog(requireActivity(), "알림", "어 너 정보 틀렸어~")
+            }
+        }
+
         name.observe(viewLifecycleOwner, {
             error.value = when (isErrorBlank()) {
                 true -> resources.getString(R.string.error_input_info)
@@ -57,19 +76,13 @@ class IdentityAuthFragment : BaseFragment<AddAccountIdentityAuthFragmentBinding>
         })
 
         error.observe(viewLifecycleOwner, {
-            btnEnabled.value = when {
-                name.value!!.isNotBlank() &&
-                        number.value!!.isNotBlank() &&
-                        numberBack.value!!.isNotBlank() &&
-                        error.value!!.isBlank() ->
-                    true
+            val list = listOf(name.value, number.value, numberBack.value)
 
+            btnEnabled.value = when {
+                list.isNotBlankAll() && error.value.isNullOrBlank() -> true
                 else -> false
             }
         })
 
-        navigateCheckInfo.observe(viewLifecycleOwner, {
-            navController.navigate(R.id.action_identityAuthFragment_to_checkInfoFragment)
-        })
     }
 }
