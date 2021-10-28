@@ -16,14 +16,14 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_profile_img_view_pager_item_sign_up"
-        android:layout_width="@dimen/profile_img_width"
-        android:layout_height="@dimen/profile_img_width"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         app:cardElevation="0dp"
         android:elevation="0dp"
         android:clickable="true"
-        app:cardCornerRadius="100dp"
+        app:cardCornerRadius="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,8 +33,8 @@
             android:id="@+id/iv_profile_sign_up_third"
             android:src="@drawable/ic_profile_default"
             android:scaleType="centerCrop"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_width="@dimen/profile_img_width"
+            android:layout_height="@dimen/profile_img_width"/>
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.textfield.TextInputLayout

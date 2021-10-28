@@ -1,6 +1,7 @@
 package com.example.a2ndproject.ui.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.AddAccountFragmentBinding

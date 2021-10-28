@@ -1,30 +1,23 @@
 package com.example.a2ndproject.ui.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.LoginBasicFragmentBinding
+import com.example.a2ndproject.ui.view.activity.MainActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
-import com.example.a2ndproject.ui.view.base.BaseViewModelFactory
+import com.example.a2ndproject.ui.view.utils.MessageUtil
 import com.example.a2ndproject.ui.view.utils.Preference.token
+import com.example.a2ndproject.ui.view.utils.getStringText
 import com.example.a2ndproject.ui.viewmodel.fragment.LoginViewModel
-import com.example.domain.usecase.user.PostLoginUseCase
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class LoginBasicFragment : BaseFragment<LoginBasicFragmentBinding>() {
 
-//    @Inject
-//    lateinit var postLoginUseCase: PostLoginUseCase
-
-    private val viewModel: LoginViewModel by activityViewModels()
-//        BaseViewModelFactory(postLoginUseCase)
-
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun getLayoutResId(): Int =
         R.layout.login_basic_fragment
@@ -43,11 +36,12 @@ class LoginBasicFragment : BaseFragment<LoginBasicFragmentBinding>() {
 
     private fun observe() = with(viewModel) {
         isSuccess.observe(viewLifecycleOwner) {
-            token = it.logintoken!!
+            token = it.msg!!
+            startActivity(Intent(requireActivity(), MainActivity::class.java))
         }
 
         isFailure.observe(viewLifecycleOwner) {
-
+            MessageUtil.showDialog(requireActivity(), "알림", getStringText(R.string.fail_server))
         }
     }
 }

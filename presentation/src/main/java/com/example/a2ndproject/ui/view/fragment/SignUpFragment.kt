@@ -45,14 +45,16 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding>() {
     private fun observe() = with(viewModel) {
 
         // 다음 화면으로 이동
-        currentItem.observe(viewLifecycleOwner) {
-            if (it == 3)
-                navController.navigate(R.id.action_signUpFragment_to_pinNuberFragment)
-        }
+//        currentItem.observe(viewLifecycleOwner) {
+//            if (it == 3)
+//                requireActivity().startActivity(Intent(requireActivity(), MainActivity::class.java))
+////                navController.navigate(R.id.action_signUpFragment_to_pinNuberFragment)
+//        }
 
         isSuccessPostSignUp.observe(viewLifecycleOwner) {
             token = it
-            navController.navigate(SignUpFragmentDirections.actionSignUpFragmentToPinNuberFragment(0))
+            requireActivity().startActivity(Intent(requireActivity(), MainActivity::class.java))
+//            navController.navigate(SignUpFragmentDirections.actionSignUpFragmentToPinNuberFragment(0))
         }
     }
 

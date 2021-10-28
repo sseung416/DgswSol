@@ -9,5 +9,8 @@ enum class FragmentType(val type: Int) {
     // 핀패드
     PIN_QUICK_SIGN_UP(0),
     PIN_QUICK_SIGN_IN(1),
-    PIN_ACCOUNT_PW(2)
+    PIN_ACCOUNT_PW(2),
+
+    ADD_ACCOUNT_CREATE(0),
+    ADD_ACCOUNT_CONNECT(1)
 }

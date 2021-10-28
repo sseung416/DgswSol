@@ -68,7 +68,6 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:text="@{vm.position == 0 ? @string/register : @string/home_tab_connect_button}"
-                android:onClick="@{() -> vm.navigateAddAccount()}"
                 android:textColor="@color/main_sky_blue"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

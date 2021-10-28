@@ -14,8 +14,8 @@ import com.google.android.material.textfield.TextInputLayout
 object BindingAdapter {
     @JvmStatic
     @BindingAdapter("setVisible")
-    fun View.setVisible(isVisibility: Boolean) {
-        visibility = when(isVisibility) {
+    fun View.setVisible(isVisible: Boolean) {
+        visibility = when(isVisible) {
             true -> VISIBLE
             false -> GONE
         }

@@ -1,5 +1,6 @@
 package com.example.a2ndproject.ui.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.AddAccountCreateSuccessFragmentBinding
+import com.example.a2ndproject.ui.view.activity.MainActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
 
 class CreateAccountSuccessFragment : BaseFragment<AddAccountCreateSuccessFragmentBinding>() {
@@ -20,7 +22,11 @@ class CreateAccountSuccessFragment : BaseFragment<AddAccountCreateSuccessFragmen
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnConfirmCreateSuccess.setOnClickListener {
-            navController.navigate(R.id.action_createAccountSuccessFragment_to_homeFragment)
+            navigateToMain()
         }
+    }
+
+    private fun navigateToMain() {
+        requireActivity().startActivity(Intent(requireActivity(), MainActivity::class.java))
     }
 }

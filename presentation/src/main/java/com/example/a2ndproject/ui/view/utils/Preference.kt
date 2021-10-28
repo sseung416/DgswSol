@@ -3,7 +3,6 @@ package com.example.a2ndproject.ui.view.utils
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import com.example.domain.entity.response.Token
 
 object Preference {
     private lateinit var sharedPreferences: SharedPreferences
