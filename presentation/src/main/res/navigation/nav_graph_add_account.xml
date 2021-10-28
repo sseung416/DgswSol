@@ -3,40 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_add_account"
-    app:startDestination="@id/homeFragment">
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.a2ndproject.ui.view.fragment.HomeFragment"
-        android:label="home_fragment"
-        tools:layout="@layout/home_fragment" >
-        <action
-            android:id="@+id/action_homeFragment_to_addAccountFragment"
-            app:destination="@id/addAccountFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_numberPadMoneyFragment"
-            app:destination="@id/numberPadMoneyFragment" />
-    </fragment>
+    app:startDestination="@id/addAccountFragment">
     <fragment
         android:id="@+id/addAccountFragment"
         android:name="com.example.a2ndproject.ui.view.fragment.AddAccountFragment"
         android:label="add_account_fragment"
         tools:layout="@layout/add_account_fragment" >
         <action
-            android:id="@+id/action_addAccountFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
             android:id="@+id/action_addAccountFragment_to_identityAuthFragment"
             app:destination="@id/identityAuthFragment" />
+        <argument
+            android:name="type"
+            android:defaultValue="-1"
+            app:argType="integer"/>
     </fragment>
     <fragment
         android:id="@+id/createAccountSuccessFragment"
         android:name="com.example.a2ndproject.ui.view.fragment.CreateAccountSuccessFragment"
         android:label="add_account_create_success_fragment"
-        tools:layout="@layout/add_account_create_success_fragment" >
-        <action
-            android:id="@+id/action_createAccountSuccessFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/add_account_create_success_fragment" />
     <fragment
         android:id="@+id/numberPadPinFragment"
         android:name="com.example.a2ndproject.ui.view.fragment.NumberPadPinFragment"
@@ -54,23 +39,17 @@
         <action
             android:id="@+id/action_numberPadPinFragment_to_numberPadMoneyFragment"
             app:destination="@id/numberPadMoneyFragment" />
-        <action
-            android:id="@+id/action_numberPadPinFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
 
         <argument
             android:name="type"
-            app:argType="integer"
-            app:nullable="true"/>
+            android:defaultValue="-1"
+            app:argType="integer"/>
     </fragment>
     <fragment
         android:id="@+id/numberPadMoneyFragment"
         android:name="com.example.a2ndproject.ui.view.fragment.NumberPadMoneyFragment"
         android:label="NumberPadMoneyFragment"
         tools:layout="@layout/number_pad_money_fragment">
-        <action
-            android:id="@+id/action_numberPadMoneyFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
         <action
             android:id="@+id/action_numberPadMoneyFragment_to_numberPadPinFragment"
             app:destination="@id/numberPadPinFragment" />
@@ -95,9 +74,6 @@
         <action
             android:id="@+id/action_connectAccountFragment2_to_identityAuthFragment"
             app:destination="@id/identityAuthFragment" />
-        <action
-            android:id="@+id/action_connectAccountFragment2_to_homeFragment"
-            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/identityAuthFragment"
@@ -112,7 +88,7 @@
             app:destination="@id/connectAccountFragment2" />
         <argument
             android:name="type"
-            app:nullable="true"
+            android:defaultValue="-1"
             app:argType="integer" />
     </fragment>
 </navigation>
