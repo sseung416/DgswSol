@@ -16,7 +16,9 @@
         android:theme="@style/Theme.2ndProject" >
         <activity
             android:name=".ui.view.activity.AddAccountActivity"
-            android:exported="true" />
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".ui.view.activity.IntroActivity"
             android:exported="true"
@@ -31,7 +33,6 @@
         <activity
             android:name=".ui.view.activity.MainActivity"
             android:exported="true" >
-
         </activity>
     </application>
 </manifest>

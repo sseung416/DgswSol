@@ -20,7 +20,9 @@ class NumberPadViewModel : ViewModel() {
     }
 
     fun popAll() {
-        while (stack.pop() != null) {}
+        while (stack.isNotEmpty()) {
+            stack.pop()
+        }
         numberList.value = stack
     }
 

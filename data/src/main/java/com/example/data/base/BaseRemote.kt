@@ -1,8 +1,8 @@
 package com.example.data.base
 
 import android.util.Log
-import com.google.gson.Gson
 import retrofit2.Response
+import kotlin.jvm.Throws
 
 abstract class BaseRemote<SV> {
     private val TAG: String = "BaseRemote"
@@ -14,11 +14,23 @@ abstract class BaseRemote<SV> {
         return response.body()!!
     }
 
+    @Throws(java.lang.RuntimeException::class)
     private fun <T> checkError(response: Response<T>) {
+        // todo
         if (!response.isSuccessful) {
-            val error = response.errorBody()?.string()
-            Log.d(TAG, "checkError: $error")
-            Throwable(error)
+            val err = response.errorBody()?.string()
+            Log.d(TAG, "checkError: $err")
+            Throwable(err.toString())
+//            throw RuntimeException(err.toString())
+        } else if (response.isSuccessful) {
+            Log.d(TAG, response.body().toString())
+            val res = response.body()
+
+            if (res == "exist" || res == "fail") {
+                Log.d(TAG, "checkError: $res")
+                Throwable(res.toString())
+            }
+//            throw RuntimeException(res.toString())
         }
     }
 }

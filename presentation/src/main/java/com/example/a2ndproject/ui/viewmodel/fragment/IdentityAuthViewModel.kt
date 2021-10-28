@@ -41,7 +41,7 @@ class IdentityAuthViewModel @Inject constructor(
         try {
             viewModelScope.launch {
                 val msg = postCheckAccountUseCase.buildUseCase(PostCheckAccountUseCase.Params(CheckAccount(name, number)))
-                _isSuccessCheckAccount.postValue(msg)
+                _isSuccessCheckAccount.postValue(msg.msg)
             }
         } catch (e: Exception) {
             Log.d("checkAccount", e.message.toString())

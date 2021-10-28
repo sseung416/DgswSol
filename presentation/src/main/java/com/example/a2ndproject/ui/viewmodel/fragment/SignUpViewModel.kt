@@ -4,25 +4,15 @@ import android.app.Application
 import android.net.Uri
 import android.text.Editable
 import android.util.Log
-import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.a2ndproject.R
-import com.example.a2ndproject.ui.view.base.BaseViewModel
 import com.example.a2ndproject.ui.view.utils.*
-import com.example.domain.entity.request.QuickPw
-import com.example.domain.entity.request.SignUp
 import com.example.domain.usecase.user.GetDuplicateIdCheckUseCase
-import com.example.domain.usecase.user.PostQuickSignUpUseCase
 import com.example.domain.usecase.user.PostSignUpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withTimeout
-import okhttp3.RequestBody.Companion.toRequestBody
-import java.io.File
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -100,7 +90,6 @@ class SignUpViewModel @Inject constructor(
 
             2 -> {
                 signUp()
-
 //                if (!agree.value!! && nickname.value!!.isNotBlank()) {
 //                    currentItem.value = 3
 //                }
@@ -206,7 +195,7 @@ class SignUpViewModel @Inject constructor(
             try {
                 val msg = getDuplicateIdCheckUseCase.buildUseCase(GetDuplicateIdCheckUseCase.Params(id))
 
-                _isSuccessGetIdCheck.postValue(msg)
+                _isSuccessGetIdCheck.postValue(msg.msg!!)
             } catch (e: Exception) {
                 MessageUtil.printLog("checkId", e.message.toString())
             }
@@ -224,7 +213,7 @@ class SignUpViewModel @Inject constructor(
 
         viewModelScope.launch {
             try {
-                val msg = postSignUpUseCase.buildUseCase(PostSignUpUseCase.Params(
+                val token = postSignUpUseCase.buildUseCase(PostSignUpUseCase.Params(
                     id.getRequestBody(),
                     pw.getRequestBody(),
                     phone.getRequestBody(),
@@ -234,9 +223,10 @@ class SignUpViewModel @Inject constructor(
                     attachment.getImageBody("attachment", application.contentResolver))
                 )
 
-                _isSuccessPostSignUp.postValue(msg.logintoken)
+                _isSuccessPostSignUp.postValue(token.msg!!)
             } catch (e: Exception) {
-                Log.d("signUp", e.message.toString())
+                Log.d("signUp-failure", e.message.toString())
+                e.printStackTrace()
                 _isFailure.postValue(e.message.toString())
             }
         }

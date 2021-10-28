@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.entity.request.CreateAccount
 import com.example.domain.entity.request.QuickPw
-import com.example.domain.entity.response.Token
+import com.example.domain.entity.response.Msg
 import com.example.domain.usecase.account.PostCreateAccountUseCase
 import com.example.domain.usecase.user.PostQuickLoginUseCase
 import com.example.domain.usecase.user.PostQuickSignUpUseCase
@@ -28,7 +28,7 @@ class NumberPadPinViewModel @Inject constructor(
     private val _isSuccessSignUp = MutableLiveData("")
     val isSuccessSignUp = _isSuccessSignUp
 
-    private val _isSuccessLogin = MutableLiveData<Token>()
+    private val _isSuccessLogin = MutableLiveData<Msg>()
     val isSuccessLogin = _isSuccessLogin
 
     private val _isSuccessCreate = MutableLiveData("")
@@ -38,7 +38,7 @@ class NumberPadPinViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val msg = postQuickSignUpUseCase.buildUseCase(PostQuickSignUpUseCase.Params(QuickPw(pw)))
-                _isSuccessSignUp.value = msg
+                _isSuccessSignUp.value = msg.msg
             } catch (e: Exception) {
                 Log.d("quickSignUp", e.message.toString())
                 _isFailure.postValue(e.message.toString())
@@ -62,7 +62,7 @@ class NumberPadPinViewModel @Inject constructor(
         try {
             viewModelScope.launch {
                 val msg = postCreateAccountUseCase.buildUseCase(PostCreateAccountUseCase.Params(createAccount))
-                _isSuccessCreate.value = msg
+                _isSuccessCreate.value = msg.msg
             }
         } catch (e: Exception) {
             Log.d("createAccount", e.message.toString())

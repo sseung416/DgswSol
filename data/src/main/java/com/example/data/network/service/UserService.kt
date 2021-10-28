@@ -1,9 +1,8 @@
 package com.example.data.network.service
 
-import com.example.data.entity.TokenResponse
+import com.example.data.entity.MsgResponse
 import com.example.domain.entity.request.Login
 import com.example.domain.entity.request.QuickPw
-import com.example.domain.entity.response.Token
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -12,10 +11,10 @@ import retrofit2.http.*
 interface UserService {
 
     @GET("/signup/id/{id}")
-    suspend fun getDuplicateIdCheck(@Path("id") id: String): Response<String>
+    suspend fun getDuplicateIdCheck(@Path("id") id: String): Response<MsgResponse>
 
     @GET("/signup/name/{name}")
-    suspend fun getDuplicateNameCheck(@Path("name") name: String): Response<String?>
+    suspend fun getDuplicateNameCheck(@Path("name") name: String): Response<MsgResponse>
 
     @Multipart
     @POST("/signup")
@@ -27,14 +26,14 @@ interface UserService {
         @Part("name") name: RequestBody,
         @Part("nickname") nickname: RequestBody,
         @Part attachment: MultipartBody.Part
-    ): Response<TokenResponse>
+    ): Response<MsgResponse>
 
     @POST("/signup/quick")
-    suspend fun postQuickSignUp(@Body quickPw: QuickPw): Response<String>
+    suspend fun postQuickSignUp(@Body quickPw: QuickPw): Response<MsgResponse>
 
     @POST("/login")
-    suspend fun postLogin(@Body login: Login): Response<TokenResponse>
+    suspend fun postLogin(@Body login: Login): Response<MsgResponse>
 
     @POST("/login/quick")
-    suspend fun postQuickLogin(@Body quickPw: QuickPw): Response<TokenResponse>
+    suspend fun postQuickLogin(@Body quickPw: QuickPw): Response<MsgResponse>
 }

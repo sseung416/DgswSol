@@ -1,5 +1,5 @@
 package com.example.domain.entity.response
 
-data class Token(
-    val logintoken: String?
+data class Msg(
+    val msg: String?
 )
