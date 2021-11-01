@@ -41,7 +41,7 @@ class SignUpFirstFragment : BaseFragment<SignUpFirstFragmentBinding>() {
 
         binding.etPasswordViewPagerItemSignUp.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                if (viewModel.errorMsg.value == "" && viewModel.idCheck.value!!) {
+                if (viewModel.errorMsg.value == "" && viewModel.idCheck.value!! && !viewModel.password.value.isNullOrBlank()) {
                     viewModel.currentItem.value = 2
                     return@setOnEditorActionListener true
                 }
