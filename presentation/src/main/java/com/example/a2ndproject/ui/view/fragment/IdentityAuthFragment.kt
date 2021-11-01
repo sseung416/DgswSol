@@ -8,7 +8,6 @@ import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.AddAccountIdentityAuthFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.utils.MessageUtil
-import com.example.a2ndproject.ui.view.utils.getStringText
 import com.example.a2ndproject.ui.view.utils.isNotBlankAll
 import com.example.a2ndproject.ui.viewmodel.fragment.IdentityAuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,18 +32,11 @@ class IdentityAuthFragment : BaseFragment<AddAccountIdentityAuthFragmentBinding>
 
     private fun observe() = with(viewModel) {
         isFailure.observe(viewLifecycleOwner) {
-            MessageUtil.showDialog(requireActivity(), "알림", getStringText(R.string.fail_server))
+            MessageUtil.showDialog(requireActivity(), "알림", this@IdentityAuthFragment.getString(R.string.fail_server))
         }
 
         isSuccessCheckAccount.observe(viewLifecycleOwner) {
-            when (it) {
-                "success" -> {
-                    navController.navigate(R.id.action_identityAuthFragment_to_checkInfoFragment)
-                }
-
-                "fail" ->
-                    MessageUtil.showDialog(requireActivity(), "알림", "어 너 정보 틀렸어~")
-            }
+            navController.navigate(R.id.action_identityAuthFragment_to_checkInfoFragment)
         }
 
         name.observe(viewLifecycleOwner, {

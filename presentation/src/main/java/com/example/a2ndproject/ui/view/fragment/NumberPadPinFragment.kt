@@ -23,9 +23,7 @@ import com.example.a2ndproject.ui.view.activity.MainActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.data.FragmentType
 import com.example.a2ndproject.ui.view.utils.MessageUtil
-import com.example.a2ndproject.ui.view.utils.Preference.init
 import com.example.a2ndproject.ui.view.utils.Preference.token
-import com.example.a2ndproject.ui.view.utils.getStringText
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadPinViewModel
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadViewModel
 import com.example.domain.entity.request.CreateAccount
@@ -114,7 +112,7 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
 
         isFailure.observe(viewLifecycleOwner) {
             clearPin()
-            MessageUtil.showDialog(requireActivity(), "알림", getStringText(R.string.fail_server))
+            MessageUtil.showDialog(requireActivity(), "알림", this@NumberPadPinFragment.getString(R.string.fail_server))
         }
 
         isSuccessLogin.observe(viewLifecycleOwner) {
@@ -125,10 +123,10 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
 
         isSuccessSignUp.observe(viewLifecycleOwner) {
             when (it) {
-                getStringText(R.string.server_res_success) ->
+                this@NumberPadPinFragment.getString(R.string.server_res_success) ->
                     navigateToMain()
 
-                getStringText(R.string.server_res_fail) -> {
+                this@NumberPadPinFragment.getString(R.string.server_res_fail) -> {
                     clearPin()
                     MessageUtil.showDialog(requireActivity(), "알림", "어쨋든 실패했어여...")
                 }

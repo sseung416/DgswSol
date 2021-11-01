@@ -11,7 +11,6 @@ import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.data.FragmentType
 import com.example.a2ndproject.ui.view.utils.MessageUtil
 import com.example.a2ndproject.ui.view.utils.Preference.token
-import com.example.a2ndproject.ui.view.utils.getStringText
 import com.example.a2ndproject.ui.viewmodel.fragment.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,7 +47,7 @@ class LoginBasicFragment : BaseFragment<LoginBasicFragmentBinding>() {
         }
 
         isFailure.observe(viewLifecycleOwner) {
-            MessageUtil.showDialog(requireActivity(), "알림", getStringText(R.string.fail_server))
+            MessageUtil.showDialog(requireActivity(), "알림", this@LoginBasicFragment.getString(R.string.fail_server))
         }
     }
 }
