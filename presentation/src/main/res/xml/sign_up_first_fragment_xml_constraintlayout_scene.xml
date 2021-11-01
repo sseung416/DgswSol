@@ -8,7 +8,7 @@
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
         motion:motionInterpolator="easeOut"
-        motion:duration="1000" />
+        motion:duration="500" />
 
     <ConstraintSet android:id="@+id/start">
         <Constraint

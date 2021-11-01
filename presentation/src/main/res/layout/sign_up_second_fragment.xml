@@ -10,7 +10,7 @@
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/motion_sign_up_second"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutDescription="@xml/sign_up_second_fragment_xml_constraintlayout_scene"

@@ -32,6 +32,15 @@ class SignUpSecondFragment : BaseFragment<SignUpSecondFragmentBinding>() {
 
     private fun observe() = with(viewModel) {
         currentItem.observe(viewLifecycleOwner) {
+            when (it) {
+                3 -> binding.motionSignUpSecond.transitionToState(R.id.startToMiddle)
+
+                4 -> binding.motionSignUpSecond.transitionToState(R.id.middleToEnd)
+
+                5 -> {
+
+                }
+            }
             if (it == 6)
                 navController.navigate(R.id.action_signUpSecondFragment_to_signUpThirdFragment)
         }
