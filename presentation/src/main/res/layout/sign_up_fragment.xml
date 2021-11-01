@@ -10,50 +10,62 @@
             type="com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel" />
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tv_title_sign_up"
-                style="@style/TitleTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_padding_big"
-                android:text="@string/error_input_info"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_title_sign_up"
+            style="@style/TitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_padding_big"
+            android:text="@string/error_input_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentContainerView5"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="20dp"
-                app:defaultNavHost="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title_sign_up"
-                app:navGraph="@navigation/nav_graph_intro_sign" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerView5"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="32dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/tv_error_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_sign_up"
+            app:navGraph="@navigation/nav_graph_intro_sign" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_confirm_sign_up"
             style="@style/Widget.AppCompat.Button.BottomBlueButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
             android:onClick="@{() -> vm.navigateToNext()}"
-            android:text="@string/confirm" />
-    </RelativeLayout>
+            android:text="@string/confirm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_error_sign_up"
+            style="@style/RegularTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@{vm.errorMsg}"
+            android:textColor="@color/error"
+            app:layout_constraintBottom_toTopOf="@+id/btn_confirm_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

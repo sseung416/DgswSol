@@ -25,7 +25,7 @@ class SignUpViewModel @Inject constructor(
 
     val id = MutableLiveData("")
     val password = MutableLiveData("")
-    val idCheck = MutableLiveData(false)
+    val idCheck = MutableLiveData(true) //todo false 로 바꾸기~
 
     val residentNumber = MutableLiveData("")
     val residentNumberBack = MutableLiveData("")
@@ -37,8 +37,7 @@ class SignUpViewModel @Inject constructor(
     val agree = MutableLiveData(false)
 
     // 에러 메시지
-    val idError = MutableLiveData("")
-    val passwordError = MutableLiveData("")
+    val errorMsg = MutableLiveData("")
 
     val residentNumberError = MutableLiveData("")
     val phoneNumberError = MutableLiveData("")
@@ -65,14 +64,42 @@ class SignUpViewModel @Inject constructor(
     fun navigateToNext() {
         when (currentItem.value) {
             0 -> {
-                val list = listOf(id.value, password.value)
-                val errList = listOf(idError.value, passwordError.value)
-
-                if (idCheck.value!! && list.isNotBlankAll() && errList.isBlankAll())
-                    currentItem.value = 1
+                if (errorMsg.value == "") {
+                    if (idCheck.value!!) {
+                        currentItem.value = 1
+                    } else {
+                        errorMsg.value = "아이디 중복 확인을 해주세요."
+                    }
+                } else {
+                    // todo errorHandling - 진동, 애니메이션 등
+                }
             }
 
             1 -> {
+                if (errorMsg.value == "") {
+                    if (idCheck.value!!) {
+                        currentItem.value = 2
+                    } else {
+                        errorMsg.value = "아이디 중복 확인을 해주세요."
+                    }
+                } else {
+                    // todo errorHandling - 진동, 애니메이션 등
+                }
+            }
+
+            2 -> {
+
+            }
+
+            3 -> {
+
+            }
+
+            4 -> {
+
+            }
+
+            5 -> {
                 val list = listOf(
                     residentNumber.value,
                     phoneNumber.value,
@@ -88,7 +115,7 @@ class SignUpViewModel @Inject constructor(
                     currentItem.value = 2
             }
 
-            2 -> {
+            7 -> {
                 signUp()
 //                if (!agree.value!! && nickname.value!!.isNotBlank()) {
 //                    currentItem.value = 3
@@ -98,41 +125,6 @@ class SignUpViewModel @Inject constructor(
             else -> Log.d("signUp", "오잉? 웨안돼지")
         }
 
-    }
-
-    /* 회원가입 첫 번째 화면 */
-    fun setIdError(s: Editable?) {
-        val id = id.value!!
-
-        /* 영어, 숫자를 포함한 3~12글자의 정규식 */
-        val reg = "^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z[0-9]]{3,12}".toRegex()
-
-        this.idError.value = when {
-            id.isEmpty() ->
-                getStringErrorInputMsg("아이디를")
-
-            !id.matches(reg) ->
-                this.getString(application, R.string.error_not_regular_id)
-
-            else -> ""
-        }
-    }
-
-    fun setPasswordError(editable: Editable?) {
-        val password = password.value!!
-
-        /* 영어, 숫자, 특수기호를 모두 포함한 8~12글자의 정규식 */
-        val reg = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{8,12}$".toRegex()
-
-        this.passwordError.value = when {
-            password.isBlank() ->
-                getStringErrorInputMsg("비밀번호를")
-
-            !password.matches(reg) ->
-                this.getString(application, R.string.error_not_regular_password)
-
-            else -> ""
-        }
     }
 
     /* 회원가입 두 번째 화면 */
@@ -197,7 +189,8 @@ class SignUpViewModel @Inject constructor(
 
                 _isSuccessGetIdCheck.postValue(msg.msg!!)
             } catch (e: Exception) {
-                MessageUtil.printLog("checkId", e.message.toString())
+                Log.d("checkId", e.message.toString())
+                _isFailure.postValue(e.message)
             }
         }
     }

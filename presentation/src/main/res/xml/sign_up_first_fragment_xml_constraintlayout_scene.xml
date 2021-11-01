@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:motionInterpolator="easeOut"
+        motion:duration="1000" />
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/tv_pw_sign_up_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/et_layout_password_view_pager_item_sign_up"
+            android:visibility="invisible"
+            motion:layout_constraintTop_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/et_layout_password_view_pager_item_sign_up"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:visibility="invisible"
+            app:helperText="@string/regular_password"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/tv_pw_sign_up_first"
+            motion:layout_constraintTop_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint
+            android:id="@+id/tv_pw_sign_up_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="@+id/et_layout_password_view_pager_item_sign_up"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up"
+            motion:visibilityMode="ignore" />
+
+        <Constraint
+            android:id="@+id/et_layout_password_view_pager_item_sign_up"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:visibility="visible"
+            app:helperText="@string/regular_password"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/tv_pw_sign_up_first"
+            motion:layout_constraintTop_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up"
+            motion:visibilityMode="ignore" />
+    </ConstraintSet>
+</MotionScene>

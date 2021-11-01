@@ -19,6 +19,7 @@ import com.example.a2ndproject.ui.view.activity.IntroActivity
 import com.example.a2ndproject.ui.view.activity.MainActivity
 import com.example.a2ndproject.ui.view.adapter.SignUpViewPagerAdapter
 import com.example.a2ndproject.ui.view.base.BaseFragment
+import com.example.a2ndproject.ui.view.data.FragmentType
 import com.example.a2ndproject.ui.view.utils.MessageUtil
 import com.example.a2ndproject.ui.view.utils.Preference.token
 import com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel
@@ -53,8 +54,9 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding>() {
 
         isSuccessPostSignUp.observe(viewLifecycleOwner) {
             token = it
-            requireActivity().startActivity(Intent(requireActivity(), MainActivity::class.java))
-//            navController.navigate(SignUpFragmentDirections.actionSignUpFragmentToPinNuberFragment(0))
+            navController.navigate(SignUpFragmentDirections.actionSignUpFragmentToPinNumberFragment(
+                FragmentType.PIN_QUICK_SIGN_UP.type
+            ))
         }
     }
 

@@ -9,9 +9,11 @@
             type="com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motion_sign_up_first"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layoutDescription="@xml/sign_up_first_fragment_xml_constraintlayout_scene"
         tools:context=".ui.view.fragment.SignUpFirstFragment">
 
         <TextView
@@ -26,11 +28,12 @@
             app:layout_constraintTop_toTopOf="@+id/et_layout_id_view_pager_item_sign_up" />
 
         <TextView
-            android:id="@+id/textView29"
+            android:id="@+id/tv_pw_sign_up_first"
             style="@style/SignTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/password"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/et_layout_password_view_pager_item_sign_up"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up" />
@@ -38,9 +41,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_layout_id_view_pager_item_sign_up"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
-            setError="@{vm.idError}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:helperText="@string/regular_id"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/et_layout_password_view_pager_item_sign_up"
             app:layout_constraintTop_toTopOf="parent">
@@ -48,11 +51,11 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_id_view_pager_item_sign_up"
                 style="@style/Widget.AppCompat.EditText.Sign"
-                android:afterTextChanged="@{(text)->vm.setIdError(text)}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
                 android:paddingEnd="80dp"
-                android:text="@={vm.id}"
+                android:text="@={vm.id, default=``}"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -60,23 +63,23 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_layout_password_view_pager_item_sign_up"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
-            setError="@{vm.passwordError}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="15dp"
+            android:visibility="visible"
+            app:helperText="@string/regular_password"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView29"
+            app:layout_constraintStart_toEndOf="@+id/tv_pw_sign_up_first"
             app:layout_constraintTop_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_password_view_pager_item_sign_up"
                 style="@style/Widget.AppCompat.EditText.Sign"
-                android:afterTextChanged="@{(text)->vm.setPasswordError(text)}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:text="@={vm.password}"
+                android:text="@={vm.password, default=``}"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -89,11 +92,11 @@
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:enabled="@{vm.idError.length() == 0 &amp;&amp; vm.id.length() != 0 ? true : false}"
+            android:enabled="@{vm.id.length() != 0 ? true : false}"
             android:onClick="@{() -> vm.checkId()}"
             android:text="@string/double_check"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/et_layout_id_view_pager_item_sign_up" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

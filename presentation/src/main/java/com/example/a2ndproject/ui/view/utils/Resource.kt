@@ -15,8 +15,11 @@ fun ViewModel.getColor(application: Application, id: Int) =
 fun Fragment.getString(id: Int) =
     resources.getString(id)
 
+fun Fragment.getNotRegularErrorString(str: String) =
+    str + resources.getString(R.string.error_not_regular)
+
 fun Fragment.getEmptyErrorString(str: String) =
-    str + resources.getString(R.string.error_input)
+    str + "를 " + resources.getString(R.string.error_input)
 
 fun Fragment.getColor(id: Int) =
     ContextCompat.getColor(requireContext(), id)
