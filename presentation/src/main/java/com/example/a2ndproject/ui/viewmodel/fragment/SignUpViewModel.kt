@@ -39,10 +39,6 @@ class SignUpViewModel @Inject constructor(
     // 에러 메시지
     val errorMsg = MutableLiveData("")
 
-    val residentNumberError = MutableLiveData("")
-    val phoneNumberError = MutableLiveData("")
-    val nameError = MutableLiveData("")
-
     val nickNameError = MutableLiveData("")
 
     val currentItem = MutableLiveData(0)
@@ -63,10 +59,10 @@ class SignUpViewModel @Inject constructor(
     /* 회원가입 다음 화면으로 전환 */
     fun navigateToNext() {
         when (currentItem.value) {
-            0 -> {
+            0, 1 -> {
                 if (errorMsg.value == "") {
                     if (idCheck.value!!) {
-                        currentItem.value = 1
+                        currentItem.value = currentItem.value!! + 1
                     } else {
                         errorMsg.value = "아이디 중복 확인을 해주세요."
                     }
@@ -75,91 +71,22 @@ class SignUpViewModel @Inject constructor(
                 }
             }
 
-            1 -> {
+            2, 3, 4 -> {
                 if (errorMsg.value == "") {
-                    if (idCheck.value!!) {
-                        currentItem.value = 2
-                    } else {
-                        errorMsg.value = "아이디 중복 확인을 해주세요."
-                    }
-                } else {
-                    // todo errorHandling - 진동, 애니메이션 등
+                    currentItem.value = currentItem.value!! + 1
                 }
-            }
-
-            2 -> {
-
-            }
-
-            3 -> {
-
-            }
-
-            4 -> {
-
             }
 
             5 -> {
-                val list = listOf(
-                    residentNumber.value,
-                    phoneNumber.value,
-                    name.value,
-                )
-                val errList = listOf(
-                    residentNumberError.value,
-                    phoneNumberError.value,
-                    nameError.value
-                )
-
-                if (list.isNotBlankAll() && errList.isBlankAll())
-                    currentItem.value = 2
-            }
-
-            7 -> {
                 signUp()
 //                if (!agree.value!! && nickname.value!!.isNotBlank()) {
 //                    currentItem.value = 3
 //                }
             }
 
-            else -> Log.d("signUp", "오잉? 웨안돼지")
+            else -> Log.d("SignUpViewModel", "navigateToNext(): 비정상적인 current 값")
         }
 
-    }
-
-    /* 회원가입 두 번째 화면 */
-    fun setResidentNumberError(editable: Editable?) {
-        val number = residentNumber.value!!
-        val numberBack = residentNumberBack.value!!
-
-        residentNumberError.value = when {
-            number.isBlank() || numberBack.isBlank() ->
-                getStringErrorInputMsg("주민등록번호를")
-
-            else -> ""
-        }
-    }
-
-    fun setPhoneNumberError(editable: Editable?) {
-        val phoneNumber = residentNumber.value!!
-
-        phoneNumberError.value = when {
-            phoneNumber.isBlank() ->
-                getStringErrorInputMsg("휴대폰 번호를")
-
-            else -> ""
-        }
-    }
-
-    fun setNameError(editable: Editable?) {
-        val name = name.value!!
-
-        nameError.value = when {
-            name.isBlank() ->
-                getStringErrorInputMsg("이름을")
-
-            else -> ""
-        }
     }
 
     /* 회원가입 마지막 화면 */

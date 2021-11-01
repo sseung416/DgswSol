@@ -9,9 +9,11 @@
             type="com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layoutDescription="@xml/sign_up_second_fragment_xml_constraintlayout_scene"
         tools:context=".ui.view.fragment.SignUpSecondFragment">
 
         <TextView
@@ -27,7 +29,6 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_layout_phone_number_view_pager_item_sign_up"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
-            setError="@{vm.phoneNumberError}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -41,7 +42,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="true"
-                android:afterTextChanged="@{(text)->vm.setPhoneNumberError(text)}"
                 android:text="@={vm.phoneNumber}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -49,7 +49,6 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_layout_name_view_pager_item_sign_up"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
-            setError="@{vm.nameError}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -62,7 +61,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_name_view_pager_item_sign_up"
                 style="@style/Widget.AppCompat.EditText.Sign"
-                android:afterTextChanged="@{(text)->vm.setNameError(text)}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@={vm.name}" />
@@ -91,7 +89,6 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_create_account"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Sign"
-                setError="@{vm.residentNumberError}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -105,7 +102,6 @@
                     android:layout_height="match_parent"
                     android:inputType="number"
                     android:letterSpacing="1"
-                    android:afterTextChanged="@{(text)->vm.setResidentNumberError(text)}"
                     android:maxLength="6"
                     android:text="@={vm.residentNumber}" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -131,7 +127,6 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_create2_account"
                     style="@style/Widget.AppCompat.EditText.Sign"
-                    android:afterTextChanged="@{(text)->vm.setPhoneNumberError(text)}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -161,5 +156,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/et_layout_name_view_pager_item_sign_up" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

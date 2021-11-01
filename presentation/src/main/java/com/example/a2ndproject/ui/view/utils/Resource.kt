@@ -16,10 +16,10 @@ fun Fragment.getString(id: Int) =
     resources.getString(id)
 
 fun Fragment.getNotRegularErrorString(str: String) =
-    str + resources.getString(R.string.error_not_regular)
+    str + " " + resources.getString(R.string.error_not_regular)
 
 fun Fragment.getEmptyErrorString(str: String) =
-    str + "를 " + resources.getString(R.string.error_input)
+    str + " " + resources.getString(R.string.error_input)
 
 fun Fragment.getColor(id: Int) =
     ContextCompat.getColor(requireContext(), id)

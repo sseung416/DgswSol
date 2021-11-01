@@ -80,7 +80,7 @@ class SignUpFirstFragment : BaseFragment<SignUpFirstFragmentBinding>() {
             val reg = "^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z[0-9]]{3,12}".toRegex()
 
             errorMsg.value = when {
-                it.isBlank() -> this@SignUpFirstFragment.getEmptyErrorString("아이디")
+                it.isBlank() -> this@SignUpFirstFragment.getEmptyErrorString("아이디를")
 
                 !it.matches(reg) -> this@SignUpFirstFragment.getNotRegularErrorString("아이디")
 
@@ -95,7 +95,7 @@ class SignUpFirstFragment : BaseFragment<SignUpFirstFragmentBinding>() {
             val reg = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{8,12}$".toRegex()
 
             errorMsg.value = when {
-                it.isBlank() -> this@SignUpFirstFragment.getEmptyErrorString("비밀번호")
+                it.isBlank() -> this@SignUpFirstFragment.getEmptyErrorString("비밀번호를")
 
                 !it.matches(reg) -> this@SignUpFirstFragment.getNotRegularErrorString("비밀번호")
 
