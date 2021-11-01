@@ -2,7 +2,7 @@
 
     <style name="Theme.2ndProject" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/main_sky_blue</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -120,6 +120,7 @@
     <style name="Widget.MaterialComponents.TextInputLayout.FilledBox.Sign">
         <item name="errorEnabled">true</item>
         <item name="helperTextEnabled">true</item>
+        <item name="colorControlActivated">@color/blue</item>
     </style>
 
     <style name="TransParentTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -148,10 +149,12 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">15sp</item>
         <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="TransParentTextInputEditText" parent="Widget.AppCompat.EditText">
         <item name="maxLines">1</item>
+        <item name="singleLine">true</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">15sp</item>
         <item name="android:background">@android:color/transparent</item>

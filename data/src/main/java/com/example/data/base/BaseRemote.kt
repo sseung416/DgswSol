@@ -1,6 +1,7 @@
 package com.example.data.base
 
 import android.util.Log
+import com.example.data.entity.MsgResponse
 import retrofit2.Response
 import kotlin.jvm.Throws
 
@@ -16,18 +17,16 @@ abstract class BaseRemote<SV> {
 
     @Throws(java.lang.RuntimeException::class)
     private fun <T> checkError(response: Response<T>) {
-        // todo
         if (!response.isSuccessful) {
             val err = response.errorBody()?.string()
             Log.d(TAG, "checkError: $err")
             Throwable(err.toString())
 //            throw RuntimeException(err.toString())
-        } else if (response.isSuccessful) {
-            Log.d(TAG, response.body().toString())
-            val res = response.body()
+        } else {
+            val res = response.body() as MsgResponse
 
-            if (res == "exist" || res == "fail") {
-                Log.d(TAG, "checkError: $res")
+            if (res.msg == "exist" || res.msg == "fail") {
+                Log.d(TAG, "checkError: ${res.msg}")
                 Throwable(res.toString())
             }
 //            throw RuntimeException(res.toString())

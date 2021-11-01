@@ -8,6 +8,7 @@ import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.LoginBasicFragmentBinding
 import com.example.a2ndproject.ui.view.activity.MainActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
+import com.example.a2ndproject.ui.view.data.FragmentType
 import com.example.a2ndproject.ui.view.utils.MessageUtil
 import com.example.a2ndproject.ui.view.utils.Preference.token
 import com.example.a2ndproject.ui.view.utils.getStringText
@@ -36,8 +37,14 @@ class LoginBasicFragment : BaseFragment<LoginBasicFragmentBinding>() {
 
     private fun observe() = with(viewModel) {
         isSuccess.observe(viewLifecycleOwner) {
-            token = it.msg!!
-            startActivity(Intent(requireActivity(), MainActivity::class.java))
+            when (it) {
+                "success" -> {
+                    token = it
+                    startActivity(Intent(requireActivity(), MainActivity::class.java))
+                }
+
+                "fail" -> viewModel.errMsg.value = "아이디/비밀번호가 맞지 않습니다."
+            }
         }
 
         isFailure.observe(viewLifecycleOwner) {

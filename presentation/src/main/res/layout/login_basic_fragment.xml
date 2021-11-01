@@ -10,8 +10,10 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/motion_login_basic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layoutDescription="@xml/login_basic_fragment_xml_constraintlayout_scene"
         tools:context=".ui.view.fragment.LoginBasicFragment">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -89,12 +91,26 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button3"
             style="@style/Widget.AppCompat.Button.BottomBlueButton"
-            android:onClick="@{() -> vm.login()}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/login"
+            android:onClick="@{() -> vm.login()}"
+            android:text="@string/confirm"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView29"
+            style="@style/RegularTextView"
+            setVisible="@{vm.errMsg.length() != 0}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@{vm.errMsg}"
+            android:textColor="@color/error"
+            app:layout_constraintBottom_toTopOf="@+id/button3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/button3"
+            tools:text="asdfsdaf" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

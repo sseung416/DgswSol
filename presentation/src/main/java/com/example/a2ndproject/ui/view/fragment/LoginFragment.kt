@@ -23,7 +23,7 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>() {
         }
 
         binding.layoutQuickLogin.setOnClickListener {
-            navController.navigate(R.id.action_loginFragment_to_pinNuberFragment)
+            navController.navigate(R.id.action_loginFragment_to_pinNumberFragment)
         }
     }
 

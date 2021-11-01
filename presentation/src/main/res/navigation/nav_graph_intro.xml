@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_intro"
-    app:startDestination="@id/introFragment">
+    app:startDestination="@id/loginBasicFragment">
     <fragment
         android:id="@+id/introFragment"
         android:name="com.example.a2ndproject.ui.view.fragment.IntroFragment"
@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_introFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_introFragment_to_loginBasicFragment"
+            app:destination="@id/loginBasicFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -22,16 +25,16 @@
             android:id="@+id/action_signUpFragment_to_introFragment"
             app:destination="@id/introFragment" />
         <action
-            android:id="@+id/action_signUpFragment_to_pinNuberFragment"
-            app:destination="@id/pinNuberFragment" />
+            android:id="@+id/action_signUpFragment_to_pinNumberFragment"
+            app:destination="@id/pinNumberFragment" />
     </fragment>
     <fragment
-        android:id="@+id/pinNuberFragment"
+        android:id="@+id/pinNumberFragment"
         android:name="com.example.a2ndproject.ui.view.fragment.NumberPadPinFragment"
         android:label="pin_number_fragment"
         tools:layout="@layout/number_pad_pin_fragment" >
         <action
-            android:id="@+id/action_pinNuberFragment_to_signUpFragment"
+            android:id="@+id/action_pinNumberFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
         <argument
             android:name="type"
@@ -44,8 +47,8 @@
         android:label="LoginFragment"
         tools:layout="@layout/login_fragment">
         <action
-            android:id="@+id/action_loginFragment_to_pinNuberFragment"
-            app:destination="@id/pinNuberFragment" />
+            android:id="@+id/action_loginFragment_to_pinNumberFragment"
+            app:destination="@id/pinNumberFragment" />
         <action
             android:id="@+id/action_loginFragment_to_loginBasicFragment"
             app:destination="@id/loginBasicFragment" />
@@ -54,5 +57,6 @@
         android:id="@+id/loginBasicFragment"
         android:name="com.example.a2ndproject.ui.view.fragment.LoginBasicFragment"
         android:label="LoginBasicFragment"
-        tools:layout="@layout/login_basic_fragment"/>
+        tools:layout="@layout/login_basic_fragment">
+    </fragment>
 </navigation>

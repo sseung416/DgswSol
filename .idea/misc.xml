@@ -14,6 +14,8 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.18697916666666667" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_baseline_check_24.xml" value="0.259375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_baseline_close_24.xml" value="0.259375" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_numpad.xml" value="0.14375" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_padlock.xml" value="0.14375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/outline.xml" value="0.259375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/tab_select_background_gradient.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/tab_select_background_main.xml" value="0.275" />
@@ -39,7 +41,7 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/home_fragment_tab.xml" value="0.264" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/intro_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/intro_view_pager_fragment.xml" value="0.2536231884057971" />
-        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/login_basic_fragment.xml" value="0.2" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/login_basic_fragment.xml" value="0.30612244897959184" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/login_fragment.xml" value="0.264" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/main_fragment.xml" value="0.4" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/main_fragment_tab.xml" value="0.2" />

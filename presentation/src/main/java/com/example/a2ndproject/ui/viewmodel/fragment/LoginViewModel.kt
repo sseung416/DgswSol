@@ -23,13 +23,20 @@ class LoginViewModel @Inject constructor(
     val idErr = MutableLiveData("")
     val pwErr = MutableLiveData("")
 
-    private val _isSuccess = MutableLiveData<Msg>()
+    val errMsg = MutableLiveData("")
+
+    private val _isSuccess = MutableLiveData<String>()
     val isSuccess = _isSuccess
 
     private val _isFailure = MutableLiveData<String>()
     val isFailure = _isFailure
 
     fun login() {
+        if (id.value.isNullOrBlank() || pw.value.isNullOrBlank()) {
+            errMsg.value = "아이디/비밀번호를 입력해주세요."
+            return
+        }
+
         try {
             viewModelScope.launch {
                 if (listOf(id.value, pw.value).isNotBlankAll() &&
@@ -37,7 +44,8 @@ class LoginViewModel @Inject constructor(
 
                     val login = Login(id.value!!, pw.value!!)
                     val msg = useCase.buildUseCase(PostLoginUseCase.Params(login))
-                    _isSuccess.value = msg
+
+                    _isSuccess.value = msg.msg!!
                 }
             }
         } catch (e: Exception) {
