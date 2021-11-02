@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.a2ndproject.R
 import com.example.a2ndproject.ui.view.utils.*
 import com.example.domain.usecase.user.GetDuplicateIdCheckUseCase
+import com.example.domain.usecase.user.PostQuickSignUpUseCase
 import com.example.domain.usecase.user.PostSignUpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -23,9 +24,9 @@ class SignUpViewModel @Inject constructor(
     private val postSignUpUseCase: PostSignUpUseCase,
 ): ViewModel() {
 
-    val id = MutableLiveData("")
-    val password = MutableLiveData("")
-    val idCheck = MutableLiveData(true) //todo false 로 바꾸기~
+    val id = MutableLiveData<String>()
+    val password = MutableLiveData<String>()
+    val idCheck = MutableLiveData(false) //todo false 로 바꾸기~
 
     val residentNumber = MutableLiveData("")
     val residentNumberBack = MutableLiveData("")
@@ -37,6 +38,15 @@ class SignUpViewModel @Inject constructor(
     val agree = MutableLiveData(false)
 
     // 에러 메시지
+    val idErr = MutableLiveData("")
+    val pwErr = MutableLiveData("")
+
+    val residentNumErr = MutableLiveData("")
+    val nameErr = MutableLiveData("")
+    val phoneNumErr = MutableLiveData("")
+
+    val nicknameErr = MutableLiveData("")
+
     val errorMsg = MutableLiveData("")
 
     val nickNameError = MutableLiveData("")
@@ -59,7 +69,7 @@ class SignUpViewModel @Inject constructor(
     /* 회원가입 다음 화면으로 전환 */
     fun navigateToNext() {
         when (currentItem.value) {
-            0, 1 -> {
+            0 -> {
                 if (errorMsg.value == "") {
                     if (idCheck.value!!) {
                         currentItem.value = currentItem.value!! + 1
@@ -71,10 +81,38 @@ class SignUpViewModel @Inject constructor(
                 }
             }
 
-            2, 3, 4 -> {
+            1 -> {
+                if (errorMsg.value == "") {
+                    if (idCheck.value!! && errorMsg.value.isNullOrBlank()) {
+                        currentItem.value = currentItem.value!! + 1
+                    } else {
+                        errorMsg.value = "아이디 중복 확인을 해주세요."
+                    }
+                } else {
+                    // todo errorHandling - 진동, 애니메이션 등
+                }
+            }
+
+            2 -> {
                 if (errorMsg.value == "") {
                     currentItem.value = currentItem.value!! + 1
                 }
+            }
+
+            3 -> {
+                val isNotBlank = listOf(residentNumber.value, residentNumberBack.value).isNotBlankAll()
+
+                if (errorMsg.value == "" && isNotBlank) {
+                    currentItem.value = currentItem.value!! + 1
+                }
+            }
+
+            4 -> {
+
+            }
+
+            5 -> {
+
             }
 
             5 -> {
@@ -89,6 +127,8 @@ class SignUpViewModel @Inject constructor(
 
     }
 
+//    fun next
+
     /* 회원가입 마지막 화면 */
     fun setNicknameError(editable: Editable?) {
         val nickname = nickname.value!!
@@ -97,8 +137,8 @@ class SignUpViewModel @Inject constructor(
         val reg = "^[a-zA-Z가-힣[0-9]]{2,100}".toRegex()
 
         nickNameError.value = when {
-            nickname.isBlank() ->
-                getStringErrorInputMsg("별명을")
+            nickname.isBlank() -> ""
+//                getStringErrorInputMsg("별명을")
 
             !nickname.matches(reg) ->
                 this.getString(application, R.string.error_not_regular_nickname)
@@ -152,12 +192,12 @@ class SignUpViewModel @Inject constructor(
         }
     }
 
-    fun signUpQuick() {
-
+    fun addCurrentItem() {
+        if (errorMsg.value == "") {
+            currentItem.value = currentItem.value!! + 1
+        }
     }
 
-    /* '~를 입력하세요.' 에러 메세지를 가져오는 메서드 */
-    private fun getStringErrorInputMsg(s: String) =
-        s + this.getString(application, R.string.error_input)
-
+    fun setErrorMsg(error: String) {
+    }
 }

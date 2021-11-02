@@ -54,8 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
-                android:paddingEnd="80dp"
-                android:text="@={vm.id, default=``}"
+                android:text="@={vm.id}"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -74,12 +73,12 @@
             app:layout_constraintTop_toBottomOf="@+id/et_layout_id_view_pager_item_sign_up">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_password_view_pager_item_sign_up"
+                android:id="@+id/et_password_sign_up_first"
                 style="@style/Widget.AppCompat.EditText.Sign"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:text="@={vm.password, default=``}"
+                android:text="@={vm.password}"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
