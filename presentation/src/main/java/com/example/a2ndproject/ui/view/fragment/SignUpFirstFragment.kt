@@ -29,10 +29,14 @@ class SignUpFirstFragment : BaseFragment<SignUpFirstFragmentBinding>() {
         observe()
 
         binding.etIdViewPagerItemSignUp.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                if (viewModel.errorMsg.value == "" && viewModel.idCheck.value!!) {
-                    binding.motionSignUpFirst.transitionToEnd()
-                    binding.etPasswordSignUpFirst.requestFocus()
+            if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                if (viewModel.idCheck.value!!) {
+                    if (viewModel.errorMsg.value == "") {
+                        binding.motionSignUpFirst.transitionToEnd()
+                        binding.etPasswordSignUpFirst.requestFocus()
+                    }
+                } else {
+                    viewModel.errorMsg.value = "중복 확인 점;"
                 }
             }
 
@@ -40,7 +44,7 @@ class SignUpFirstFragment : BaseFragment<SignUpFirstFragmentBinding>() {
         }
 
         binding.etPasswordSignUpFirst.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
+            if (actionId == EditorInfo.IME_ACTION_NEXT) {
                 if (viewModel.errorMsg.value == "" && viewModel.idCheck.value!! && !viewModel.password.value.isNullOrBlank()) {
                     navController.navigate(R.id.action_signUpFirstFragment_to_signUpSecondFragment)
                 }
@@ -58,6 +62,9 @@ class SignUpFirstFragment : BaseFragment<SignUpFirstFragmentBinding>() {
             if (errorMsg.value == "아이디 중복 확인을 해주세요.") errorMsg.value = ""
         }
 
+        /**
+         * currentItem 사망하심
+         * */
         currentItem.observe(viewLifecycleOwner) {
             when (it) {
                 1 -> {
@@ -83,6 +90,7 @@ class SignUpFirstFragment : BaseFragment<SignUpFirstFragmentBinding>() {
                 else -> ""
             }
 
+            // todo false
             idCheck.value = false
 
             errorMsg.value = idErr.value

@@ -26,12 +26,12 @@ class SignUpViewModel @Inject constructor(
 
     val id = MutableLiveData<String>()
     val password = MutableLiveData<String>()
-    val idCheck = MutableLiveData(false) //todo false 로 바꾸기~
+    val idCheck = MutableLiveData(false)
 
-    val residentNumber = MutableLiveData("")
-    val residentNumberBack = MutableLiveData("")
-    val name = MutableLiveData("")
-    val phoneNumber = MutableLiveData("")
+    val residentNumber = MutableLiveData<String>()
+    val residentNumberBack = MutableLiveData<String>()
+    val name = MutableLiveData<String>()
+    val phoneNumber = MutableLiveData<String>()
 
     val profile: MutableLiveData<Uri> = MutableLiveData()
     val nickname = MutableLiveData("")
@@ -162,7 +162,7 @@ class SignUpViewModel @Inject constructor(
         }
     }
 
-    private fun signUp() {
+    fun signUp() {
         val id = id.value!!
         val pw = password.value!!
         val phone = phoneNumber.value!!.replace("-", "")

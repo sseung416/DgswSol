@@ -24,9 +24,9 @@ abstract class BaseRemote<SV> {
 //            throw RuntimeException(err.toString())
         } else {
             val res = response.body() as MsgResponse
+            Log.d(TAG, "checkError: ${res.msg}")
 
             if (res.msg == "exist" || res.msg == "fail") {
-                Log.d(TAG, "checkError: ${res.msg}")
                 Throwable(res.toString())
             }
 //            throw RuntimeException(res.toString())

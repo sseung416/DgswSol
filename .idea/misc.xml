@@ -17,12 +17,15 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_numpad.xml" value="0.14375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_padlock.xml" value="0.14375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/outline.xml" value="0.259375" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_btn_number_pad.xml" value="0.27076923076923076" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_tv_number_pad.xml" value="0.27076923076923076" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/tab_select_background_gradient.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/tab_select_background_main.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_add_account.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_create_account.xml" value="0.2477355072463768" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_intro.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_main.xml" value="0.25885416666666666" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_transfer.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account1_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account_check_info_fragment.xml" value="0.25769927536231885" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account_connect_fragment.xml" value="0.19895833333333332" />

@@ -88,4 +88,8 @@ class SignUpThirdFragment : BaseFragment<SignUpThirdFragmentBinding>() {
         intent.type = "image/*"
         resultLauncher.launch(Intent.createChooser(intent, "사진을 선택해주세요."))
     }
+
+    private fun observe() = with(viewModel) {
+
+    }
 }

@@ -41,6 +41,10 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         observe()
+
+        binding.btnConfirmSignUp.setOnClickListener {
+            viewModel.signUp()
+        }
     }
 
     private fun observe() = with(viewModel) {
