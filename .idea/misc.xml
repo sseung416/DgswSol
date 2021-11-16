@@ -17,11 +17,15 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_numpad.xml" value="0.14375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_padlock.xml" value="0.14375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/outline.xml" value="0.259375" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_btn_main_tab.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_btn_number_pad.xml" value="0.27076923076923076" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_tv_main_tab.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_tv_number_pad.xml" value="0.27076923076923076" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/tab_select_background_gradient.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/tab_select_background_main.xml" value="0.275" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/account_check_info_fragment.xml" value="0.4" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_add_account.xml" value="0.25885416666666666" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_connect_account.xml" value="0.2586050724637681" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_create_account.xml" value="0.2477355072463768" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_intro.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_main.xml" value="0.25885416666666666" />
@@ -32,7 +36,7 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account_create_fragment.xml" value="0.25769927536231885" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account_create_success_fragment.xml" value="0.25769927536231885" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account_fragment.xml" value="0.264" />
-        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account_identity_auth_fragment.xml" value="0.25769927536231885" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account_identity_auth_fragment.xml" value="0.2" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/connect_account_fragment.xml" value="0.39643463497453313" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/connect_this_account_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/create_account_check_info_fragment.xml" value="0.264" />

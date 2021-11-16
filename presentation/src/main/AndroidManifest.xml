@@ -15,25 +15,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.2ndProject">
         <activity
+            android:name=".ui.view.activity.ConnectAccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.view.activity.TransferActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.activity.AddAccountActivity"
-            android:exported="true"></activity>
+            android:name=".ui.view.activity.CreateAccountActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.view.activity.IntroActivity"
             android:exported="true"
             android:theme="@style/SplashTheme"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity
+            android:name=".ui.view.activity.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.view.activity.MainActivity"
-            android:exported="true"></activity>
     </application>
 
 </manifest>
