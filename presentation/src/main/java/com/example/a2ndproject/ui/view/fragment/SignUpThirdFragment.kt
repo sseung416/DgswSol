@@ -8,31 +8,18 @@ import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.SignUpThirdFragmentBinding
-import com.example.a2ndproject.di.application.MyHiltApplication_HiltComponents
+import com.example.a2ndproject.ui.view.activity.MainActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
-import com.example.a2ndproject.ui.view.utils.MessageUtil
-import com.example.a2ndproject.ui.view.utils.Preference.token
 import com.example.a2ndproject.ui.viewmodel.fragment.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.File
 import java.io.IOException
-import java.util.jar.Manifest
 
 @AndroidEntryPoint
 class SignUpThirdFragment : BaseFragment<SignUpThirdFragmentBinding>() {
@@ -50,6 +37,8 @@ class SignUpThirdFragment : BaseFragment<SignUpThirdFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        observe()
 
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_OK && it.data?.data != null) {
@@ -90,6 +79,8 @@ class SignUpThirdFragment : BaseFragment<SignUpThirdFragmentBinding>() {
     }
 
     private fun observe() = with(viewModel) {
-
+        isSuccessPostQuickSignUp.observe(viewLifecycleOwner) {
+            startActivity(Intent(requireActivity(), MainActivity::class.java))
+        }
     }
 }

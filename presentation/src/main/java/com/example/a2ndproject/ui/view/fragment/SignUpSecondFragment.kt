@@ -100,7 +100,7 @@ class SignUpSecondFragment : BaseFragment<SignUpSecondFragmentBinding>() {
 
                 it.isEmpty() -> getEmptyErrorString("휴대폰 번호를")
 
-                it.length != 10 -> getNotRegularErrorString("휴대폰 번호의")
+                it.length != 11 -> getNotRegularErrorString("휴대폰 번호의")
 
                 else -> ""
             }
