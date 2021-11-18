@@ -19,18 +19,17 @@
             android:layout_height="0dp"
             android:orientation="vertical"
             android:padding="@dimen/layout_padding_big"
-            app:layout_constraintBottom_toTopOf="@+id/textView23"
+            app:layout_constraintBottom_toTopOf="@+id/btn_confirm_create_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textView6"
-                style="@style/BigTextView"
+                style="@style/RegularTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="32dp"
                 android:gravity="center"
                 android:text="본인인증을 위해\n 성명과 주민등록번호를 입력해주세요." />
 
@@ -136,23 +135,9 @@
             style="@style/Widget.AppCompat.Button.BottomBlueButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:enabled="@{vm.btnEnabled}"
-            android:textColor="@{vm.btnEnabled ? @color/white : @color/grey}"
-            android:onClick="@{() -> vm.navigateCheckInfo()}"
+            android:textColor="@color/white"
             android:text="@string/confirm"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView23"
-            style="@style/RegularTextView"
-            android:textColor="@color/error"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="@{vm.error}"
-            app:layout_constraintBottom_toTopOf="@+id/btn_confirm_create_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

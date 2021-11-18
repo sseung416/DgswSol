@@ -23,10 +23,10 @@ class IdentityAuthViewModel @Inject constructor(
 
     val navigateCheckInfo = MutableLiveData(false)
 
-    private val _isSuccessCheckAccount = MutableLiveData("")
+    private val _isSuccessCheckAccount = MutableLiveData<String>()
     val isSuccessCheckAccount = _isSuccessCheckAccount
 
-    private val _isFailure = MutableLiveData("")
+    private val _isFailure = MutableLiveData<String>()
     val isFailure = _isFailure
 
     fun isErrorBlank(): Boolean {
@@ -34,7 +34,9 @@ class IdentityAuthViewModel @Inject constructor(
     }
 
     fun navigateCheckInfo() {
-        // todo 예외처..리...
+        if (name.value.isNullOrBlank() || number.value.isNullOrBlank())
+            return
+
         val name = name.value!!
         val number = number.value!! + numberBack.value!!
 

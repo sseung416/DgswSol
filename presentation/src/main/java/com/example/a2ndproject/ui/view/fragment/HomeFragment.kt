@@ -2,22 +2,15 @@ package com.example.a2ndproject.ui.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.HomeFragmentBinding
-import com.example.a2ndproject.ui.view.activity.AddAccountActivity
+import com.example.a2ndproject.ui.view.activity.CreateAccountActivity
+import com.example.a2ndproject.ui.view.activity.TransferActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.viewmodel.fragment.HomeViewModel
 import com.google.android.material.tabs.TabLayout
-import kotlin.concurrent.thread
 
 class HomeFragment : BaseFragment<HomeFragmentBinding>() {
 
@@ -38,7 +31,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
         }
 
         binding.btnTransferHome.setOnClickListener {
-
+            navigateToTransfer()
         }
     }
 
@@ -63,21 +56,18 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
         })
 
         /* 탭 레이아웃 5초마다 움직이게... */
-        // todo 뭔가 이상함
-//        thread {
+        // todo
+//        CoroutineScope(Dispatchers.Default).launch {
 //            while (true) {
-//                Thread.sleep(5000)
+//                when (binding.tabLayoutMain.selectedTabPosition) {
+//                    0 -> {
+//                        binding.tabLayoutMain.getTabAt(1)!!.select()
+//                        viewModel.position.value = 1
+//                    }
 //
-//                requireActivity().runOnUiThread {
-//                    when (binding.tabLayoutMain.selectedTabPosition) {
-//                        0 -> {
-//                            binding.tabLayoutMain.getTabAt(1)!!.select()
-//                            viewModel.position.value = 1
-//                        }
-//                        1 -> {
-//                            binding.tabLayoutMain.getTabAt(0)!!.select()
-//                            viewModel.position.value = 0
-//                        }
+//                    1 -> {
+//                        binding.tabLayoutMain.getTabAt(0)!!.select()
+//                        viewModel.position.value = 0
 //                    }
 //                }
 //            }
@@ -85,11 +75,11 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
     }
 
     private fun navigateToAddAccount() {
-        requireActivity().startActivity(Intent(requireActivity(), AddAccountActivity::class.java))
+        requireActivity().startActivity(Intent(requireActivity(), CreateAccountActivity::class.java))
     }
 
     private fun navigateToTransfer() {
-
+        requireActivity().startActivity(Intent(requireActivity(), TransferActivity::class.java))
     }
 
 

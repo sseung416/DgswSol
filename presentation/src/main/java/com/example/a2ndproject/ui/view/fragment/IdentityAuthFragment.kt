@@ -3,7 +3,6 @@ package com.example.a2ndproject.ui.view.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.AddAccountIdentityAuthFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
@@ -17,8 +16,6 @@ class IdentityAuthFragment : BaseFragment<AddAccountIdentityAuthFragmentBinding>
 
     private val viewModel: IdentityAuthViewModel by viewModels()
 
-    private val navArgs by navArgs<IdentityAuthFragmentArgs>()
-
     override fun getLayoutResId(): Int =
         R.layout.add_account_identity_auth_fragment
 
@@ -28,15 +25,28 @@ class IdentityAuthFragment : BaseFragment<AddAccountIdentityAuthFragmentBinding>
         super.onViewCreated(view, savedInstanceState)
 
         observe()
+
+        binding.btnConfirmCreateAccount.setOnClickListener {
+            // todo 유효성 검사(공백 등)
+
+            if (navController.graph.id == R.id.nav_graph_crete_account) {
+                navController.navigate(R.id.action_identityAuthFragment_to_checkInfoFragment)
+            } else {
+
+            }
+        }
     }
 
     private fun observe() = with(viewModel) {
         isFailure.observe(viewLifecycleOwner) {
-            MessageUtil.showDialog(requireActivity(), "알림", this@IdentityAuthFragment.getString(R.string.fail_server))
+            if (!it.isNullOrBlank())
+                MessageUtil.showDialog(requireActivity(), "알림", this@IdentityAuthFragment.getString(R.string.fail_server))
         }
 
         isSuccessCheckAccount.observe(viewLifecycleOwner) {
-            navController.navigate(R.id.action_identityAuthFragment_to_checkInfoFragment)
+            if (!it.isNullOrBlank()) {
+                navigateCheckInfo()
+            }
         }
 
         name.observe(viewLifecycleOwner, {
@@ -75,6 +85,13 @@ class IdentityAuthFragment : BaseFragment<AddAccountIdentityAuthFragmentBinding>
                 else -> false
             }
         })
+    }
+
+    private fun navigateToCheckInfo() {
+        navController.navigate(R.id.action_identityAuthFragment_to_checkInfoFragment)
+    }
+
+    private fun navigateToConnect() {
 
     }
 }

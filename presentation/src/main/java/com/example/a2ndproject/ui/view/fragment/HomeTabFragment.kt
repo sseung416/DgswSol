@@ -4,10 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.HomeFragmentTabBinding
-import com.example.a2ndproject.ui.view.activity.AddAccountActivity
+import com.example.a2ndproject.ui.view.activity.CreateAccountActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.data.FragmentType
 import com.example.a2ndproject.ui.viewmodel.fragment.HomeViewModel
@@ -36,7 +35,7 @@ class HomeTabFragment : BaseFragment<HomeFragmentTabBinding>() {
         }
 
         binding.btnTab.setOnClickListener {
-            val intent = Intent(requireActivity(), AddAccountActivity::class.java)
+            val intent = Intent(requireActivity(), CreateAccountActivity::class.java)
             intent.putExtra("type", type)
             requireActivity().startActivity(intent)
         }
