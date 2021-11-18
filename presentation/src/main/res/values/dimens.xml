@@ -10,4 +10,5 @@
     <dimen name="layout_padding_add_account">20dp</dimen>
     <dimen name="sign_textInputLayout_marginStart">24dp</dimen>
     <dimen name="profile_img_width">120dp</dimen>
+    <dimen name="transfer_choose_cardView_size">120dp</dimen>
 </resources>
