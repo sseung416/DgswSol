@@ -42,7 +42,7 @@
         android:id="@+id/identityAuthFragment"
         android:name="com.example.a2ndproject.ui.view.fragment.IdentityAuthFragment"
         android:label="IdentityAuthFragment"
-        tools:layout="@layout/add_account_identity_auth_fragment">
+        tools:layout="@layout/account_identity_auth_fragment">
         <action
             android:id="@+id/action_identityAuthFragment_to_checkInfoFragment"
             app:destination="@id/checkInfoFragment" />

@@ -71,7 +71,7 @@
                     android:text="계좌 종류"
                     android:textColor="@color/dark_grey" />
 
-                <Space
+                <androidx.legacy.widget.Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -98,7 +98,7 @@
                     android:text="이체 한도"
                     android:textColor="@color/dark_grey" />
 
-                <Space
+                <androidx.legacy.widget.Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />

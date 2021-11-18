@@ -5,19 +5,19 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.a2ndproject.R
-import com.example.a2ndproject.databinding.AddAccountIdentityAuthFragmentBinding
+import com.example.a2ndproject.databinding.AccountIdentityAuthFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.utils.MessageUtil
 import com.example.a2ndproject.ui.viewmodel.fragment.IdentityAuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class IdentityAuthFragment : BaseFragment<AddAccountIdentityAuthFragmentBinding>() {
+class IdentityAuthFragment : BaseFragment<AccountIdentityAuthFragmentBinding>() {
 
     private val viewModel: IdentityAuthViewModel by viewModels()
 
     override fun getLayoutResId(): Int =
-        R.layout.add_account_identity_auth_fragment
+        R.layout.account_identity_auth_fragment
 
     override fun setViewModel() { binding.vm = viewModel }
 
@@ -43,9 +43,10 @@ class IdentityAuthFragment : BaseFragment<AddAccountIdentityAuthFragmentBinding>
 
         isSuccessCheck.observe(viewLifecycleOwner) {
             if (navController.graph.id == R.id.nav_graph_crete_account) {
-                navController.navigate(R.id.action_identityAuthFragment_to_checkInfoFragment)
+                navigateToCheckInfo()
             } else {
                 // todo 계좌 연결할 때
+                navigateToConnect()
             }
         }
 
@@ -88,6 +89,5 @@ class IdentityAuthFragment : BaseFragment<AddAccountIdentityAuthFragmentBinding>
     }
 
     private fun navigateToConnect() {
-
     }
 }
