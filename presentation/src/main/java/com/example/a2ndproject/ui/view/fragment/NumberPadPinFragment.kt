@@ -1,10 +1,4 @@
-/**
- * 로그인 등을 이용할 때 사용할 핀버튼 프래그먼트
- * OnClick() methode override 위해 View.OnClickListener implements 함.
- *
- * @author 최승연
- * @date 2021-09-08
- */
+/** 핀버튼 프래그먼트 (숫자 암호 입력) */
 
 package com.example.a2ndproject.ui.view.fragment
 
@@ -26,7 +20,6 @@ import com.example.a2ndproject.ui.view.utils.MessageUtil
 import com.example.a2ndproject.ui.view.utils.Preference.token
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadPinViewModel
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadViewModel
-import com.example.domain.entity.request.CreateAccount
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,7 +42,14 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
 
         init(view)
 
-        observeNumPad()
+        when (args.type) {
+            FragmentType.PIN_QUICK_SIGN_IN.type -> observeLogin()
+
+            FragmentType.PIN_QUICK_SIGN_UP.type -> observeSignUp()
+
+            FragmentType.PIN_CREATE_ACCOUNT_PW.type -> observeCreateAccount()
+        }
+
         observePin()
     }
 
@@ -62,16 +62,52 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
         }
     }
 
-    private fun observeNumPad() = with(numberPadViewModel) {
-        var size = numberList.value?.size
+    private fun observeCreateAccount() = with (numberPadPinViewModel) {
+        numberPadViewModel.numberList.observe(viewLifecycleOwner) {
+            if (it.size == 4) {
+                createAccount(args.name, numberPadViewModel.getNumber())
+            }
+        }
 
+        isSuccessCreate.observe(viewLifecycleOwner) {
+            if (it.isNotBlank()) {
+                navController.navigate(R.id.action_numberPadPinFragment_to_createAccountSuccessFragment)
+            }
+        }
+
+        isFailure.observe(viewLifecycleOwner) {
+            var msg: String = when (it) {
+                "fail" -> "계좌 개설에 실패하였습니다.\n다시 시도해 주세요."
+                else -> this@NumberPadPinFragment.getString(R.string.fail_server)
+            }
+
+            MessageUtil.showDialog(requireActivity(), msg)
+        }
+    }
+
+    private fun observeSignUp() {
+        numberPadViewModel.numberList.observe(viewLifecycleOwner) {
+            if (it.size == 6) {
+                numberPadPinViewModel.quickSignUp(numberPadViewModel.getNumber())
+            }
+        }
+    }
+
+    private fun observeLogin() {
+        numberPadViewModel.numberList.observe(viewLifecycleOwner) {
+            if (it.size == 6) {
+                numberPadPinViewModel.quickLogin(numberPadViewModel.getNumber())
+            }
+        }
+    }
+
+    private fun observeNumPad() = with(numberPadViewModel) {
         numberList.observe(viewLifecycleOwner) {
             // todo 첫 type 검사 후에도 계속 검사함 -> 나중에 로직 바꾸기
             when (it.size) {
                 4 -> {
                     when (args.type) {
                         FragmentType.PIN_ACCOUNT_PW.type -> {
-                            numberPadPinViewModel.createAccount(CreateAccount("","","",""))
                         }
                     }
                 }
@@ -94,13 +130,14 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
                 }
 
                 else -> {
-                    var isDelete = false
-                    if (size != null) {
-                        if (size > it.size) {
-                            isDelete = true
-                        }
-                    }
-
+//                    var isDelete = false
+//                    if (size != null) {
+//                        if (size > it.size) {
+//                            isDelete = true
+//                        }
+//                    }
+//
+//                    Log.d("asdf", it.lastIndex.toString())
 //                    fillPinShape(isDelete, it.lastIndex)
                 }
             }
@@ -111,15 +148,26 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
         // todo 오류 처리 글로..
 
         isFailure.observe(viewLifecycleOwner) {
-            clearPin()
-            MessageUtil.showDialog(requireActivity(), "알림", this@NumberPadPinFragment.getString(R.string.fail_server))
+            if (it.isNullOrBlank()) {
+                clearPin()
+                MessageUtil.showDialog(requireActivity(), this@NumberPadPinFragment.getString(R.string.fail_server))
+            }
         }
 
         isSuccessLogin.observe(viewLifecycleOwner) {
-                token = it.msg!!
-                navigateToMain()
-        }
+            when (it.msg) {
+                "fail" -> {
+                    clearPin()
+                    MessageUtil.showDialog(requireActivity(), "로그인에 실패하였습니다.")
+                }
 
+                else -> {
+                    token = it.msg!!
+                    navigateToMain()
+                }
+            }
+
+        }
 
         isSuccessSignUp.observe(viewLifecycleOwner) {
             when (it) {
@@ -128,25 +176,9 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
 
                 this@NumberPadPinFragment.getString(R.string.server_res_fail) -> {
                     clearPin()
-                    MessageUtil.showDialog(requireActivity(), "알림", "어쨋든 실패했어여...")
+                    MessageUtil.showDialog(requireActivity(), "어쨋든 실패했어여...")
                 }
             }
-        }
-    }
-
-    private fun asdf() {
-        when (args.type) {
-            FragmentType.PIN_QUICK_SIGN_UP.type ->
-                numberPadPinViewModel.quickSignUp(numberPadViewModel.getNumber())
-
-            FragmentType.PIN_QUICK_SIGN_IN.type ->
-                numberPadPinViewModel.quickLogin(numberPadViewModel.getNumber())
-
-            FragmentType.PIN_ACCOUNT_PW.type ->
-                ""
-
-            else ->
-                Log.d("NumberPadPin", "navArgs 값 체크하기!")
         }
     }
 
@@ -173,14 +205,14 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
      *
      * @param isDelete: 삭제 버튼을 눌렀는지, 숫자 버튼을 눌렀는지 판별을 위함.
      * */
-//    private fun fillPinShape(isDelete: Boolean, pos: Int) {
-//        val color: Int = when (isDelete) {
-//            true -> R.color.grey
-//            false -> R.color.black
-//        }
-//
-//        pinCardList[pos].setCardBackgroundColor(ContextCompat.getColor(requireContext(), color))
-//    }
+    private fun fillPinShape(isDelete: Boolean, pos: Int) {
+        val color: Int = when (isDelete) {
+            true -> R.color.grey
+            false -> R.color.black
+        }
+
+        pinCardList[pos].setCardBackgroundColor(ContextCompat.getColor(requireContext(), color))
+    }
 
     /**
      * 저장된 핀번호(pinNumber item)를 모두 삭제하고 핀 모양의 색을 grey로 바꿈
@@ -191,5 +223,10 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
         }
 
         numberPadViewModel.popAll()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        requireActivity().viewModelStore.clear()
     }
 }

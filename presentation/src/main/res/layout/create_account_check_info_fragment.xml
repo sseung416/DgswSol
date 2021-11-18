@@ -3,12 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="vm"
-            type="com.example.a2ndproject.ui.viewmodel.fragment.CheckInfoViewModel" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,7 +13,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/confirm"
-            android:enabled="@{vm.accountName.length() == 0 ? false : true}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -124,6 +117,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_layout_check_info"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:hintEnabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,7 +127,6 @@
                     android:id="@+id/et_check_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={vm.accountName}"
                     android:hint="@string/input_account_name" />
             </com.google.android.material.textfield.TextInputLayout>
 

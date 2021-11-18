@@ -35,7 +35,7 @@ class IdentityAuthFragment : BaseFragment<AccountIdentityAuthFragmentBinding>() 
         isFailureCheck.observe(viewLifecycleOwner) {
             when (it) {
                 null ->
-                    MessageUtil.showDialog(requireActivity(), "알림", this@IdentityAuthFragment.getString(R.string.fail_server))
+                    MessageUtil.showDialog(requireActivity(), this@IdentityAuthFragment.getString(R.string.fail_server))
 
                 else -> Toast.makeText(requireContext(), "정보 틀림", Toast.LENGTH_SHORT).show()
             }

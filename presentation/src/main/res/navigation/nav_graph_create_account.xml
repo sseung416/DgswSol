@@ -20,17 +20,20 @@
         <action
             android:id="@+id/action_numberPadPinFragment_to_checkInfoFragment"
             app:destination="@id/checkInfoFragment" />
-
         <argument
             android:name="type"
             android:defaultValue="-1"
             app:argType="integer"/>
+        <argument
+            android:name="name"
+            android:defaultValue=""
+            app:argType="string"/>
     </fragment>
     <fragment
         android:id="@+id/checkInfoFragment"
         android:name="com.example.a2ndproject.ui.view.fragment.CheckInfoFragment"
         android:label="CheckInfoFragment"
-        tools:layout="@layout/account_check_info_fragment">
+        tools:layout="@layout/create_account_check_info_fragment">
         <action
             android:id="@+id/action_checkInfoFragment_to_numberPadPinFragment"
             app:destination="@id/numberPadPinFragment" />

@@ -1,23 +1,12 @@
-/**
- * 숫자 패드 프래그먼트
- *
- * @author 최승연
- * @date 2021-09-08
- * */
+/** 숫자 패드 프래그먼트 */
 
 package com.example.a2ndproject.ui.view.fragment
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.NumberPadFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
@@ -50,7 +39,9 @@ class NumberPadFragment : BaseFragment<NumberPadFragmentBinding>() {
         }
 
         binding.btnDeletePinNumber.setOnClickListener {
-            viewModel.removeNumber()
+            if (viewModel.numberList.value!!.size != 0) {
+                viewModel.removeNumber()
+            }
         }
     }
 
