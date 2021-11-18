@@ -29,6 +29,4 @@ class NumberPadViewModel : ViewModel() {
     // 스택을 String으로 변환해 반환
     fun getNumber(): String =
         numberList.value!!.joinToString("", "")
-
-
 }

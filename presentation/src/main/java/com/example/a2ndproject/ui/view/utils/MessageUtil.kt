@@ -1,15 +1,19 @@
 package com.example.a2ndproject.ui.view.utils
 
 import android.content.Context
-import android.util.Log
+import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
-import com.example.a2ndproject.R
-import com.example.a2ndproject.ui.view.fragment.EventDialogFragment
+import com.example.a2ndproject.ui.view.fragment.DefaultDialogFragment
 
 object MessageUtil {
-    fun showDialog(fragmentActivity: FragmentActivity, title: String, content: String) {
-        val dialog = EventDialogFragment(R.layout.event_dialog_fragment)
+
+    fun showDialog(fragmentActivity: FragmentActivity, msg: String) {
+        val dialog = DefaultDialogFragment()
+        val bundle = Bundle()
+        bundle.putString("msg", msg)
+
+        dialog.arguments = bundle
 
         dialog.show(fragmentActivity.supportFragmentManager, "dialog")
     }
@@ -18,7 +22,4 @@ object MessageUtil {
         Toast.makeText(context, content, Toast.LENGTH_SHORT).show()
     }
 
-    fun printLog(tag: String, content: String) {
-        Log.d(tag, content);
-    }
 }

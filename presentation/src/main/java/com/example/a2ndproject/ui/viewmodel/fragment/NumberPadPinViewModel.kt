@@ -22,7 +22,7 @@ class NumberPadPinViewModel @Inject constructor(
     private val postCreateAccountUseCase: PostCreateAccountUseCase
 ): ViewModel() {
 
-    private val _isFailure = MutableLiveData("")
+    private val _isFailure = MutableLiveData<String>()
     val isFailure = _isFailure
 
     private val _isSuccessSignUp = MutableLiveData("")
@@ -31,7 +31,7 @@ class NumberPadPinViewModel @Inject constructor(
     private val _isSuccessLogin = MutableLiveData<Msg>()
     val isSuccessLogin = _isSuccessLogin
 
-    private val _isSuccessCreate = MutableLiveData("")
+    private val _isSuccessCreate = MutableLiveData<String>()
     val isSuccessCreate = _isSuccessCreate
 
     fun quickSignUp(pw: String) {
@@ -58,11 +58,17 @@ class NumberPadPinViewModel @Inject constructor(
         }
     }
 
-    fun createAccount(createAccount: CreateAccount) {
+    fun createAccount(nickName: String, pw: String) {
         try {
             viewModelScope.launch {
+                val createAccount = CreateAccount(nickName, pw)
+
                 val msg = postCreateAccountUseCase.buildUseCase(PostCreateAccountUseCase.Params(createAccount))
-                _isSuccessCreate.value = msg.msg
+
+                when (msg.msg) {
+                    "success" -> _isSuccessCreate.value = msg.msg
+                    "fail" -> _isFailure.value = msg.msg!!
+                }
             }
         } catch (e: Exception) {
             Log.d("createAccount", e.message.toString())
