@@ -15,21 +15,18 @@ abstract class BaseRemote<SV> {
         return response.body()!!
     }
 
-    @Throws(java.lang.RuntimeException::class)
     private fun <T> checkError(response: Response<T>) {
         if (!response.isSuccessful) {
             val err = response.errorBody()?.string()
             Log.d(TAG, "checkError: $err")
-            Throwable(err.toString())
-//            throw RuntimeException(err.toString())
+//            Throwable(err.toString())
         } else {
             val res = response.body() as MsgResponse
             Log.d(TAG, "checkError: ${res.msg}")
 
             if (res.msg == "exist" || res.msg == "fail") {
-                Throwable(res.toString())
+//                Throwable(res.toString())
             }
-//            throw RuntimeException(res.toString())
         }
     }
 }

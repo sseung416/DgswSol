@@ -19,8 +19,8 @@ abstract class BaseFragment<B: ViewDataBinding> : Fragment() {
 
     protected val TAG: String = javaClass.simpleName
 
-    private var _binding: B? = null
-    protected val binding get() = _binding!!
+    private lateinit var _binding: B
+    protected val binding get() = _binding
 
     protected val navController: NavController by lazy {
         findNavController()
@@ -39,7 +39,7 @@ abstract class BaseFragment<B: ViewDataBinding> : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+//        _binding = null
     }
 
     protected abstract fun getLayoutResId(): Int

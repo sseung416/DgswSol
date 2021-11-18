@@ -2,12 +2,12 @@ package com.example.a2ndproject.ui.view.fragment
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.AddAccountIdentityAuthFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.utils.MessageUtil
-import com.example.a2ndproject.ui.view.utils.isNotBlankAll
 import com.example.a2ndproject.ui.viewmodel.fragment.IdentityAuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,25 +27,25 @@ class IdentityAuthFragment : BaseFragment<AddAccountIdentityAuthFragmentBinding>
         observe()
 
         binding.btnConfirmCreateAccount.setOnClickListener {
-            // todo 유효성 검사(공백 등)
-
-            if (navController.graph.id == R.id.nav_graph_crete_account) {
-                navController.navigate(R.id.action_identityAuthFragment_to_checkInfoFragment)
-            } else {
-
-            }
+            viewModel.postCheckAccount()
         }
     }
 
     private fun observe() = with(viewModel) {
-        isFailure.observe(viewLifecycleOwner) {
-            if (!it.isNullOrBlank())
-                MessageUtil.showDialog(requireActivity(), "알림", this@IdentityAuthFragment.getString(R.string.fail_server))
+        isFailureCheck.observe(viewLifecycleOwner) {
+            when (it) {
+                null ->
+                    MessageUtil.showDialog(requireActivity(), "알림", this@IdentityAuthFragment.getString(R.string.fail_server))
+
+                else -> Toast.makeText(requireContext(), "정보 틀림", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        isSuccessCheckAccount.observe(viewLifecycleOwner) {
-            if (!it.isNullOrBlank()) {
-                navigateCheckInfo()
+        isSuccessCheck.observe(viewLifecycleOwner) {
+            if (navController.graph.id == R.id.nav_graph_crete_account) {
+                navController.navigate(R.id.action_identityAuthFragment_to_checkInfoFragment)
+            } else {
+                // todo 계좌 연결할 때
             }
         }
 
@@ -80,10 +80,6 @@ class IdentityAuthFragment : BaseFragment<AddAccountIdentityAuthFragmentBinding>
         error.observe(viewLifecycleOwner, {
             val list = listOf(name.value, number.value, numberBack.value)
 
-            btnEnabled.value = when {
-                list.isNotBlankAll() && error.value.isNullOrBlank() -> true
-                else -> false
-            }
         })
     }
 

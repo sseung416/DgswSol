@@ -1,7 +1,5 @@
 package com.example.a2ndproject.ui.view.utils
 
-import android.app.Activity
-import android.app.Dialog
 import android.content.Context
 import android.util.Log
 import android.widget.Toast

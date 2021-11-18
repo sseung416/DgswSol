@@ -49,6 +49,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_name_create_account"
                         style="@style/TransParentTextInputEditText"
+                        android:text="@={vm.name}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/name" />

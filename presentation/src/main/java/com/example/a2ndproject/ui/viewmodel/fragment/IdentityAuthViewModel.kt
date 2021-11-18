@@ -18,38 +18,39 @@ class IdentityAuthViewModel @Inject constructor(
     val name = MutableLiveData<String>()
     val number = MutableLiveData<String>()
     val numberBack = MutableLiveData<String>()
-    val btnEnabled = MutableLiveData(false)
     val error = MutableLiveData("")
 
-    val navigateCheckInfo = MutableLiveData(false)
+    private val _isSuccessCheck = MutableLiveData<String>()
+    val isSuccessCheck = _isSuccessCheck
 
-    private val _isSuccessCheckAccount = MutableLiveData<String>()
-    val isSuccessCheckAccount = _isSuccessCheckAccount
-
-    private val _isFailure = MutableLiveData<String>()
-    val isFailure = _isFailure
+    private val _isFailureCheck = MutableLiveData<String>()
+    val isFailureCheck = _isFailureCheck
 
     fun isErrorBlank(): Boolean {
         return error.value == ""
     }
 
-    fun navigateCheckInfo() {
-        if (name.value.isNullOrBlank() || number.value.isNullOrBlank())
-            return
+    fun postCheckAccount() {
+        // todo 유효성 검사
+//        if (name.value.isNullOrBlank() || number.value.isNullOrBlank())
+//            return
 
         val name = name.value!!
-        val number = number.value!! + numberBack.value!!
+        val number = number.value!!
 
         try {
             viewModelScope.launch {
                 val msg = postCheckAccountUseCase.buildUseCase(PostCheckAccountUseCase.Params(CheckAccount(name, number)))
-                _isSuccessCheckAccount.postValue(msg.msg)
+
+                when (msg.msg) {
+                    "exist" -> _isSuccessCheck.postValue(msg.msg!!)
+
+                    else -> _isFailureCheck.postValue(msg.msg!!)
+                }
             }
         } catch (e: Exception) {
             Log.d("checkAccount", e.message.toString())
-            _isFailure.postValue(e.message.toString())
+            _isFailureCheck.postValue(e.message.toString())
         }
-
-        navigateCheckInfo.postValue(true)
     }
 }
