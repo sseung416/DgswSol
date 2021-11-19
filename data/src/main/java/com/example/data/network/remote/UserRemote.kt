@@ -2,6 +2,7 @@ package com.example.data.network.remote
 
 import com.example.data.base.BaseRemote
 import com.example.data.entity.MsgResponse
+import com.example.data.entity.ProfileResponse
 import com.example.data.network.service.UserService
 import com.example.domain.entity.request.Login
 import com.example.domain.entity.request.QuickPw
@@ -43,6 +44,10 @@ class UserRemote @Inject constructor(
 
     suspend fun postQuickLogin(quickPw: QuickPw): MsgResponse {
         return getResponse(service.postQuickLogin(quickPw))
+    }
+
+    suspend fun getProfile(): ProfileResponse {
+        return getResponse(service.getProfile())
     }
 
 }

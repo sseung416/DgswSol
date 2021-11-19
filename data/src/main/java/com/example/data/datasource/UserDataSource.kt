@@ -7,6 +7,7 @@ import com.example.data.network.remote.UserRemote
 import com.example.domain.entity.request.Login
 import com.example.domain.entity.request.QuickPw
 import com.example.domain.entity.response.Msg
+import com.example.domain.entity.response.Profile
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import javax.inject.Inject
@@ -45,5 +46,9 @@ class UserDataSource @Inject constructor(
 
     suspend fun postQuickLogin(quickPw: QuickPw): Msg {
         return remote.postQuickLogin(quickPw).toEntity()
+    }
+
+    suspend fun getProfile(): Profile {
+        return remote.getProfile().toEntity()
     }
 }

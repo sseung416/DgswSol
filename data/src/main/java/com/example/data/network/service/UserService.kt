@@ -1,6 +1,7 @@
 package com.example.data.network.service
 
 import com.example.data.entity.MsgResponse
+import com.example.data.entity.ProfileResponse
 import com.example.domain.entity.request.Login
 import com.example.domain.entity.request.QuickPw
 import okhttp3.MultipartBody
@@ -36,4 +37,7 @@ interface UserService {
 
     @POST("/login/quick")
     suspend fun postQuickLogin(@Body quickPw: QuickPw): Response<MsgResponse>
+
+    @GET("/signup")
+    suspend fun getProfile(): Response<ProfileResponse>
 }

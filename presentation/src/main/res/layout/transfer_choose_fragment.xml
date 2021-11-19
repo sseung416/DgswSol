@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.fragment.TransferChooseFragment">
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_shinhan_transfer_choose"
+            android:layout_width="@dimen/transfer_choose_cardView_size"
+            android:layout_height="@dimen/transfer_choose_cardView_size"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_kakao_transfer_choose"
+            app:layout_constraintEnd_toStartOf="@+id/cv_kakao_transfer_choose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cv_kakao_transfer_choose">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_android_black_24dp" />
+
+                <TextView
+                    android:id="@+id/textView35"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="신한"
+                    android:textColor="@color/blue" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_kakao_transfer_choose"
+            android:layout_width="@dimen/transfer_choose_cardView_size"
+            android:layout_height="@dimen/transfer_choose_cardView_size"
+            android:layout_marginTop="200dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="@+id/textView34"
+            app:layout_constraintStart_toStartOf="@+id/textView34"
+            app:layout_constraintTop_toBottomOf="@+id/textView34">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_android_black_24dp" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="신한"
+                    android:textColor="@color/blue" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_toss_transfer_choose"
+            android:layout_width="@dimen/transfer_choose_cardView_size"
+            android:layout_height="@dimen/transfer_choose_cardView_size"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_kakao_transfer_choose"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cv_kakao_transfer_choose"
+            app:layout_constraintTop_toTopOf="@+id/cv_kakao_transfer_choose">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_android_black_24dp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="신한"
+                    android:textColor="@color/blue" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

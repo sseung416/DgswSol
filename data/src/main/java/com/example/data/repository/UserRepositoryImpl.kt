@@ -4,6 +4,7 @@ import com.example.data.datasource.UserDataSource
 import com.example.data.mapper.toEntity
 import com.example.domain.entity.request.*
 import com.example.domain.entity.response.Msg
+import com.example.domain.entity.response.Profile
 import com.example.domain.repository.UserRepository
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -43,5 +44,9 @@ class UserRepositoryImpl @Inject constructor(
 
     override suspend fun postQuickLogin(quickPw: QuickPw): Msg {
         return userDataSource.postQuickLogin(quickPw)
+    }
+
+    override suspend fun getProfile(): Profile {
+        return userDataSource.getProfile()
     }
 }

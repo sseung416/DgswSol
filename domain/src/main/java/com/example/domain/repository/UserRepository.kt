@@ -7,6 +7,7 @@ package com.example.domain.repository
 
 import com.example.domain.entity.request.*
 import com.example.domain.entity.response.Msg
+import com.example.domain.entity.response.Profile
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -37,5 +38,7 @@ interface UserRepository {
 
     // 간편 로그인
     suspend fun postQuickLogin(quickPw: QuickPw): Msg
+
+    suspend fun getProfile(): Profile
 
 }
