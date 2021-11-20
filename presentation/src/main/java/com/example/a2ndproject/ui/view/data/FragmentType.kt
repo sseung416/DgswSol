@@ -12,6 +12,6 @@ enum class FragmentType(val type: Int) {
     PIN_CREATE_ACCOUNT_PW(2),
     PIN_ACCOUNT_PW(3),
 
-    ADD_ACCOUNT_CREATE(0),
-    ADD_ACCOUNT_CONNECT(1)
+    TAB_POS_CREATE_ACCOUNT(0),
+    TAB_POS_CONNECT_ACCOUNT(1),
 }

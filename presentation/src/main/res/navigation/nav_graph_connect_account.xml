@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_connect_account"
+    app:startDestination="@id/identityAuthFragment">
+
+    <fragment
+        android:id="@+id/identityAuthFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.IdentityAuthFragment"
+        tools:layout="@layout/account_identity_auth_fragment"
+        android:label="IdentityAuthFragment" >
+        <action
+            android:id="@+id/action_identityAuthFragment2_to_connectAccountFragment"
+            app:destination="@id/connectAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/connectAccountFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.ConnectAccountFragment"
+        android:label="ConnectAccountFragment"
+        tools:layout="@layout/add_account_connect_fragment">
+        <action
+            android:id="@+id/action_connectAccountFragment_to_identityAuthFragment2"
+            app:destination="@id/identityAuthFragment" />
+    </fragment>
+</navigation>

@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.HomeFragmentTabBinding
+import com.example.a2ndproject.ui.view.activity.ConnectAccountActivity
 import com.example.a2ndproject.ui.view.activity.CreateAccountActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.data.FragmentType
@@ -28,15 +29,23 @@ class HomeTabFragment : BaseFragment<HomeFragmentTabBinding>() {
         var type = 0
         viewModel.position.observe(viewLifecycleOwner) {
             type = when (it) {
-                0 -> FragmentType.ADD_ACCOUNT_CREATE.type
-                1 -> FragmentType.ADD_ACCOUNT_CONNECT.type
-                else -> 0
+                0 -> FragmentType.TAB_POS_CREATE_ACCOUNT.type
+                1 -> FragmentType.TAB_POS_CONNECT_ACCOUNT.type
+                else -> -1
             }
         }
 
         binding.btnTab.setOnClickListener {
-            val intent = Intent(requireActivity(), CreateAccountActivity::class.java)
-            intent.putExtra("type", type)
+            val intent = when (type) {
+                FragmentType.TAB_POS_CREATE_ACCOUNT.type ->
+                    Intent(requireContext(), CreateAccountActivity::class.java)
+
+                FragmentType.TAB_POS_CONNECT_ACCOUNT.type ->
+                    Intent(requireContext(), ConnectAccountActivity::class.java)
+
+                else -> null
+            }
+
             requireActivity().startActivity(intent)
         }
     }
