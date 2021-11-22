@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph_transfer">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_transfer"
+    app:startDestination="@id/numberPadMoneyFragment">
 
+    <fragment
+        android:id="@+id/transferChooseFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.TransferChooseFragment"
+        android:label="TransferChooseFragment"
+        tools:layout="@layout/transfer_choose_fragment">
+        <action
+            android:id="@+id/action_transferChooseFragment_to_transferCheckFragment"
+            app:destination="@id/transferCheckFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/numberPadMoneyFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.NumberPadMoneyFragment"
+        android:label="NumberPadMoneyFragment"
+        tools:layout="@layout/number_pad_money_fragment">
+        <action
+            android:id="@+id/action_numberPadMoneyFragment_to_transferChooseFragment"
+            app:destination="@id/transferChooseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transferCheckFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.TransferCheckFragment"
+        android:label="transfer_check_fragment"
+        tools:layout="@layout/transfer_check_fragment" >
+        <action
+            android:id="@+id/action_transferCheckFragment_to_transferSuccessFragment"
+            app:destination="@id/transferSuccessFragment" />
+        <action
+            android:id="@+id/action_transferCheckFragment_to_transferChooseFragment"
+            app:destination="@id/transferChooseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transferSuccessFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.TransferSuccessFragment"
+        android:label="transfer_success_fragment"
+        tools:layout="@layout/transfer_success_fragment" >
+        <action
+            android:id="@+id/action_transferSuccessFragment_to_transferCheckFragment"
+            app:destination="@id/transferCheckFragment" />
+    </fragment>
 </navigation>

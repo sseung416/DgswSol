@@ -31,7 +31,7 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_create_account2.xml" value="0.2" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_intro.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_main.xml" value="0.25885416666666666" />
-        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_transfer.xml" value="0.25885416666666666" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_transfer.xml" value="0.176" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account1_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account_check_info_fragment.xml" value="0.25769927536231885" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/add_account_connect_fragment.xml" value="0.264" />
@@ -74,6 +74,8 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/sign_up_vp_item_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/tab_layout_fragment.xml" value="0.4901506373117034" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/transfer_choose_fragment.xml" value="0.25885416666666666" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/transfer_success_fragment.xml" value="0.10260416666666666" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/trasfer_check_fragment.xml" value="0.1" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/view_pager_item_sign_up_fragment.xml" value="0.2" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/vp_item_intro_fragment.xml" value="0.20572916666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/vp_item_sign_up_fragment.xml" value="0.23274161735700197" />
