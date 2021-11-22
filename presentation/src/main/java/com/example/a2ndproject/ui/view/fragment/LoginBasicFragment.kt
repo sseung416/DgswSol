@@ -47,7 +47,7 @@ class LoginBasicFragment : BaseFragment<LoginBasicFragmentBinding>() {
         }
 
         isFailure.observe(viewLifecycleOwner) {
-            MessageUtil.showDialog(requireActivity(), "알림", this@LoginBasicFragment.getString(R.string.fail_server))
+            MessageUtil.showDialog(requireActivity(), this@LoginBasicFragment.getString(R.string.fail_server))
         }
     }
 }

@@ -3,9 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="vm"
+            type="com.example.a2ndproject.ui.viewmodel.fragment.CheckInfoViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.view.fragment.CheckInfoFragment">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_confirm_check_info"
@@ -25,8 +32,7 @@
             app:layout_constraintBottom_toTopOf="@+id/btn_confirm_check_info"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:context=".ui.view.fragment.CheckInfoFragment">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textView8"
@@ -94,6 +100,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:layout_weight="1"
+                        android:text="@{vm.profile.name}"
                         tools:text="최승연" />
 
                     <TextView
@@ -103,6 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:layout_weight="1"
+                        android:text="@{vm.profile.birth}"
                         tools:text="040416-1234567" />
 
                     <TextView
@@ -111,6 +119,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:text="@{vm.profile.phonenum}"
                         tools:text="010-0000-0000" />
                 </LinearLayout>
             </LinearLayout>
@@ -125,6 +134,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_check_info"
+                    android:text="@={vm.accountName}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/input_account_name" />
