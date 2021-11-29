@@ -10,13 +10,17 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/btn_main.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/btn_outline.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/dot_indicator_background.xml" value="0.275" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic__9233ef01fb4aaa36bef2606cc345f45.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.17291666666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.18697916666666667" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_baseline_check_24.xml" value="0.259375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_baseline_close_24.xml" value="0.259375" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_create_account.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_numpad.xml" value="0.14375" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_open_banking.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_padlock.xml" value="0.14375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_toss_logo.xml" value="0.16510416666666666" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_transfer.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/outline.xml" value="0.259375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_btn_main_tab.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_btn_number_pad.xml" value="0.27076923076923076" />
@@ -51,7 +55,7 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/fragment_default_dialog.xml" value="0.4" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/fragment_transfer_money.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/hold_fragment.xml" value="0.25885416666666666" />
-        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/home_fragment.xml" value="0.35325365205843295" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/home_fragment.xml" value="0.4" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/home_fragment_tab.xml" value="0.264" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/intro_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/intro_view_pager_fragment.xml" value="0.2536231884057971" />
@@ -66,7 +70,7 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/number_pad_fragment.xml" value="0.24365942028985507" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/number_pad_money_fragment.xml" value="0.6" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/number_pad_password_fragment.xml" value="0.25885416666666666" />
-        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/number_pad_pin_fragment.xml" value="0.12" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/number_pad_pin_fragment.xml" value="0.2" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/pin_number_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/rv_item_connect.xml" value="0.24322916666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/rv_item_connect_account.xml" value="0.264" />

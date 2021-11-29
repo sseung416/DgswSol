@@ -21,12 +21,12 @@ abstract class BaseRemote<SV> {
             Log.d(TAG, "checkError: $err")
 //            Throwable(err.toString())
         } else {
-            val res = response.body() as MsgResponse
-            Log.d(TAG, "checkError: ${res.msg}")
-
-            if (res.msg == "exist" || res.msg == "fail") {
+//            val res = response.body()
+//            Log.d(TAG, "checkError: ${res.msg}")
+//
+//            if (res.msg == "exist" || res.msg == "fail") {
 //                Throwable(res.toString())
-            }
+//            }
         }
     }
 }

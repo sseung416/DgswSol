@@ -38,6 +38,6 @@ interface UserService {
     @POST("/login/quick")
     suspend fun postQuickLogin(@Body quickPw: QuickPw): Response<MsgResponse>
 
-    @GET("/signup")
+    @GET("/signup/profile")
     suspend fun getProfile(): Response<ProfileResponse>
 }
