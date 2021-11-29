@@ -7,6 +7,10 @@
         <variable
             name="vm"
             type="com.example.a2ndproject.ui.viewmodel.fragment.CheckInfoViewModel" />
+
+        <variable
+            name="profile"
+            type="com.example.domain.entity.response.Profile" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -100,7 +104,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:layout_weight="1"
-                        android:text="@{vm.profile.name}"
+                        android:text="@{profile.name}"
                         tools:text="최승연" />
 
                     <TextView
@@ -110,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:layout_weight="1"
-                        android:text="@{vm.profile.birth}"
+                        android:text="@{profile.birth}"
                         tools:text="040416-1234567" />
 
                     <TextView
@@ -119,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@{vm.profile.phonenum}"
+                        android:text="@{profile.phonenum}"
                         tools:text="010-0000-0000" />
                 </LinearLayout>
             </LinearLayout>

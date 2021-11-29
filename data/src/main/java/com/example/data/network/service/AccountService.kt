@@ -12,6 +12,6 @@ interface AccountService {
     @POST("/account/check")
     suspend fun postCheckAccount(@Body checkAccount: CheckAccount): Response<MsgResponse>
 
-    @POST("/account/create")
+    @POST("/account")
     suspend fun postCreateAccount(@Body createAccount: CreateAccount): Response<MsgResponse>
 }

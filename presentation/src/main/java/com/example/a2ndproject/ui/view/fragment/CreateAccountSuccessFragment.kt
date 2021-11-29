@@ -2,19 +2,16 @@ package com.example.a2ndproject.ui.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.example.a2ndproject.R
-import com.example.a2ndproject.databinding.AddAccountCreateSuccessFragmentBinding
+import com.example.a2ndproject.databinding.CreateAccountSuccessFragmentBinding
 import com.example.a2ndproject.ui.view.activity.MainActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
 
-class CreateAccountSuccessFragment : BaseFragment<AddAccountCreateSuccessFragmentBinding>() {
+class CreateAccountSuccessFragment : BaseFragment<CreateAccountSuccessFragmentBinding>() {
 
     override fun getLayoutResId(): Int =
-        R.layout.add_account_create_success_fragment
+        R.layout.create_account_success_fragment
 
     override fun setViewModel() {}
 
