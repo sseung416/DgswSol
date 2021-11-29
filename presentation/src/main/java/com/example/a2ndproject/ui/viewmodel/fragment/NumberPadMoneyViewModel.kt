@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.a2ndproject.ui.view.model.Account
 import java.text.NumberFormat
-import java.util.Locale
+import java.util.*
 
 class NumberPadMoneyViewModel(
     val account: Account
@@ -16,10 +16,13 @@ class NumberPadMoneyViewModel(
     val money = MutableLiveData<String>()
     val moneyErr = MutableLiveData<String>()
 
-    fun setMoney(num: Int) {
-        moneyText += num
+    fun setMoney(moneyStack: Stack<Int>) {
+        moneyText = ""
+        moneyStack.forEach { num ->
+            moneyText += num
+        }
 
-        NumberFormat.getInstance(Locale.getDefault()).format(moneyText)
+//        NumberFormat.getInstance(Locale.getDefault()).format(moneyText)
 
         money.value = moneyText
     }

@@ -49,11 +49,12 @@
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:src="@{vm.account.bankImgSrc}"
+                    android:src="@drawable/ic_toss_logo"
+                    android:scaleType="fitCenter"
                     android:layout_margin="10dp"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    tools:src="@tools:sample/avatars" />
+                    tools:src="@drawable/ic_sol_logo" />
 
                 <TextView
                     android:id="@+id/tv_account_number_number_pad_money1"
@@ -83,31 +84,32 @@
         <TextView
             android:id="@+id/tv_money_kr_number_pad_money"
             style="@style/BigTextView"
-            android:text="@{vm.moneyKR}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/tv_error_number_pad_money"
+            android:text="@{vm.moneyKR}"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_bank_number_pad_money"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
             tools:text="천 원" />
 
         <LinearLayout
             android:id="@+id/linearLayout4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/tv_money_kr_number_pad_money"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bank_number_pad_money">
 
             <TextView
                 android:id="@+id/tv_money_number_pad_money"
                 style="@style/MoneyTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="1,000" />
+                android:text="@{vm.money, default=0}" />
 
             <TextView
                 android:id="@+id/textView22"

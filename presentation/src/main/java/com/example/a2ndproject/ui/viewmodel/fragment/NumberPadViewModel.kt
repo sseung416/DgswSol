@@ -6,7 +6,7 @@ import java.util.*
 
 class NumberPadViewModel : ViewModel() {
 
-    val numberList = MutableLiveData<Stack<Int>>()
+    val numberList = MutableLiveData<Stack<Int>>(Stack())
     private val stack = Stack<Int>()
 
     fun addNumber(num: Int) {

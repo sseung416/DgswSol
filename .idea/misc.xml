@@ -16,11 +16,13 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_baseline_close_24.xml" value="0.259375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_numpad.xml" value="0.14375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_padlock.xml" value="0.14375" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/ic_toss_logo.xml" value="0.16510416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/outline.xml" value="0.259375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_btn_main_tab.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_btn_number_pad.xml" value="0.27076923076923076" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_tv_main_tab.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_tv_number_pad.xml" value="0.27076923076923076" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/selector_white_to_blue.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/tab_select_background_gradient.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/drawable/tab_select_background_main.xml" value="0.275" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/account_check_info_fragment.xml" value="0.4" />
@@ -47,6 +49,7 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/create_account_success_fragment.xml" value="0.264" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/dialog_fragment.xml" value="0.24139492753623187" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/fragment_default_dialog.xml" value="0.4" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/fragment_transfer_money.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/hold_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/home_fragment.xml" value="0.35325365205843295" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/home_fragment_tab.xml" value="0.264" />
@@ -61,7 +64,7 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/my_assets_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/new_this_account_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/number_pad_fragment.xml" value="0.24365942028985507" />
-        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/number_pad_money_fragment.xml" value="0.4" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/number_pad_money_fragment.xml" value="0.6" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/number_pad_password_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/number_pad_pin_fragment.xml" value="0.264" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/pin_number_fragment.xml" value="0.25885416666666666" />
@@ -74,7 +77,8 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/sign_up_vp_item_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/tab_layout_fragment.xml" value="0.4901506373117034" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/transfer_check_fragment.xml" value="0.264" />
-        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/transfer_choose_fragment.xml" value="0.176" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/transfer_choose_fragment.xml" value="0.2" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/transfer_money_fragment.xml" value="0.1375" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/transfer_success_fragment.xml" value="0.264" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/trasfer_check_fragment.xml" value="0.1" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/view_pager_item_sign_up_fragment.xml" value="0.2" />

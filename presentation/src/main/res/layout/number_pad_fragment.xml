@@ -24,7 +24,6 @@
                     style="@style/Widget.AppCompat.Button.PinButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:text="1" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -32,7 +31,6 @@
                     style="@style/Widget.AppCompat.Button.PinButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:text="2" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -40,7 +38,6 @@
                     style="@style/Widget.AppCompat.Button.PinButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:text="3" />
 
             </TableRow>
@@ -55,7 +52,6 @@
                     style="@style/Widget.AppCompat.Button.PinButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:text="4" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -63,7 +59,6 @@
                     style="@style/Widget.AppCompat.Button.PinButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:text="5" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -71,7 +66,6 @@
                     style="@style/Widget.AppCompat.Button.PinButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:text="6" />
             </TableRow>
 
@@ -85,7 +79,6 @@
                     style="@style/Widget.AppCompat.Button.PinButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:text="7" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -93,7 +86,6 @@
                     style="@style/Widget.AppCompat.Button.PinButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:text="8" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -101,7 +93,6 @@
                     style="@style/Widget.AppCompat.Button.PinButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:text="9" />
             </TableRow>
 
@@ -110,19 +101,19 @@
                 android:layout_height="match_parent"
                 android:minHeight="@dimen/pin_num_pad_table_row">
 
-                <Button
-                    android:id="@+id/button"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_confirm_pin_number"
+                    style="@style/Widget.AppCompat.Button.PinButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Button"
-                    android:visibility="invisible" />
+                    android:layout_height="match_parent"
+                    android:text="@string/confirm"
+                    android:textColor="@color/black" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_0_pin_number"
                     style="@style/Widget.AppCompat.Button.PinButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:text="0" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -130,7 +121,6 @@
                     style="@style/Widget.AppCompat.Button.PinButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:text="@string/delete" />
             </TableRow>
 
