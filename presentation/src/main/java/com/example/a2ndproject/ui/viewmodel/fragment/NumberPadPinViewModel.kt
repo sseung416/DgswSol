@@ -66,7 +66,7 @@ class NumberPadPinViewModel @Inject constructor(
                 val msg = postCreateAccountUseCase.buildUseCase(PostCreateAccountUseCase.Params(createAccount))
 
                 when (msg.msg) {
-                    "success" -> _isSuccessCreate.value = msg.msg
+                    "success" -> _isSuccessCreate.value = msg.msg!!
                     "fail" -> _isFailure.value = msg.msg!!
                 }
             }

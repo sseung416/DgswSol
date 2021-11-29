@@ -7,9 +7,13 @@ enum class FragmentType(val type: Int) {
     IDENTITY_AUTH_CONNECT(1),
 
     // 핀패드
+    // 핀번호 회원가입
     PIN_QUICK_SIGN_UP(0),
+    // 핀번호 로그인
     PIN_QUICK_SIGN_IN(1),
+    // 계좌 생성
     PIN_CREATE_ACCOUNT_PW(2),
+    // 통장 비밀번호 설정/확인
     PIN_ACCOUNT_PW(3),
 
     TAB_POS_CREATE_ACCOUNT(0),

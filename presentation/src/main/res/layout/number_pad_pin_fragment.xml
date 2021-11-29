@@ -32,37 +32,37 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_pin1_pin_number"
-                style="@style/CardView.Pin"
+                style="@style/PinCardView"
                 android:layout_width="@dimen/pin_card_size"
                 android:layout_height="@dimen/pin_card_size" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_pin2_pin_number"
-                style="@style/CardView.Pin"
+                style="@style/PinCardView"
                 android:layout_width="@dimen/pin_card_size"
                 android:layout_height="@dimen/pin_card_size" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_pin3_pin_number"
-                style="@style/CardView.Pin"
+                style="@style/PinCardView"
                 android:layout_width="@dimen/pin_card_size"
                 android:layout_height="@dimen/pin_card_size" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_pin4_pin_number"
-                style="@style/CardView.Pin"
+                style="@style/PinCardView"
                 android:layout_width="@dimen/pin_card_size"
                 android:layout_height="@dimen/pin_card_size" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_pin5_pin_number"
-                style="@style/CardView.Pin"
+                style="@style/PinCardView"
                 android:layout_width="25dp"
                 android:layout_height="25dp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_pin6_pin_number"
-                style="@style/CardView.Pin"
+                style="@style/PinCardView"
                 android:layout_width="25dp"
                 android:layout_height="25dp" />
 
