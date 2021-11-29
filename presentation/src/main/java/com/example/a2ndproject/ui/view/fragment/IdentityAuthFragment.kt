@@ -8,6 +8,7 @@ import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.AccountIdentityAuthFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.utils.MessageUtil
+import com.example.a2ndproject.ui.view.utils.isNotBlankAll
 import com.example.a2ndproject.ui.viewmodel.fragment.IdentityAuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,7 +28,15 @@ class IdentityAuthFragment : BaseFragment<AccountIdentityAuthFragmentBinding>() 
         observe()
 
         binding.btnConfirmCreateAccount.setOnClickListener {
-            viewModel.postCheckAccount()
+            viewModel.apply {
+                val list = listOf(name.value, numberBack.value, number.value)
+
+                if (list.isNotBlankAll()) {
+                    postCheckAccount()
+                } else {
+                    MessageUtil.showDialog(requireActivity(), "정보를 입력해주세요.")
+                }
+            }
         }
     }
 
@@ -42,10 +51,12 @@ class IdentityAuthFragment : BaseFragment<AccountIdentityAuthFragmentBinding>() 
         }
 
         isSuccessCheck.observe(viewLifecycleOwner) {
+            // navigation graph 에 따라 이동하는 프래그먼트가 다름
             if (navController.graph.id == R.id.nav_graph_crete_account) {
+                // 계좌 개설
                 navigateToCheckInfo()
             } else {
-                // todo 계좌 연결할 때
+                // 계좌 추가 (오픈 뱅킹)
                 navigateToConnect()
             }
         }
@@ -89,5 +100,6 @@ class IdentityAuthFragment : BaseFragment<AccountIdentityAuthFragmentBinding>() 
     }
 
     private fun navigateToConnect() {
+        navController.navigate(R.id.action_identityAuthFragment_to_connectAccountFragment)
     }
 }

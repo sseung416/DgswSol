@@ -13,8 +13,8 @@ import javax.inject.Inject
 @HiltViewModel
 class IdentityAuthViewModel @Inject constructor(
     private val postCheckAccountUseCase: PostCheckAccountUseCase
-    //todo 다른 계좌 가져오기가 들어올 예정
 ) : ViewModel() {
+
     val name = MutableLiveData<String>()
     val number = MutableLiveData<String>()
     val numberBack = MutableLiveData<String>()
@@ -31,17 +31,13 @@ class IdentityAuthViewModel @Inject constructor(
     }
 
     fun postCheckAccount() {
-        // todo 유효성 검사
-//        if (name.value.isNullOrBlank() || number.value.isNullOrBlank())
-//            return
-
         val name = name.value!!
         val number = number.value!!
 
         try {
             viewModelScope.launch {
                 val msg = postCheckAccountUseCase.buildUseCase(PostCheckAccountUseCase.Params(CheckAccount(name, number)))
-
+                Log.d("checkAccount", msg.toString())
                 when (msg.msg) {
                     "exist" -> _isSuccessCheck.postValue(msg.msg!!)
 

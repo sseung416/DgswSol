@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.example.a2ndproject.ui.viewmodel.fragment.AddAccountViewModel" />
+            type="com.example.a2ndproject.ui.viewmodel.fragment.ConnectAccountViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,12 +48,13 @@
             style="@style/BigTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView18"
             app:layout_constraintStart_toStartOf="@+id/textView20"
             app:layout_constraintTop_toBottomOf="@+id/textView20"
             tools:text="0" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button2"
+            android:id="@+id/btn_confirm_connect"
             style="@style/Widget.AppCompat.Button.BottomBlueButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,11 +64,15 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_connect"
+            android:background="@drawable/outline"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/layout_padding_big"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
             tools:listitem="@layout/rv_item_connect_account"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
+            app:layout_constraintBottom_toTopOf="@+id/btn_confirm_connect"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView19" />

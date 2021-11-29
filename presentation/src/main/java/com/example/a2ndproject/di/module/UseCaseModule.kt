@@ -7,7 +7,7 @@ import com.example.domain.usecase.account.PostCheckAccountUseCase
 import com.example.domain.usecase.account.PostCreateAccountUseCase
 import com.example.domain.usecase.transfer.GetTransferCheckUseCase
 import com.example.domain.usecase.transfer.PostTransferPwUseCase
-import com.example.domain.usecase.transfer.PostTransferUseCase
+import com.example.domain.usecase.transfer.PutTransferUseCase
 import com.example.domain.usecase.user.*
 import dagger.Module
 import dagger.Provides
@@ -41,8 +41,8 @@ object UseCaseModule {
 
     @Singleton
     @Provides
-    fun postTransferUseCase(repository: TransferRepository) =
-        PostTransferUseCase(repository)
+    fun putTransferUserCase(repository: TransferRepository) =
+        PutTransferUseCase(repository)
 
     @Singleton
     @Provides

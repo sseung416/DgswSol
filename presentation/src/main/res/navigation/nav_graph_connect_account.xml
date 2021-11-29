@@ -11,16 +11,16 @@
         tools:layout="@layout/account_identity_auth_fragment"
         android:label="IdentityAuthFragment" >
         <action
-            android:id="@+id/action_identityAuthFragment2_to_connectAccountFragment"
+            android:id="@+id/action_identityAuthFragment_to_connectAccountFragment"
             app:destination="@id/connectAccountFragment" />
     </fragment>
     <fragment
         android:id="@+id/connectAccountFragment"
         android:name="com.example.a2ndproject.ui.view.fragment.ConnectAccountFragment"
         android:label="ConnectAccountFragment"
-        tools:layout="@layout/add_account_connect_fragment">
+        tools:layout="@layout/connect_account_fragment">
         <action
-            android:id="@+id/action_connectAccountFragment_to_identityAuthFragment2"
+            android:id="@+id/action_connectAccountFragment_to_identityAuthFragment"
             app:destination="@id/identityAuthFragment" />
     </fragment>
 </navigation>
