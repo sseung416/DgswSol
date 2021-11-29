@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_transfer"
-    app:startDestination="@id/numberPadMoneyFragment">
+    app:startDestination="@id/transferCheckFragment">
 
     <fragment
         android:id="@+id/transferChooseFragment"
@@ -15,33 +15,45 @@
             app:destination="@id/transferCheckFragment" />
     </fragment>
     <fragment
-        android:id="@+id/numberPadMoneyFragment"
-        android:name="com.example.a2ndproject.ui.view.fragment.NumberPadMoneyFragment"
-        android:label="NumberPadMoneyFragment"
-        tools:layout="@layout/number_pad_money_fragment">
-        <action
-            android:id="@+id/action_numberPadMoneyFragment_to_transferChooseFragment"
-            app:destination="@id/transferChooseFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/transferCheckFragment"
         android:name="com.example.a2ndproject.ui.view.fragment.TransferCheckFragment"
         android:label="transfer_check_fragment"
         tools:layout="@layout/transfer_check_fragment" >
         <action
-            android:id="@+id/action_transferCheckFragment_to_transferSuccessFragment"
-            app:destination="@id/transferSuccessFragment" />
-        <action
             android:id="@+id/action_transferCheckFragment_to_transferChooseFragment"
             app:destination="@id/transferChooseFragment" />
+        <action
+            android:id="@+id/action_transferCheckFragment_to_numberPadPinFragment"
+            app:destination="@id/numberPadPinFragment" />
     </fragment>
     <fragment
         android:id="@+id/transferSuccessFragment"
         android:name="com.example.a2ndproject.ui.view.fragment.TransferSuccessFragment"
         android:label="transfer_success_fragment"
-        tools:layout="@layout/transfer_success_fragment" >
+        tools:layout="@layout/transfer_success_fragment" />
+    <fragment
+        android:id="@+id/numberPadPinFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.NumberPadPinFragment"
+        android:label="number_pad_pin_fragment"
+        tools:layout="@layout/number_pad_pin_fragment" >
         <action
-            android:id="@+id/action_transferSuccessFragment_to_transferCheckFragment"
+            android:id="@+id/action_numberPadPinFragment2_to_transferSuccessFragment"
+            app:destination="@id/transferSuccessFragment" />
+        <action
+            android:id="@+id/action_numberPadPinFragment2_to_transferCheckFragment"
             app:destination="@id/transferCheckFragment" />
+        <argument
+            android:name="type"
+            android:defaultValue="-1"
+            app:argType="integer"/>
+    </fragment>
+    <fragment
+        android:id="@+id/transferMoneyFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.TransferMoneyFragment"
+        android:label="TransferMoneyFragment"
+        tools:layout="@layout/transfer_money_fragment">
+        <action
+            android:id="@+id/action_transferMoneyFragment_to_transferChooseFragment"
+            app:destination="@id/transferChooseFragment" />
     </fragment>
 </navigation>

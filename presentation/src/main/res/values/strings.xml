@@ -44,4 +44,5 @@
 
     <string name="server_res_success">available</string>
     <string name="server_res_fail">exist</string>
+    <string name="cancel">취소</string>
 </resources>

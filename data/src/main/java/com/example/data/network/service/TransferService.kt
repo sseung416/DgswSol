@@ -17,7 +17,7 @@ interface TransferService {
 
     // 송금
     @POST("/send")
-    suspend fun postTransfer(@Body transfer: Transfer): Response<MsgResponse>
+    suspend fun putTransfer(@Body transfer: Transfer): Response<MsgResponse>
 
     // 송금 비밀번호 확인
     @POST("/send/pw")

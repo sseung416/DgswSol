@@ -17,7 +17,7 @@ class TransferRemote @Inject constructor(
     }
 
     suspend fun postTransfer(transfer: Transfer): MsgResponse {
-        return getResponse(service.postTransfer(transfer))
+        return getResponse(service.putTransfer(transfer))
     }
 
     suspend fun postTransferPw(transferPw: TransferPw): MsgResponse {

@@ -6,9 +6,9 @@ import com.example.domain.entity.response.Msg
 import com.example.domain.repository.TransferRepository
 import javax.inject.Inject
 
-class PostTransferUseCase @Inject constructor(
+class PutTransferUseCase @Inject constructor(
     private val transferRepository: TransferRepository
-): ParamsUseCase<PostTransferUseCase.Params, Msg>() {
+): ParamsUseCase<PutTransferUseCase.Params, Msg>() {
 
     override suspend fun buildUseCase(params: Params): Msg {
         return transferRepository.postTransfer(params.transfer)

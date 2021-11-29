@@ -1,20 +1,25 @@
 package com.example.a2ndproject.ui.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.example.a2ndproject.R
+import com.example.a2ndproject.databinding.TransferSuccessFragmentBinding
+import com.example.a2ndproject.ui.view.activity.MainActivity
+import com.example.a2ndproject.ui.view.base.BaseFragment
 
-class TransferSuccessFragment : Fragment() {
+class TransferSuccessFragment : BaseFragment<TransferSuccessFragmentBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.transfer_success_fragment, container, false)
+    override fun getLayoutResId(): Int =
+        R.layout.transfer_success_fragment
+
+    override fun setViewModel() {}
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnConfirmTransferSuccess.setOnClickListener {
+            requireActivity().startActivity(Intent(requireContext(), MainActivity::class.java))
+        }
     }
-
 }
