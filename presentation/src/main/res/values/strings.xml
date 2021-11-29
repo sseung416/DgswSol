@@ -39,6 +39,8 @@
     <string name="won">원</string>
     <string name="input_account_name">계좌 별명 입력</string>
     <string name="login">로그인</string>
+    
+    <string name="format_money">%,d원</string>
 
     <string name="server_res_success">available</string>
     <string name="server_res_fail">exist</string>
