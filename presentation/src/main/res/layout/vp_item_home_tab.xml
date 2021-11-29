@@ -115,7 +115,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
         app:layout_constraintStart_toEndOf="@+id/linearLayout3"
         app:layout_constraintTop_toTopOf="@+id/linearLayout3"
-        app:srcCompat="@drawable/ic_launcher_background"
+        app:srcCompat="@drawable/ic_launcher_foreground"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

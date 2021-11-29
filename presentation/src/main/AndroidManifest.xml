@@ -20,7 +20,15 @@
             android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ui.view.activity.TransferActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.view.activity.CreateAccountActivity"
             android:exported="true"
@@ -30,11 +38,7 @@
             android:exported="true"
             android:theme="@style/SplashTheme"
             android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.view.activity.MainActivity"
