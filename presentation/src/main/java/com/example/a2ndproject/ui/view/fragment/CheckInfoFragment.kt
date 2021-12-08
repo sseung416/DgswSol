@@ -35,8 +35,9 @@ class CheckInfoFragment : BaseFragment<CreateAccountCheckInfoFragmentBinding>() 
 
         binding.btnConfirmCheckInfo.setOnClickListener {
             if (binding.etCheckInfo.text!!.isNotBlank()) {
-                // 오류 때문에 bundle 사용
-                navController.navigate(R.id.action_checkInfoFragment_to_numberPadPinFragment)
+                navController.navigate(CheckInfoFragmentDirections.actionCheckInfoFragmentToNumberPadPinFragment(
+                    viewModel.accountName.value!!, FragmentType.PIN_CREATE_ACCOUNT_PW.type
+                ))
             } else {
                 MessageUtil.showDialog(requireActivity(), "별명을 입력해주세요.")
             }

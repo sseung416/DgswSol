@@ -18,14 +18,8 @@ class CreateAccountActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbarAddAccount)
         setContentView(binding.root)
 
-
-        binding.toolbarAddAccount.setOnMenuItemClickListener {
-            when (it?.itemId) {
-                R.id.toolbar_btn_close_add_account ->
-                    navigateToMain()
-            }
-
-            return@setOnMenuItemClickListener true
+        binding.toolbarAddAccount.setOnClickListener {
+            navigateToMain()
         }
     }
 
