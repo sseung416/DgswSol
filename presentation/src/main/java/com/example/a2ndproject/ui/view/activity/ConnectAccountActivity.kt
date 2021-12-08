@@ -11,4 +11,9 @@ class ConnectAccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connect_account)
     }
+
+    override fun onStop() {
+        super.onStop()
+        this.viewModelStore.clear()
+    }
 }

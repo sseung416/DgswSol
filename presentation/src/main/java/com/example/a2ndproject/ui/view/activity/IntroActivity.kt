@@ -9,8 +9,13 @@ import dagger.hilt.android.HiltAndroidApp
 @AndroidEntryPoint
 class IntroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_2ndProject)
+        setTheme(R.style.Theme_AppCompat_DayNight_2ndProject)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        this.viewModelStore.clear()
     }
 }

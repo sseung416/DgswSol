@@ -13,16 +13,13 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.2ndProject">
+        android:theme="@style/Theme.AppCompat.DayNight.2ndProject"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.view.activity.ConnectAccountActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.view.activity.TransferActivity"
@@ -40,11 +37,17 @@
             android:exported="true"
             android:theme="@style/SplashTheme"
             android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
             android:name=".ui.view.activity.MainActivity"
             android:exported="true">
+
         </activity>
     </application>
 

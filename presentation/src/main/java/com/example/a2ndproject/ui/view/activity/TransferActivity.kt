@@ -19,4 +19,9 @@ class TransferActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
         }
     }
+
+    override fun onStop() {
+        super.onStop()
+        this.viewModelStore.clear()
+    }
 }

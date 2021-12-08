@@ -24,13 +24,13 @@ class TransferChooseFragment : BaseFragment<TransferChooseFragmentBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnConfirmTransferChoose.setOnClickListener {
-            val account = viewModel.targetAccount.value
-
-            if (account.isNullOrBlank()) {
-                MessageUtil.showDialog(requireActivity(), "송금할 계좌를 입력해주세요.")
-            } else {
+//            val account = viewModel.targetAccount.value
+//
+//            if (account.isNullOrBlank()) {
+//                MessageUtil.showDialog(requireActivity(), "송금할 계좌를 입력해주세요.")
+//            } else {
                 navController.navigate(R.id.action_transferChooseFragment_to_transferCheckFragment)
-            }
+//            }
         }
     }
 }

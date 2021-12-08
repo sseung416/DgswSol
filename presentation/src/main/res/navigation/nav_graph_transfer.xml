@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_transfer"
-    app:startDestination="@id/transferCheckFragment">
+    app:startDestination="@id/transferChooseFragment">
 
     <fragment
         android:id="@+id/transferChooseFragment"
@@ -37,10 +37,10 @@
         android:label="number_pad_pin_fragment"
         tools:layout="@layout/number_pad_pin_fragment" >
         <action
-            android:id="@+id/action_numberPadPinFragment2_to_transferSuccessFragment"
+            android:id="@+id/action_numberPadPinFragment_to_transferSuccessFragment"
             app:destination="@id/transferSuccessFragment" />
         <action
-            android:id="@+id/action_numberPadPinFragment2_to_transferCheckFragment"
+            android:id="@+id/action_numberPadPinFragment_to_transferCheckFragment"
             app:destination="@id/transferCheckFragment" />
         <argument
             android:name="type"

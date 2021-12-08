@@ -14,15 +14,13 @@ import javax.inject.Inject
 class TransferViewModel @Inject constructor(
     private val putTransferUseCase: PutTransferUseCase
 ) : ViewModel() {
-
     val money = MutableLiveData<Int>()
-    lateinit var fromAccount: String
     val targetAccount = MutableLiveData<String>()
 
     val isSuccess = MutableLiveData<String>()
     val isFailure = MutableLiveData<String>()
 
-    fun putTransfer() {
+    fun putTransfer(fromAccount: String) {
         val transfer = Transfer(money.value, fromAccount, targetAccount.value)
 
         try {

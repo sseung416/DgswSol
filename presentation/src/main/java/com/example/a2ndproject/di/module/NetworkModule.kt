@@ -14,6 +14,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+    private const val AWS_BASE_URL: String = "http://ec2-18-119-126-184.us-east-2.compute.amazonaws.com:5000/"
+    private const val LOCAL_BASE_URL: String = "http://10.80.161.222:5000/"
+
     @Singleton
     @Provides
     fun providesOkhttpClient(): OkHttpClient =
@@ -27,7 +30,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addConverterFactory(ScalarsConverterFactory.create())
-            .baseUrl("http://10.80.161.222:5000/")
+            .baseUrl(LOCAL_BASE_URL)
             .client(okHttpClient)
             .build()
     }

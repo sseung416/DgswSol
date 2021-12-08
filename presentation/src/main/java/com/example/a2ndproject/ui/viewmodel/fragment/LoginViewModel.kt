@@ -1,5 +1,6 @@
 package com.example.a2ndproject.ui.viewmodel.fragment
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -35,6 +36,8 @@ class LoginViewModel @Inject constructor(
         if (id.value.isNullOrBlank() || pw.value.isNullOrBlank()) {
             errMsg.value = "아이디/비밀번호를 입력해주세요."
             return
+        } else {
+            errMsg.value = ""
         }
 
         try {
@@ -45,11 +48,16 @@ class LoginViewModel @Inject constructor(
                     val login = Login(id.value!!, pw.value!!)
                     val msg = useCase.buildUseCase(PostLoginUseCase.Params(login))
 
-                    _isSuccess.value = msg.msg!!
+                    Log.d("login", msg.msg.toString())
+                    when (msg.msg) {
+                        "success" -> _isSuccess.value = msg.msg!!
+                        "fail" -> _isFailure.value = msg.msg!!
+                    }
                 }
             }
         } catch (e: Exception) {
-            _isFailure.value = e.message
+            Log.d("login", e.message.toString())
+            _isFailure.value = e.message.toString()
         }
     }
 }

@@ -54,9 +54,5 @@ class NumberPadMoneyFragment : BaseFragment<NumberPadMoneyFragmentBinding>() {
             }
         })
 
-        money.observe(viewLifecycleOwner, {
-//            setMoneyKR()
-        })
     }
-
 }

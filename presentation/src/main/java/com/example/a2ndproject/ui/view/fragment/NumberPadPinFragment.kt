@@ -4,7 +4,6 @@ package com.example.a2ndproject.ui.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import androidx.cardview.widget.CardView
@@ -17,7 +16,6 @@ import com.example.a2ndproject.ui.view.activity.MainActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.data.FragmentType
 import com.example.a2ndproject.ui.view.utils.MessageUtil
-import com.example.a2ndproject.ui.view.utils.Preference.token
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadPinViewModel
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadViewModel
 import com.example.a2ndproject.ui.viewmodel.fragment.TransferViewModel
@@ -33,6 +31,7 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
     private lateinit var pinCardList: List<CardView>
 
     private val args by navArgs<NumberPadPinFragmentArgs>()
+    private var type: Int? = null
 
     override fun getLayoutResId(): Int =
         R.layout.number_pad_pin_fragment
@@ -42,17 +41,20 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        init(view)
-
         when (args.type) {
             FragmentType.PIN_QUICK_SIGN_IN.type -> observeLogin()
 
             FragmentType.PIN_QUICK_SIGN_UP.type -> observeSignUp()
 
-            FragmentType.PIN_CREATE_ACCOUNT_PW.type -> observeCreateAccount()
-
             FragmentType.PIN_ACCOUNT_PW.type -> observeTransfer()
+
+            else -> {
+                observeCreateAccount()
+                type = FragmentType.PIN_CREATE_ACCOUNT_PW.type
+            }
         }
+
+        init(view)
 
         observePin()
         observeFailure()
@@ -62,7 +64,7 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
         pinCardList = getCards(view)
 
         if (args.type == FragmentType.PIN_ACCOUNT_PW.type ||
-                args.type == FragmentType.PIN_CREATE_ACCOUNT_PW.type) {
+                type == FragmentType.PIN_CREATE_ACCOUNT_PW.type) {
             binding.cvPin5PinNumber.visibility = GONE
             binding.cvPin6PinNumber.visibility = GONE
         }
@@ -70,7 +72,8 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
 
     private fun observeCreateAccount() {
         numberPadViewModel.numberList.observe(viewLifecycleOwner) {
-            if (it.size == 4) {
+            if (it.size <= 4) {
+                // todo 통장 닉네임
                 numberPadPinViewModel.createAccount("안녕", numberPadViewModel.getNumber())
             }
         }
@@ -84,8 +87,9 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
 
     private fun observeTransfer() = with (transferViewModel) {
         numberPadViewModel.numberList.observe(viewLifecycleOwner) {
-            if (it.size == 4) {
-                transferViewModel.putTransfer()
+            if (it.size <= 4) {
+//                transferViewModel.putTransfer(args.from)
+                clearPin()
             }
         }
 
@@ -94,7 +98,7 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
         }
 
         isFailure.observe(viewLifecycleOwner) {
-            MessageUtil.showDialog(requireActivity(), "송금에 실패하였습니다. 다시 시도해주세요.")
+            MessageUtil.showDialog(requireActivity(), "송금에 실패하였습니다.\n$it")
         }
     }
 
@@ -102,15 +106,25 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
         numberPadViewModel.numberList.observe(viewLifecycleOwner) {
             if (it.size == 6) {
                 numberPadPinViewModel.quickSignUp(numberPadViewModel.getNumber())
+                clearPin()
             }
+        }
+
+        numberPadPinViewModel.isSuccessSignUp.observe(viewLifecycleOwner) {
+            intentToMain()
         }
     }
 
     private fun observeLogin() {
         numberPadViewModel.numberList.observe(viewLifecycleOwner) {
-            if (it.size == 6) {
+            if (it.size >= 6) {
                 numberPadPinViewModel.quickLogin(numberPadViewModel.getNumber())
+                clearPin()
             }
+        }
+
+        numberPadPinViewModel.isSuccessLogin.observe(viewLifecycleOwner) {
+            intentToMain()
         }
     }
 
@@ -136,23 +150,22 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
                 it.lastIndex == -1 -> {}
 
                 it.size < beforeSize -> {
-                    val removePos = when {
-                        it.size == 0 -> 0
-                        else -> it.lastIndex + 1
+                    val removePos = when (it.size) {
+                        0 -> 0
+                        else -> it.size
                     }
 
                     removePinShape(removePos)
                 }
 
-                else -> fillPinShape(it.lastIndex)
+                else -> {
+                    if (it.lastIndex != 6)
+                        fillPinShape(it.lastIndex)
+                }
             }
 
             beforeSize = it.size
         }
-    }
-
-    private fun navigateToMain() {
-        startActivity(Intent(requireActivity(), MainActivity::class.java))
     }
 
     /** getIdentifier()를 사용해 6개의 카드뷰의 view가 담긴 리스트를 가져옴 **/
@@ -186,8 +199,8 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
         numberPadViewModel.popAll()
     }
 
-    override fun onStop() {
-        super.onStop()
-        requireActivity().viewModelStore.clear()
+    private fun intentToMain() {
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        startActivity(intent)
     }
 }

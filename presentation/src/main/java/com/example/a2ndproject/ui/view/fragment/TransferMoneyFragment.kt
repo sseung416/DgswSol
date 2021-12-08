@@ -1,6 +1,7 @@
 package com.example.a2ndproject.ui.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.example.a2ndproject.R
@@ -26,7 +27,7 @@ class TransferMoneyFragment : BaseFragment<NumberPadMoneyFragmentBinding>() {
     private fun init() {
         requireActivity().supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragmentContainerView, TransferMoneyFragment())
+            .replace(R.id.fragmentContainerView, NumberPadMoneyFragment())
             .commit()
     }
 

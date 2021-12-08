@@ -21,8 +21,6 @@ class CheckInfoViewModel @Inject constructor(
     val isSuccess = MutableLiveData<Profile>()
     val isFailure = MutableLiveData<String>()
 
-    val profile = MutableLiveData<Profile>()
-
     fun getProfile() {
         try {
             viewModelScope.launch {

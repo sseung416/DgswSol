@@ -32,14 +32,14 @@ class IdentityAuthViewModel @Inject constructor(
 
     fun postCheckAccount() {
         val name = name.value!!
-        val number = number.value!!
+        val number = number.value!! + numberBack.value!!
 
         try {
             viewModelScope.launch {
                 val msg = postCheckAccountUseCase.buildUseCase(PostCheckAccountUseCase.Params(CheckAccount(name, number)))
                 Log.d("checkAccount", msg.toString())
                 when (msg.msg) {
-                    "exist" -> _isSuccessCheck.postValue(msg.msg!!)
+                    "success" -> _isSuccessCheck.postValue(msg.msg!!)
 
                     else -> _isFailureCheck.postValue(msg.msg!!)
                 }

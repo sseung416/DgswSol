@@ -3,7 +3,7 @@ package com.example.a2ndproject.ui.view.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.HomeFragmentBinding
 import com.example.a2ndproject.ui.view.activity.CreateAccountActivity
@@ -11,10 +11,10 @@ import com.example.a2ndproject.ui.view.activity.TransferActivity
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.viewmodel.fragment.HomeViewModel
 import com.google.android.material.tabs.TabLayout
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeFragmentBinding>() {
-
-    private val viewModel: HomeViewModel by activityViewModels()
 
     override fun getLayoutResId(): Int =
         R.layout.home_fragment
@@ -36,16 +36,21 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
     }
 
     private fun initTabLayout() {
-        val fragment = HomeTabFragment()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.frame_layout_tab_main, HomeTabSolFragment())
+            .commit()
 
-        // TabLayout
-        parentFragmentManager.beginTransaction().replace(R.id.frame_layout_tab_main, fragment).commit()
-
-        // 탭을 선택했을 때 이벤트 처리
         binding.tabLayoutMain.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                // 한 프래그먼트를 돌려쓰기 때문에 TabLayoutFragment에 선언된
-                viewModel.position.value = tab!!.position
+                val fragment = when (tab?.position) {
+                    0 -> HomeTabSolFragment()
+                    1 -> HomeTabOpenBankingFragment()
+                    else -> return
+                }
+
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.frame_layout_tab_main, fragment)
+                    .commit()
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -56,7 +61,6 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
         })
 
         /* 탭 레이아웃 5초마다 움직이게... */
-        // todo
 //        CoroutineScope(Dispatchers.Default).launch {
 //            while (true) {
 //                when (binding.tabLayoutMain.selectedTabPosition) {
@@ -81,6 +85,4 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>() {
     private fun navigateToTransfer() {
         requireActivity().startActivity(Intent(requireActivity(), TransferActivity::class.java))
     }
-
-
 }

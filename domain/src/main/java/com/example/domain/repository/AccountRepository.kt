@@ -2,6 +2,8 @@ package com.example.domain.repository
 
 import com.example.domain.entity.request.CheckAccount
 import com.example.domain.entity.request.CreateAccount
+import com.example.domain.entity.response.Account
+import com.example.domain.entity.response.AccountList
 import com.example.domain.entity.response.Msg
 
 interface AccountRepository {
@@ -11,6 +13,9 @@ interface AccountRepository {
 
     // 통장 개설
     suspend fun postCreateAccount(createAccount: CreateAccount): Msg
+
+    // 메인 화면
+    suspend fun getHomeAccount(): AccountList
 
     // 본인의 계좌에서 돈 가져오기
     suspend fun getHold()

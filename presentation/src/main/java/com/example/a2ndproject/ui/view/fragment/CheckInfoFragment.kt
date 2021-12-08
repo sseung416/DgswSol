@@ -1,3 +1,4 @@
+/** 계좌 개설 시 사용 */
 package com.example.a2ndproject.ui.view.fragment
 
 import android.os.Bundle
@@ -9,6 +10,7 @@ import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.data.FragmentType
 import com.example.a2ndproject.ui.view.utils.MessageUtil
 import com.example.a2ndproject.ui.viewmodel.fragment.CheckInfoViewModel
+import com.example.domain.entity.response.Profile
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +23,7 @@ class CheckInfoFragment : BaseFragment<CreateAccountCheckInfoFragmentBinding>() 
 
     override fun setViewModel() {
         binding.vm = viewModel
+        binding.profile = Profile("", "", "", "")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,9 +35,8 @@ class CheckInfoFragment : BaseFragment<CreateAccountCheckInfoFragmentBinding>() 
 
         binding.btnConfirmCheckInfo.setOnClickListener {
             if (binding.etCheckInfo.text!!.isNotBlank()) {
-                navController.navigate(CheckInfoFragmentDirections.actionCheckInfoFragmentToNumberPadPinFragment(
-                    FragmentType.PIN_ACCOUNT_PW.type, viewModel.accountName.value!!
-                ))
+                // 오류 때문에 bundle 사용
+                navController.navigate(R.id.action_checkInfoFragment_to_numberPadPinFragment)
             } else {
                 MessageUtil.showDialog(requireActivity(), "별명을 입력해주세요.")
             }
@@ -43,11 +45,11 @@ class CheckInfoFragment : BaseFragment<CreateAccountCheckInfoFragmentBinding>() 
 
     private fun observe() = with(viewModel) {
         isSuccess.observe(viewLifecycleOwner) {
-            profile.value = it
+            binding.profile = it
         }
 
         isFailure.observe(viewLifecycleOwner) {
-            MessageUtil.showDialog(requireActivity(), "서버 통신에 실패하였습니다.")
+            MessageUtil.showDialog(requireActivity(), "서버 통신에 실패하였습니다.\n$it")
         }
     }
 }

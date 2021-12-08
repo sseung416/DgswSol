@@ -25,10 +25,10 @@ class NumberPadPinViewModel @Inject constructor(
     private val _isFailure = MutableLiveData<String>()
     val isFailure = _isFailure
 
-    private val _isSuccessSignUp = MutableLiveData("")
+    private val _isSuccessSignUp = MutableLiveData<String>()
     val isSuccessSignUp = _isSuccessSignUp
 
-    private val _isSuccessLogin = MutableLiveData<Msg>()
+    private val _isSuccessLogin = MutableLiveData<String>()
     val isSuccessLogin = _isSuccessLogin
 
     private val _isSuccessCreate = MutableLiveData<String>()
@@ -38,7 +38,11 @@ class NumberPadPinViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val msg = postQuickSignUpUseCase.buildUseCase(PostQuickSignUpUseCase.Params(QuickPw(pw)))
-                _isSuccessSignUp.value = msg.msg
+
+                when (msg.msg) {
+                    "success" -> _isSuccessSignUp.value = msg.msg!!
+                    "fail" -> _isFailure.value = msg.msg!!
+                }
             } catch (e: Exception) {
                 Log.d("quickSignUp", e.message.toString())
                 _isFailure.postValue(e.message.toString())
@@ -50,7 +54,13 @@ class NumberPadPinViewModel @Inject constructor(
         try {
             viewModelScope.launch {
                 val msg = postQuickLoginUseCase.buildUseCase(PostQuickLoginUseCase.Params(QuickPw(pw)))
-                _isSuccessLogin.value = msg
+
+                Log.d("quickLogin", msg.msg.toString())
+                when (msg.msg) {
+                    "fail" -> _isFailure.value = msg.msg!!
+                    else -> _isSuccessLogin.value = msg.msg!!
+                }
+
             }
         } catch (e: Exception) {
             Log.d("quickLogin", e.message.toString())
@@ -62,9 +72,9 @@ class NumberPadPinViewModel @Inject constructor(
         try {
             viewModelScope.launch {
                 val createAccount = CreateAccount(nickName, pw)
-
                 val msg = postCreateAccountUseCase.buildUseCase(PostCreateAccountUseCase.Params(createAccount))
 
+                Log.d("createAccount", msg.msg.toString())
                 when (msg.msg) {
                     "success" -> _isSuccessCreate.value = msg.msg!!
                     "fail" -> _isFailure.value = msg.msg!!

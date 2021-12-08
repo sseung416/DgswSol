@@ -56,7 +56,7 @@ class SignUpFirstFragment : BaseFragment<SignUpFirstFragmentBinding>() {
 
     private fun observe() = with(viewModel) {
         isSuccessIdCheck.observe(viewLifecycleOwner) {
-            MessageUtil.showToast(requireContext(), "사용가능한 아이디입니다 ㅠ")
+            MessageUtil.showDialog(requireActivity(), "사용 가능한 아이디입니다.")
             idCheck.value = true
 
             if (errorMsg.value == "아이디 중복 확인을 해주세요.") errorMsg.value = ""
@@ -90,7 +90,6 @@ class SignUpFirstFragment : BaseFragment<SignUpFirstFragmentBinding>() {
                 else -> ""
             }
 
-            // todo false
             idCheck.value = false
 
             errorMsg.value = idErr.value
