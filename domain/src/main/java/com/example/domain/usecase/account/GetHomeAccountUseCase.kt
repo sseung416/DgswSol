@@ -8,9 +8,9 @@ import javax.inject.Inject
 
 class GetHomeAccountUseCase @Inject constructor(
     private val accountRepository: AccountRepository
-) : BaseUseCase<AccountList>() {
+) : BaseUseCase<List<Account>>() {
 
-    override suspend fun buildUseCase(): AccountList {
+    override suspend fun buildUseCase(): List<Account> {
         return accountRepository.getHomeAccount()
     }
 }

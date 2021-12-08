@@ -25,3 +25,15 @@ fun UserResponse.toEntity(): User =
         this.id,
         this.birth
     )
+
+
+fun List<AccountResponse>.toEntity(): List<Account> =
+    map {
+        Account(
+            it.accountID,
+            it.money,
+            it.userPhone,
+            it.nickname,
+            it.user.toEntity()
+        )
+    }

@@ -23,7 +23,7 @@ class AccountDataSource @Inject constructor(
         return remote.postCreateAccount(createAccount).toEntity()
     }
 
-    suspend fun getHomeAccount(): AccountList {
+    suspend fun getHomeAccount(): List<Account> {
         return remote.getHomeAccount().toEntity()
     }
 }

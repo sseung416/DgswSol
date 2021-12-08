@@ -15,7 +15,7 @@ interface AccountRepository {
     suspend fun postCreateAccount(createAccount: CreateAccount): Msg
 
     // 메인 화면
-    suspend fun getHomeAccount(): AccountList
+    suspend fun getHomeAccount(): List<Account>
 
     // 본인의 계좌에서 돈 가져오기
     suspend fun getHold()

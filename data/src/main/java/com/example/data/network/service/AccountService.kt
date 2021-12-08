@@ -20,5 +20,5 @@ interface AccountService {
     suspend fun postCreateAccount(@Body createAccount: CreateAccount): Response<MsgResponse>
 
     @GET("/account")
-    suspend fun getHomeAccount(): Response<AccountListResponse>
+    suspend fun getHomeAccount(): Response<List<AccountResponse>>
 }

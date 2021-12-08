@@ -2,6 +2,7 @@ package com.example.data.network.remote
 
 import com.example.data.base.BaseRemote
 import com.example.data.entity.AccountListResponse
+import com.example.data.entity.AccountResponse
 import com.example.data.entity.MsgResponse
 import com.example.data.network.service.AccountService
 import com.example.domain.entity.request.CheckAccount
@@ -20,7 +21,7 @@ class AccountRemote @Inject constructor(
         return getResponse(service.postCreateAccount(createAccount))
     }
 
-    suspend fun getHomeAccount(): AccountListResponse {
+    suspend fun getHomeAccount(): List<AccountResponse> {
         return getResponse(service.getHomeAccount())
     }
 }

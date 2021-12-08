@@ -21,7 +21,7 @@ class AccountRepositoryImpl @Inject constructor(
         return accountDataSource.postCreateAccount(createAccount)
     }
 
-    override suspend fun getHomeAccount(): AccountList {
+    override suspend fun getHomeAccount(): List<Account> {
         return accountDataSource.getHomeAccount()
     }
 
