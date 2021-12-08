@@ -13,7 +13,7 @@ interface TransferService {
 
     // 송금 계좌 확인
     @GET("/send/check/{receive}")
-    suspend fun getTransferCheck(): Response<MsgResponse>
+    suspend fun getTransferCheck(@Path("receive") receive: String): Response<MsgResponse>
 
     // 송금
     @POST("/send")

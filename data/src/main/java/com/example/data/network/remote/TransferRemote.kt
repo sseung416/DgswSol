@@ -12,8 +12,8 @@ class TransferRemote @Inject constructor(
     override val service: TransferService
 ) : BaseRemote<TransferService>() {
 
-    suspend fun getTransferCheck(): MsgResponse {
-        return getResponse(service.getTransferCheck())
+    suspend fun getTransferCheck(receive: String): MsgResponse {
+        return getResponse(service.getTransferCheck(receive))
     }
 
     suspend fun postTransfer(transfer: Transfer): MsgResponse {

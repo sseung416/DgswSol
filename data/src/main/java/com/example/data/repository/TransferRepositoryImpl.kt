@@ -11,8 +11,8 @@ class TransferRepositoryImpl @Inject constructor(
     private val transferDataSource: TransferDataSource
 ) : TransferRepository {
 
-    override suspend fun getTransferCheck(): Msg {
-        return transferDataSource.getTransferCheck()
+    override suspend fun getTransferCheck(targetAccount: String): Msg {
+        return transferDataSource.getTransferCheck(targetAccount)
     }
 
     override suspend fun postTransfer(transfer: Transfer): Msg {

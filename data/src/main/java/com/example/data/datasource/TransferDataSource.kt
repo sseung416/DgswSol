@@ -13,8 +13,8 @@ class TransferDataSource @Inject constructor(
     override val remote: TransferRemote
 ) : BaseDataSource<TransferRemote>() {
 
-    suspend fun getTransferCheck(): Msg {
-        return remote.getTransferCheck().toEntity()
+    suspend fun getTransferCheck(receive: String): Msg {
+        return remote.getTransferCheck(receive).toEntity()
     }
 
     suspend fun postTransfer(transfer: Transfer): Msg {

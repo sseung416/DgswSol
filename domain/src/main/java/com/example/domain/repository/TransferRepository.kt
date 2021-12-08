@@ -7,7 +7,7 @@ import com.example.domain.entity.response.Msg
 interface TransferRepository {
 
     // 송금 계좌 확인
-    suspend fun getTransferCheck(): Msg
+    suspend fun getTransferCheck(targetAccount: String): Msg
 
     // 송금
     suspend fun postTransfer(transfer: Transfer): Msg
