@@ -15,6 +15,7 @@ class CreateAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateAccountBinding.inflate(layoutInflater)
+        setSupportActionBar(binding.toolbarAddAccount)
         setContentView(binding.root)
 
         binding.toolbarAddAccount.setOnClickListener {
