@@ -50,8 +50,8 @@ class LoginViewModel @Inject constructor(
 
                     Log.d("login", msg.msg.toString())
                     when (msg.msg) {
-                        "success" -> _isSuccess.value = msg.msg!!
                         "fail" -> _isFailure.value = msg.msg!!
+                        else -> _isSuccess.value = msg.msg!!
                     }
                 }
             }

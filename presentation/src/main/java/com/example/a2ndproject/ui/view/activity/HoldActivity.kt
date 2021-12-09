@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.example.a2ndproject.R
 import com.example.a2ndproject.ui.viewmodel.fragment.HoldViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HoldActivity : AppCompatActivity() {
 
     private val viewModel: HoldViewModel by viewModels()

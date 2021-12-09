@@ -29,7 +29,9 @@ class HoldRecyclerViewAdapter : RecyclerView.Adapter<HoldRecyclerViewAdapter.Vie
                         }
 
                         lastChecked = this
-                        notifyItemChanged(lastCheckedPos?:0)
+                        if (lastCheckedPos != null) {
+                            notifyItemChanged(lastCheckedPos!!)
+                        }
 
                         lastCheckedPos = position
                     }

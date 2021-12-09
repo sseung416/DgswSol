@@ -36,18 +36,12 @@ class LoginBasicFragment : BaseFragment<LoginBasicFragmentBinding>() {
 
     private fun observe() = with(viewModel) {
         isSuccess.observe(viewLifecycleOwner) {
-            when (it) {
-                "fail" -> viewModel.errMsg.value = "아이디/비밀번호가 맞지 않습니다."
-
-                else -> {
-                    token = it
-                    startActivity(Intent(requireActivity(), MainActivity::class.java))
-                }
-            }
+            token = it
+            startActivity(Intent(requireActivity(), MainActivity::class.java))
         }
 
         isFailure.observe(viewLifecycleOwner) {
-            MessageUtil.showDialog(requireActivity(), this@LoginBasicFragment.getString(R.string.fail_server))
+            MessageUtil.showDialog(requireActivity(), "로그인에 실패하였습니다.\n$it")
         }
     }
 }

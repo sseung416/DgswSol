@@ -36,7 +36,7 @@ class SignUpFirstFragment : BaseFragment<SignUpFirstFragmentBinding>() {
                         binding.etPasswordSignUpFirst.requestFocus()
                     }
                 } else {
-                    viewModel.errorMsg.value = "중복 확인 점;"
+                    viewModel.errorMsg.value = "중복 확인해주세요."
                 }
             }
 
