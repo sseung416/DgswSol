@@ -16,7 +16,7 @@ class HomeTabViewModel @Inject constructor(
     private val accountRepository: AccountRepository
 ) : ViewModel() {
 
-    val isSuccessGetHomeAccount = MutableLiveData<ArrayList<Account>>(arrayListOf())
+    val isSuccessGetHomeAccount = MutableLiveData<List<Account>>()
     val isFailureGetHomeAccount = MutableLiveData<String>()
 
     fun getHomeAccount() {
@@ -25,10 +25,7 @@ class HomeTabViewModel @Inject constructor(
                 val res = accountRepository.getHomeAccount()
 
                 Log.d("getHomeAccount", res.toString())
-                when (res) {
-                    null -> isFailureGetHomeAccount.value = "fail"
-                    else -> isSuccessGetHomeAccount.value!!.addAll(res.accountList)
-                }
+                isSuccessGetHomeAccount.value = res
             }
         } catch (e: Exception) {
             Log.e("getHomeAccount", e.message.toString())

@@ -24,7 +24,14 @@ class CheckInfoViewModel @Inject constructor(
     fun getProfile() {
         try {
             viewModelScope.launch {
-                isSuccess.postValue(getProfileUseCase.buildUseCase())
+                val res = getProfileUseCase.buildUseCase()
+
+                Log.d("getProfile", res.toString())
+                if (res == null) {
+                    isFailure.value = "fail"
+                } else {
+                    isSuccess.value = res
+                }
             }
         } catch (e: Exception) {
             Log.d("getProfile", e.message.toString())

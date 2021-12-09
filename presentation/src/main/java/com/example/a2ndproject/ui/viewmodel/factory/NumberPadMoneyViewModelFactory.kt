@@ -6,7 +6,7 @@ import com.example.a2ndproject.ui.view.model.Account
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadMoneyViewModel
 
 class NumberPadMoneyViewModelFactory(
-    val account: Account
+    val account: String
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

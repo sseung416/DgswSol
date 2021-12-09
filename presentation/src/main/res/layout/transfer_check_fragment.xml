@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="vm"
+            type="com.example.a2ndproject.ui.viewmodel.fragment.TransferViewModel" />
     </data>
 
     <LinearLayout
@@ -93,7 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="TextVieddddddw" />
+                    android:text="@{vm.fromAccount}" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -101,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="TextView" />
+                    android:text="@{vm.targetAccount}" />
 
                 <TextView
                     android:id="@+id/textView2"
@@ -109,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="@{@string/format_money(1000)}" />
+                    android:text="@{@string/format_money(vm.money)}" />
 
                 <TextView
                     android:id="@+id/textView1"

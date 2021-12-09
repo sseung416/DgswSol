@@ -9,10 +9,11 @@ abstract class BaseRemote<SV> {
     private val TAG: String = "BaseRemote"
     protected abstract val service: SV
 
-    fun <T> getResponse(response: Response<T>): T {
+    fun <T> getResponse(response: Response<T>): T? {
         Log.d(TAG, response.raw().toString())
         checkError(response)
-        return response.body()!!
+        Log.d(TAG, response.body().toString())
+        return response.body()
     }
 
     private fun <T> checkError(response: Response<T>) {

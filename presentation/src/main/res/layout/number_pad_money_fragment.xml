@@ -49,17 +49,16 @@
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:src="@drawable/ic_toss_logo"
+                    android:src="@drawable/ic_sol_logo"
                     android:scaleType="fitCenter"
                     android:layout_margin="10dp"
                     android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    tools:src="@drawable/ic_sol_logo" />
+                    android:layout_height="30dp" />
 
                 <TextView
                     android:id="@+id/tv_account_number_number_pad_money1"
                     style="@style/BigTextView"
-                    android:text="@{vm.account.accountNumber}"
+                    android:text="@{vm.account}"
                     android:layout_marginStart="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -123,12 +122,11 @@
             android:id="@+id/tv_bank_number_pad_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{vm.account.bankName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView3"
-            tools:text="토스"/>
+            android:text="신한" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

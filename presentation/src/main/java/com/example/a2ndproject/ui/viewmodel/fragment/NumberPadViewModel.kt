@@ -9,6 +9,8 @@ class NumberPadViewModel : ViewModel() {
     val numberList = MutableLiveData<Stack<Int>>(Stack())
     private val stack = Stack<Int>()
 
+    val confirm = MutableLiveData(false)
+
     fun addNumber(num: Int) {
         stack.push(num)
         numberList.value = stack

@@ -2,13 +2,16 @@ package com.example.a2ndproject.ui.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.HomeTabSolFragmentBinding
 import com.example.a2ndproject.ui.view.activity.CreateAccountActivity
+import com.example.a2ndproject.ui.view.activity.HoldActivity
 import com.example.a2ndproject.ui.view.activity.TransferActivity
 import com.example.a2ndproject.ui.view.adapter.HomeTabRecyclerViewAdapter
 import com.example.a2ndproject.ui.view.base.BaseFragment
@@ -33,7 +36,15 @@ class HomeTabSolFragment : BaseFragment<HomeTabSolFragmentBinding>() {
         init()
 
         adapter.setOnClickTransferListener {
-            startActivity(Intent(requireActivity(), TransferActivity::class.java))
+            val intent = Intent(requireActivity(), TransferActivity::class.java)
+            intent.putExtra("from", it.accountID)
+            startActivity(intent)
+        }
+
+        adapter.setOnClickHoldListener {
+            val intent = Intent(requireActivity(), HoldActivity::class.java)
+            intent.putExtra("from", it.accountID)
+            startActivity(intent)
         }
 
         binding.btnTab.setOnClickListener {
@@ -44,8 +55,8 @@ class HomeTabSolFragment : BaseFragment<HomeTabSolFragmentBinding>() {
     private fun init() {
         viewModel.getHomeAccount()
 
-//        val snapHelper = PagerSnapHelper()
-//        snapHelper.attachToRecyclerView(binding.rvAccountTab)
+        val snapHelper = PagerSnapHelper()
+        snapHelper.attachToRecyclerView(binding.rvAccountTab)
 
         binding.rvAccountTab.adapter = adapter
 
@@ -58,8 +69,8 @@ class HomeTabSolFragment : BaseFragment<HomeTabSolFragmentBinding>() {
             adapter.setList(it)
 
             if (it.isNotEmpty()) {
-                binding.layoutEmptyTab.visibility = VISIBLE
-                binding.layoutViewPagerTab.visibility = GONE
+                binding.layoutEmptyTab.visibility = GONE
+                binding.layoutViewPagerTab.visibility = VISIBLE
             }
         }
 

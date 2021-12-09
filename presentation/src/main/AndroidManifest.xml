@@ -16,22 +16,20 @@
         android:theme="@style/Theme.AppCompat.DayNight.2ndProject"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.view.activity.HoldActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.view.activity.ConnectAccountActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".ui.view.activity.TransferActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-
-
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".ui.view.activity.CreateAccountActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.view.activity.IntroActivity"
             android:exported="true"
@@ -42,13 +40,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".ui.view.activity.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

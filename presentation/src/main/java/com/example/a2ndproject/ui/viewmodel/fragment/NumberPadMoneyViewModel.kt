@@ -7,7 +7,7 @@ import java.text.NumberFormat
 import java.util.*
 
 class NumberPadMoneyViewModel(
-    val account: Account
+    val account: String
 ) : ViewModel() {
 
     private var moneyText: String = ""

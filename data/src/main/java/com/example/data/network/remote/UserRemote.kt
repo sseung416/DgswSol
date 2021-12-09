@@ -15,15 +15,15 @@ class UserRemote @Inject constructor(
 ) : BaseRemote<UserService>() {
 
     suspend fun getDuplicateIdCheck(id: String): MsgResponse {
-        return getResponse(service.getDuplicateIdCheck(id))
+        return getResponse(service.getDuplicateIdCheck(id))!!
     }
 
     suspend fun getDuplicateNameCheck(name: String): MsgResponse {
-        return getResponse(service.getDuplicateNameCheck(name))
+        return getResponse(service.getDuplicateNameCheck(name))!!
     }
 
     suspend fun postQuickSignUp(quickPw: QuickPw): MsgResponse {
-        return getResponse(service.postQuickSignUp(quickPw))
+        return getResponse(service.postQuickSignUp(quickPw))!!
     }
 
     suspend fun postSignUp(
@@ -35,19 +35,19 @@ class UserRemote @Inject constructor(
         nickname: RequestBody,
         attachment: MultipartBody.Part
     ): MsgResponse {
-        return getResponse(service.postSignUp(id, pw, phonenum, birth, name, nickname, attachment))
+        return getResponse(service.postSignUp(id, pw, phonenum, birth, name, nickname, attachment))!!
     }
 
     suspend fun postLogin(login: Login): MsgResponse {
-        return getResponse(service.postLogin(login))
+        return getResponse(service.postLogin(login))!!
     }
 
     suspend fun postQuickLogin(quickPw: QuickPw): MsgResponse {
-        return getResponse(service.postQuickLogin(quickPw))
+        return getResponse(service.postQuickLogin(quickPw))!!
     }
 
     suspend fun getProfile(): ProfileResponse {
-        return getResponse(service.getProfile())
+        return getResponse(service.getProfile())!!
     }
 
 }

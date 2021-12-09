@@ -11,8 +11,8 @@
         android:label="TransferChooseFragment"
         tools:layout="@layout/transfer_choose_fragment">
         <action
-            android:id="@+id/action_transferChooseFragment_to_transferCheckFragment"
-            app:destination="@id/transferCheckFragment" />
+            android:id="@+id/action_transferChooseFragment_to_numberPadMoneyFragment"
+            app:destination="@id/numberPadMoneyFragment" />
     </fragment>
     <fragment
         android:id="@+id/transferCheckFragment"
@@ -20,11 +20,11 @@
         android:label="transfer_check_fragment"
         tools:layout="@layout/transfer_check_fragment" >
         <action
-            android:id="@+id/action_transferCheckFragment_to_transferChooseFragment"
-            app:destination="@id/transferChooseFragment" />
-        <action
             android:id="@+id/action_transferCheckFragment_to_numberPadPinFragment"
             app:destination="@id/numberPadPinFragment" />
+        <action
+            android:id="@+id/action_transferCheckFragment_to_numberPadMoneyFragment"
+            app:destination="@id/numberPadMoneyFragment" />
     </fragment>
     <fragment
         android:id="@+id/transferSuccessFragment"
@@ -46,14 +46,21 @@
             android:name="type"
             android:defaultValue="-1"
             app:argType="integer"/>
+        <argument
+            android:name="name"
+            android:defaultValue="1234"
+            app:argType="string"/>
     </fragment>
     <fragment
-        android:id="@+id/transferMoneyFragment"
-        android:name="com.example.a2ndproject.ui.view.fragment.TransferMoneyFragment"
-        android:label="TransferMoneyFragment"
-        tools:layout="@layout/transfer_money_fragment">
+        android:id="@+id/numberPadMoneyFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.NumberPadMoneyFragment"
+        android:label="NumberPadMoneyFragment"
+        tools:layout="@layout/number_pad_money_fragment">
         <action
-            android:id="@+id/action_transferMoneyFragment_to_transferChooseFragment"
+            android:id="@+id/action_numberPadMoneyFragment_to_transferChooseFragment"
             app:destination="@id/transferChooseFragment" />
+        <action
+            android:id="@+id/action_numberPadMoneyFragment_to_transferCheckFragment"
+            app:destination="@id/transferCheckFragment" />
     </fragment>
 </navigation>

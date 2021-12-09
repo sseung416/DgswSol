@@ -22,9 +22,4 @@ class TransferSuccessFragment : BaseFragment<TransferSuccessFragmentBinding>() {
             requireActivity().startActivity(Intent(requireContext(), MainActivity::class.java))
         }
     }
-
-    override fun onStop() {
-        super.onStop()
-        requireActivity().viewModelStore.clear()
-    }
 }

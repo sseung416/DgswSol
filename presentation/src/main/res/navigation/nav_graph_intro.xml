@@ -40,6 +40,10 @@
             android:name="type"
             app:argType="integer"
             android:defaultValue="-1"/>
+        <argument
+            android:name="name"
+            android:defaultValue="1234"
+            app:argType="string"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

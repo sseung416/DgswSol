@@ -33,6 +33,7 @@
             app:layout_constraintTop_toTopOf="@+id/et_hold" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_hold"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"

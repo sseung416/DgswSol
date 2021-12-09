@@ -15,16 +15,11 @@ class CreateAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateAccountBinding.inflate(layoutInflater)
-        setSupportActionBar(binding.toolbarAddAccount)
         setContentView(binding.root)
 
         binding.toolbarAddAccount.setOnClickListener {
-            navigateToMain()
+            startActivity(Intent(this, MainActivity::class.java))
         }
-    }
-
-    private fun navigateToMain() {
-        startActivity(Intent(this, MainActivity::class.java))
     }
 
     override fun onStop() {

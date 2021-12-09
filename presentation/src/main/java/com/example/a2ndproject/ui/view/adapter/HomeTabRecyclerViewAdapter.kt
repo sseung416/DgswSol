@@ -14,9 +14,18 @@ class HomeTabRecyclerViewAdapter : RecyclerView.Adapter<HomeTabRecyclerViewAdapt
     }
 
     private lateinit var setOnClickTransferListener: OnClickHomeTabItemListener
+    private lateinit var setOnClickHoldListener: OnClickHomeTabItemListener
 
     fun setOnClickTransferListener(listener: (Account) -> Unit) {
         setOnClickTransferListener = object : OnClickHomeTabItemListener {
+            override fun onClick(account: Account) {
+                listener(account)
+            }
+        }
+    }
+
+    fun setOnClickHoldListener(listener: (Account) -> Unit) {
+        setOnClickHoldListener = object : OnClickHomeTabItemListener {
             override fun onClick(account: Account) {
                 listener(account)
             }
@@ -34,6 +43,10 @@ class HomeTabRecyclerViewAdapter : RecyclerView.Adapter<HomeTabRecyclerViewAdapt
 
             binding.btnTransferLayoutHomeTab.setOnClickListener {
                 setOnClickTransferListener.onClick(account)
+            }
+
+            binding.btnHoldLayoutHomeTab.setOnClickListener {
+                setOnClickHoldListener.onClick(account)
             }
         }
     }

@@ -11,7 +11,7 @@ import com.example.a2ndproject.ui.viewmodel.fragment.TransferViewModel
 
 class TransferChooseFragment : BaseFragment<TransferChooseFragmentBinding>() {
 
-    val viewModel: TransferViewModel by activityViewModels()
+    private val viewModel: TransferViewModel by activityViewModels()
 
     override fun getLayoutResId(): Int =
         R.layout.transfer_choose_fragment
@@ -23,14 +23,26 @@ class TransferChooseFragment : BaseFragment<TransferChooseFragmentBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        observe()
+
         binding.btnConfirmTransferChoose.setOnClickListener {
-//            val account = viewModel.targetAccount.value
-//
-//            if (account.isNullOrBlank()) {
-//                MessageUtil.showDialog(requireActivity(), "송금할 계좌를 입력해주세요.")
-//            } else {
-                navController.navigate(R.id.action_transferChooseFragment_to_transferCheckFragment)
-//            }
+            val account = viewModel.targetAccount.value
+
+            if (account.isNullOrBlank()) {
+                MessageUtil.showDialog(requireActivity(), "송금할 계좌를 입력해주세요.")
+            } else {
+                viewModel.transferAccountCheck()
+            }
+        }
+    }
+
+    private fun observe() = with(viewModel) {
+        isSuccessCheckAccount.observe(viewLifecycleOwner) {
+            navController.navigate(R.id.action_transferChooseFragment_to_numberPadMoneyFragment)
+        }
+
+        isFailureCheckAccount.observe(viewLifecycleOwner) {
+            MessageUtil.showDialog(requireActivity(), "존재하지 않는 계좌입니다.")
         }
     }
 }

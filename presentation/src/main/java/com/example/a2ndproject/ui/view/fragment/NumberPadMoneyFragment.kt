@@ -6,20 +6,19 @@ import androidx.fragment.app.activityViewModels
 import com.example.a2ndproject.R
 import com.example.a2ndproject.databinding.NumberPadMoneyFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
-import com.example.a2ndproject.ui.view.model.Account
 import com.example.a2ndproject.ui.view.utils.MessageUtil
 import com.example.a2ndproject.ui.viewmodel.factory.NumberPadMoneyViewModelFactory
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadMoneyViewModel
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadViewModel
+import com.example.a2ndproject.ui.viewmodel.fragment.TransferViewModel
 
 
 class NumberPadMoneyFragment : BaseFragment<NumberPadMoneyFragmentBinding>() {
 
-    private lateinit var account: Account
-
+    private val transferViewModel: TransferViewModel by activityViewModels()
     private val numberPadViewModel: NumberPadViewModel by activityViewModels()
     private val moneyViewModel: NumberPadMoneyViewModel by activityViewModels {
-        NumberPadMoneyViewModelFactory(Account(R.drawable.ic_toss_logo, "토스", "0000-0000-000-0"))
+        NumberPadMoneyViewModelFactory(transferViewModel.fromAccount)
     }
 
     override fun getLayoutResId(): Int =
@@ -32,27 +31,32 @@ class NumberPadMoneyFragment : BaseFragment<NumberPadMoneyFragmentBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        account = arguments?.get("account") as Account
         binding.vm = moneyViewModel
 
         observe()
     }
 
-    private fun observe() = with(moneyViewModel) {
+    private fun observe() {
         numberPadViewModel.numberList.observe(viewLifecycleOwner, {
             when {
                 it.size >= 7 ->
-                    moneyErr.value = "이체 한도 금액은 100만원 미만입니다."
+                    moneyViewModel.moneyErr.value = "이체 한도 금액은 100만원 미만입니다."
 
                 it.size == 0 ->
-                    money.value = "0"
+                    moneyViewModel.money.value = "0"
 
                 else -> {
-                    moneyErr.value = ""
-                    this.setMoney(it)
+                    moneyViewModel.moneyErr.value = ""
+                    moneyViewModel.setMoney(it)
                 }
             }
         })
 
+        numberPadViewModel.confirm.observe(viewLifecycleOwner) {
+            if (it) {
+                transferViewModel.money.value = Integer.parseInt(moneyViewModel.money.value)
+                navController.navigate(R.id.action_numberPadMoneyFragment_to_transferCheckFragment)
+            }
+        }
     }
 }

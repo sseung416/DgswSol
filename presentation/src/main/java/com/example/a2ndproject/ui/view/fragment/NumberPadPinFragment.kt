@@ -31,7 +31,6 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
     private lateinit var pinCardList: List<CardView>
 
     private val args by navArgs<NumberPadPinFragmentArgs>()
-    private var type: Int? = null
 
     override fun getLayoutResId(): Int =
         R.layout.number_pad_pin_fragment
@@ -48,10 +47,9 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
 
             FragmentType.PIN_ACCOUNT_PW.type -> observeTransfer()
 
-            else -> {
-                observeCreateAccount()
-                type = FragmentType.PIN_CREATE_ACCOUNT_PW.type
-            }
+            FragmentType.PIN_CREATE_ACCOUNT_PW.type -> observeCreateAccount()
+
+            FragmentType.PIN_TRANSFER.type -> observeTransfer()
         }
 
         init(view)
@@ -64,7 +62,8 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
         pinCardList = getCards(view)
 
         if (args.type == FragmentType.PIN_ACCOUNT_PW.type ||
-                type == FragmentType.PIN_CREATE_ACCOUNT_PW.type) {
+                args.type == FragmentType.PIN_CREATE_ACCOUNT_PW.type ||
+                args.type == FragmentType.PIN_TRANSFER.type) {
             binding.cvPin5PinNumber.visibility = GONE
             binding.cvPin6PinNumber.visibility = GONE
         }
@@ -72,9 +71,9 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
 
     private fun observeCreateAccount() {
         numberPadViewModel.numberList.observe(viewLifecycleOwner) {
-            if (it.size <= 4) {
-                // todo 통장 닉네임
-                numberPadPinViewModel.createAccount("안녕", numberPadViewModel.getNumber())
+            if (it.size == 4) {
+                numberPadPinViewModel.createAccount(args.name, numberPadViewModel.getNumber())
+                clearPin()
             }
         }
 
@@ -87,8 +86,8 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
 
     private fun observeTransfer() = with (transferViewModel) {
         numberPadViewModel.numberList.observe(viewLifecycleOwner) {
-            if (it.size <= 4) {
-//                transferViewModel.putTransfer(args.from)
+            if (it.size == 4) {
+                transferViewModel.postTransfer()
                 clearPin()
             }
         }
@@ -202,5 +201,10 @@ class NumberPadPinFragment : BaseFragment<NumberPadPinFragmentBinding>() {
     private fun intentToMain() {
         val intent = Intent(requireActivity(), MainActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        requireActivity().viewModelStore.clear()
     }
 }

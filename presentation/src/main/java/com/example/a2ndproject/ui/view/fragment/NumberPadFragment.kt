@@ -12,6 +12,7 @@ import com.example.a2ndproject.databinding.NumberPadFragmentBinding
 import com.example.a2ndproject.ui.view.base.BaseFragment
 import com.example.a2ndproject.ui.view.utils.MessageUtil
 import com.example.a2ndproject.ui.viewmodel.fragment.NumberPadViewModel
+import com.example.a2ndproject.ui.viewmodel.fragment.TransferViewModel
 
 class NumberPadFragment : BaseFragment<NumberPadFragmentBinding>() {
 
@@ -39,6 +40,11 @@ class NumberPadFragment : BaseFragment<NumberPadFragmentBinding>() {
                 viewModel.removeNumber()
                 Log.d(TAG, "click: delete")
             }
+        }
+
+        binding.btnConfirmPinNumber.setOnClickListener {
+            // todo
+            viewModel.confirm.value = true
         }
     }
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_hold"
+    app:startDestination="@id/holdFragment">
+
+    <fragment
+        android:id="@+id/holdFragment"
+        android:name="com.example.a2ndproject.ui.view.fragment.HoldFragment"
+        tools:layout="@layout/hold_fragment"
+        android:label="HoldFragment" />
+</navigation>

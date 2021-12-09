@@ -20,25 +20,28 @@ class HoldViewModel @Inject constructor(
     private val accountRepository: AccountRepository
 ) : ViewModel() {
 
+    val from = MutableLiveData<String>()
+
     val isSuccess = MutableLiveData<String>()
     val isFailure = MutableLiveData<String>()
 
-    val isSuccessAccount = MutableLiveData<ArrayList<Account>>()
+    val isSuccessAccount = MutableLiveData<List<Account>>()
     val isFailureAccount = MutableLiveData<String>()
 
-    fun hold(money: Int, from: String, target: String) {
+    fun hold(money: Int, target: String) {
         try {
             viewModelScope.launch {
-                val transfer = Transfer(money, from, target)
+                val transfer = Transfer(money, from.value, target)
                 val res = transferRepository.postTransfer(transfer)
 
-                when (res.msg) {
-                    "success" -> isSuccess.value = res.msg!!
-                    "fail" -> isFailure.value = res.msg!!
+                Log.e("hold", res.toString())
+                when {
+                    res == null -> isFailure.value = "fail"
+                    res.status == 200 -> isSuccess.value = "success"
                 }
             }
         } catch (e: Exception) {
-            Log.e("", e.message.toString())
+            Log.e("hold", e.message.toString())
             isFailure.value = e.message.toString()
         }
     }
@@ -46,10 +49,9 @@ class HoldViewModel @Inject constructor(
     fun getAccountList() {
         try {
             viewModelScope.launch {
-                when (val res = accountRepository.getHomeAccount()) {
-                    null -> isFailure.value = ""
-                    else -> isSuccessAccount.value?.addAll(res.accountList)
-                }
+                val res = accountRepository.getHomeAccount()
+                Log.d("getAccountList", res.toString())
+                isSuccessAccount.value = res
             }
         } catch (e: Exception) {
             Log.e("getAccountList", e.message.toString())

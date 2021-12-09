@@ -37,6 +37,7 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_connect_account.xml" value="0.2" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_create_account.xml" value="0.2" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_create_account2.xml" value="0.2" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_hold.xml" value="0.22780797101449277" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_intro.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_main.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/activity_transfer.xml" value="0.176" />
@@ -65,6 +66,7 @@
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/home_tab_view_pager_fragmen.xml" value="0.264" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/intro_fragment.xml" value="0.25885416666666666" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/intro_view_pager_fragment.xml" value="0.2536231884057971" />
+        <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/layout_item_hold.xml" value="0.536" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/layout_item_home_tab.xml" value="0.536" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/login_basic_fragment.xml" value="0.30612244897959184" />
         <entry key="..\:/Github/2021_2nd_Project/presentation/src/main/res/layout/login_fragment.xml" value="0.264" />

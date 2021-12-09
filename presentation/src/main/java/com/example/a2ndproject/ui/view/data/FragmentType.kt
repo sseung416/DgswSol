@@ -15,6 +15,8 @@ enum class FragmentType(val type: Int) {
     PIN_CREATE_ACCOUNT_PW(2),
     // 통장 비밀번호 설정/확인
     PIN_ACCOUNT_PW(3),
+    // 송금
+    PIN_TRANSFER(4),
 
     TAB_POS_CREATE_ACCOUNT(0),
     TAB_POS_CONNECT_ACCOUNT(1),

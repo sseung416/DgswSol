@@ -50,7 +50,7 @@
 
             <TextView
                 android:id="@+id/tv_balance_main_tab_vp_item"
-                style="@style/BoldTextView"
+                style="@style/TitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{@string/format_money_comma(data.money)}"
@@ -98,13 +98,13 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_etc_layout_home_tab"
+                android:id="@+id/btn_hold_layout_home_tab"
                 style="@style/RegularTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:text="헤헤"
+                android:text="다른계좌로 가져오기"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 

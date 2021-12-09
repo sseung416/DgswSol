@@ -14,14 +14,14 @@ class AccountRemote @Inject constructor(
 ) : BaseRemote<AccountService>() {
 
     suspend fun postCheckAccount(checkAccount: CheckAccount): MsgResponse {
-        return getResponse(service.postCheckAccount(checkAccount))
+        return getResponse(service.postCheckAccount(checkAccount))!!
     }
 
     suspend fun postCreateAccount(createAccount: CreateAccount): MsgResponse {
-        return getResponse(service.postCreateAccount(createAccount))
+        return getResponse(service.postCreateAccount(createAccount))!!
     }
 
     suspend fun getHomeAccount(): List<AccountResponse> {
-        return getResponse(service.getHomeAccount())
+        return getResponse(service.getHomeAccount())!!
     }
 }
